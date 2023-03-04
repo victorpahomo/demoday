@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 const initialState = {}
 
 const authSlice = createSlice({
@@ -23,16 +22,5 @@ const authSlice = createSlice({
 });
 
 export const { signUpSuccess, signUpFailure, signInSuccess,signInFailure } = authSlice.actions
-
-export const signUp = (email, password) => async dispatch => {
-    try {
-        const userInfo = await createUserWithEmailAndPassword(auth, email, password)
-        const docuRef = doc(db, `users/${userInfo.user.uid}`)
-        await setDoc(docuRef, { email: email, rol: "user", orders: [] })
-        dispatch(signUpSuccess(userInfo))
-    } catch (error) {
-        dispatch(signUpFailure(error))
-    }
-}
 
 export default authSlice.reducer
