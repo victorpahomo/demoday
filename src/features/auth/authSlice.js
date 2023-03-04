@@ -37,12 +37,13 @@ export const { loginUserStart, loginUserSuccess, loginUserFailure, logout } =
 
 export const initializeSession = () => (dispatch) => {
   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-    const currentUserData = {
+    const currentUserData = currentUser ? {
         uid: currentUser.uid,
         email: currentUser.email,
         displayName: currentUser.displayName,
         photoURL: currentUser.photoURL
-      };
+      } : null;
+
     dispatch(
         currentUserData ? loginUserSuccess(currentUserData) : logout()
     );

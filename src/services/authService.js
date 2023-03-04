@@ -36,11 +36,9 @@ export const loginAndData = async (email, password) => {
 export const login = async (email, password,dispatch) => {
 
     dispatch(loginUserStart());
-console.log("Start");
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password)
         const user = userCredential.user;
-        console.log("Success");
 
         const userData = {
             uid: user.uid,
@@ -50,7 +48,6 @@ console.log("Start");
           };
         dispatch(loginUserSuccess(userData));
     } catch (error) {
-        console.log("Error");
         dispatch(loginUserFailure(error.message));
     }
 };
