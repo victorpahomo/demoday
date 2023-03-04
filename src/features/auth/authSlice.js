@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { auth,db } from '../../api/firebase';
+import { auth, db } from '../../api/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
 const initialState = {
   user: null,
   error: null,
@@ -48,9 +49,10 @@ export const { loginUserStart, loginUserSuccess, loginUserFailure, logout, signU
   authSlice.actions;
 
 export const getRol = async (uid) => {
-  const docRef = doc(db, `usersuid/${uid}`);
+  const docRef = doc(db, `users/${uid}`);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
+    console.log('Document data:', docSnap.data().rol);
     return docSnap.data().rol;
   } else {
     console.log('No such document!');
@@ -60,9 +62,8 @@ export const getRol = async (uid) => {
 export const initializeSession = () => (dispatch) => {
   let currentUserData = null;
   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-    getRol(currentUser.uid).then((rol) => {
-
-      if (currentUser) {
+    if (currentUser) {
+      getRol(currentUser.uid).then((rol) => {
         currentUserData = {
           uid: currentUser.uid,
           email: currentUser.email,
@@ -70,13 +71,14 @@ export const initializeSession = () => (dispatch) => {
           photoURL: currentUser.photoURL,
           rol: rol,
         };
-      }
-      dispatch(
-        currentUserData ? loginUserSuccess(currentUserData) : logout()
-        );
+        console.log(currentUserData);
+        dispatch(loginUserSuccess(currentUserData));
       });
+    } else {
+      dispatch(logout());
+    }
   });
-  return unsubscribe;
+return unsubscribe;
 };
 
 export default authSlice.reducer;
