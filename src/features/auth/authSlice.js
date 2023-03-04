@@ -1,26 +1,53 @@
-import { createSlice } from '@reduxjs/toolkit'
-const initialState = {}
+import { createSlice } from '@reduxjs/toolkit';
+import { auth } from '../../api/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+const initialState = {
+  user: null,
+  error: null,
+  loading: true,
+};
 
 const authSlice = createSlice({
-    name: 'auth',
-    initialState,
-    reducers: {
-        signUpSuccess: (state, action) => {
-            // Aquí puedes actualizar el estado con cualquier información relevante
-        },
-        signUpFailure: (state, action) => {
-            // Aquí puedes manejar el error si la función signUp falla
-        },
-        signInSuccess: (state, action) => {
-            // Aquí puedes actualizar el estado con cualquier información relevante
-        },
-        signInFailure: (state, action) => {
-            // Aquí puedes manejar el error si la función signUp falla
-        }
-
-    }
+  name: 'auth',
+  initialState,
+  reducers: {
+    loginUserStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    loginUserSuccess: (state, action) => {
+      state.loading = false;
+      state.user = action.payload;
+      state.error = null;
+    },
+    loginUserFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    logout(state) {
+      state.user = null;
+      state.error = null;
+      state.loading = false;
+    },
+  },
 });
 
-export const { signUpSuccess, signUpFailure, signInSuccess,signInFailure } = authSlice.actions
+export const { loginUserStart, loginUserSuccess, loginUserFailure, logout } =
+  authSlice.actions;
 
-export default authSlice.reducer
+export const initializeSession = () => (dispatch) => {
+  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const currentUserData = {
+        uid: currentUser.uid,
+        email: currentUser.email,
+        displayName: currentUser.displayName,
+        photoURL: currentUser.photoURL
+      };
+    dispatch(
+        currentUserData ? loginUserSuccess(currentUserData) : logout()
+    );
+  });
+  return unsubscribe;
+};
+
+export default authSlice.reducer;
