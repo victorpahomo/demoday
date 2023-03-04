@@ -39,6 +39,7 @@ const Login = () => {
           Email
         </label>
         <input
+          autoComplete="email"
           type="email"
           name="email"
           placeholder="example@company.com"
@@ -50,6 +51,7 @@ const Login = () => {
           Password
         </label>
         <input
+        autoComplete="current-password"
           type="password"
           name="password"
           id="password"

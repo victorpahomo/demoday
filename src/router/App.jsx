@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { initializeSession } from '../features/auth/authSlice';
 import { ProtectedRoute } from './ProtectedRoute';
 import { Courses, Grades, Home, Login, News, Panel, Profile } from '../pages';
+import AdminRegister from '../components/AdminRegister';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ function App() {
       <Route path="/courses" element={<ProtectedRoute><Courses /></ProtectedRoute>} />
       <Route path="/panel" element={<ProtectedRoute><Panel /></ProtectedRoute>} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<AdminRegister />} />
+
+
     </Routes>
   );
 }

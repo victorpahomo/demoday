@@ -1,37 +1,43 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../api/firebase'
-import { loginUserStart,loginUserSuccess,loginUserFailure,logout } from '../features/auth/authSlice'
+import { doc, setDoc } from 'firebase/firestore';
+import { auth,db } from '../api/firebase'
+import { loginUserStart,loginUserSuccess,loginUserFailure,logout,signUpStart,signUpSuccess,signUpFailure } from '../features/auth/authSlice'
 
-export const signUp = (email, password) => async dispatch => {
+export const signUp = async (email, password,dispatch) => {
+    dispatch(signUpStart());
+
     try {
-        const userInfo = await createUserWithEmailAndPassword(auth, email, password)
-        const docuRef = doc(db, `users/${userInfo.user.uid}`)
-        await setDoc(docuRef, { email: email, rol: "user", orders: [] })
-        dispatch(signUpSuccess(userInfo))
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+        console.log(userCredential);
+        const objStudent = {
+            "id": userCredential.user.uid,
+            "cc": "1061897864",
+            "picture": "",
+            "email": "student@gmail.com",
+            "name": "Pepito Hernandez",
+            "groupStudent": "frontend-1",
+            "status": "",
+            "todo": [
+              {
+                "author": "Pepito Hernandez",
+                "title": "Realizar el proyecto",
+                "date": " 2020-10-10 ",
+                "startTime": " 08:00 ",
+                "endTime": " 10:00 ",
+                "description": " Realizar el proyecto de la semana ",
+                "destination": "Pepito Hernandez"
+              }
+            ]
+        }
+        const docuRef = doc(db, `users/${userCredential.user.uid}`)
+        await setDoc(docuRef, objStudent)
+        dispatch(signUpSuccess(userCredential))
     } catch (error) {
-        dispatch(signUpFailure(error))
+        dispatch(signUpFailure())
+        console.log(error);
     }
 }
 
-export const loginAndData = async (email, password) => {
-    // Obtiene una referencia al documento del usuario en Firestore
-    const docuRef = await signInWithEmailAndPassword(auth, email, password)
-
-    // Comprueba si el usuario ya existe en Firestore
-    const docSnap = await getDoc(docuRef);
-    if (docSnap.exists()) {
-        // Si el usuario ya existe, no se crea un nuevo documento
-        console.log("El usuario ya está registrado en Firestore.");
-    } else {
-        // Si el usuario no existe, se crea un nuevo documento con su información
-        await setDoc(docuRef, {
-            email: userInfo.user.email,
-            rol: "user",
-            orders: []
-        });
-        console.log("Se ha creado un nuevo documento en Firestore para el usuario.");
-    }
-};
 
 export const login = async (email, password,dispatch) => {
 
@@ -48,6 +54,7 @@ export const login = async (email, password,dispatch) => {
           };
         dispatch(loginUserSuccess(userData));
     } catch (error) {
-        dispatch(loginUserFailure(error.message));
+        dispatch(loginUserFailure());
+        console.log(error);
     }
 };

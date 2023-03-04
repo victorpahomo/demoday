@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { auth } from '../../api/firebase';
+import { auth,db } from '../../api/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 const initialState = {
   user: null,
@@ -20,33 +20,61 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.error = null;
     },
-    loginUserFailure: (state, action) => {
+    loginUserFailure: (state) => {
       state.loading = false;
-      state.error = action.payload;
+    },
+    signUpStart: (state, action) => {
+      state.loading = true;
+      state.error = null;
+    },
+    signUpSuccess: (state, action) => {
+      state.loading = false;
+      state.user = action.payload;
+      state.error = null;
+    },
+    signUpFailure: (state) => {
+      state.loading = false;
     },
     logout(state) {
       state.user = null;
       state.error = null;
       state.loading = false;
     },
+
   },
 });
 
-export const { loginUserStart, loginUserSuccess, loginUserFailure, logout } =
+export const { loginUserStart, loginUserSuccess, loginUserFailure, logout, signUpStart, signUpSuccess, signUpFailure } =
   authSlice.actions;
 
-export const initializeSession = () => (dispatch) => {
-  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-    const currentUserData = currentUser ? {
-        uid: currentUser.uid,
-        email: currentUser.email,
-        displayName: currentUser.displayName,
-        photoURL: currentUser.photoURL
-      } : null;
+export const getRol = async (uid) => {
+  const docRef = doc(db, `usersuid/${uid}`);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    return docSnap.data().rol;
+  } else {
+    console.log('No such document!');
+  }
+};
 
-    dispatch(
+export const initializeSession = () => (dispatch) => {
+  let currentUserData = null;
+  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    getRol(currentUser.uid).then((rol) => {
+
+      if (currentUser) {
+        currentUserData = {
+          uid: currentUser.uid,
+          email: currentUser.email,
+          displayName: currentUser.displayName,
+          photoURL: currentUser.photoURL,
+          rol: rol,
+        };
+      }
+      dispatch(
         currentUserData ? loginUserSuccess(currentUserData) : logout()
-    );
+        );
+      });
   });
   return unsubscribe;
 };
