@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import Sidebar from "../layout/Sidebar";
+import Header from "../layout/Header";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -12,9 +13,8 @@ const Home = () => {
   };
   return (
     <div className="w-full h-full bg-white rounded-lg">
-           
+           <Header />
       <div className="body w-full h-full bg-white rounded-lg">
-        <button onClick={handleClick}>Cerrar Sesion</button>
         {rol === "professor" && <h1>Home Profe</h1>}
         {rol === "student" && <h1>Home Estudiante</h1>}
         {rol === "admin" && <h1>Home Admin</h1>}
