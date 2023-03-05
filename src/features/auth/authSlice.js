@@ -67,8 +67,6 @@ export const initializeSession = () => (dispatch) => {
         currentUserData = {
           uid: currentUser.uid,
           email: currentUser.email,
-          displayName: currentUser.displayName,
-          photoURL: currentUser.photoURL,
           rol: rol,
         };
         console.log(currentUserData);
