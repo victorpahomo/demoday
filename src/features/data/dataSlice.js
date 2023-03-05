@@ -1,9 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { auth, db } from '../../api/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../api/firebase';
+
 const initialState = {
   user: null,
+  allUsers: [],
+  group: null,
+  groups: [],
+  globalNews: [],
+  groupNews: [],
   error: null,
   loading: true,
 };
@@ -12,71 +16,52 @@ const dataSlice = createSlice({
   name: 'data',
   initialState,
   reducers: {
-    getDataStart: (state) => {
+    dataStart: (state) => {
       state.loading = true;
       state.error = null;
+    }, 
+    dataFailure: (state) => {
+      state.loading = false;
     },
-    loginUserSuccess: (state, action) => {
+    getUser: (state, action) => {
       state.loading = false;
       state.user = action.payload;
       state.error = null;
     },
-    loginUserFailure: (state) => {
+    getAllUsers: (state, action) => {
       state.loading = false;
-    },
-    signUpStart: (state, action) => {
-      state.loading = true;
+      state.allUsers = action.payload;
       state.error = null;
     },
-    signUpSuccess: (state, action) => {
+    getGroup: (state, action) => {
       state.loading = false;
-      state.user = action.payload;
+      state.group = action.payload;
       state.error = null;
     },
-    signUpFailure: (state) => {
+    getAllGroups: (state, action) => {
       state.loading = false;
-    },
-    logout(state) {
-      state.user = null;
+      state.groups = action.payload;
       state.error = null;
-      state.loading = false;
     },
-
+    getGlobalNews: (state, action) => {
+      state.loading = false;
+      state.globalNews = action.payload;
+      state.error = null;
+    },
+    getGroupNews: (state, action) => {
+      state.loading = false;
+      state.groupNews = action.payload;
+      state.error = null;
+    },
+    setNews: (state, action) => {
+      state.loading = false;
+      state.news = action.payload;
+      state.error = null;
+    }
   },
 });
 
-export const { loginUserStart, loginUserSuccess, loginUserFailure, logout, signUpStart, signUpSuccess, signUpFailure } =
+export const { dataStart, dataFailure,getUser,getAllUsers,getGroup,getAllGroups,getGlobalNews,getGroupNews,setNews } =
   dataSlice.actions;
-
-export const getRol = async (uid) => {
-  const docRef = doc(db, `users/${uid}`);
-  const docSnap = await getDoc(docRef);
-  if (docSnap.exists()) {
-    console.log('Document data:', docSnap.data().rol);
-    return docSnap.data().rol;
-  } else {
-    console.log('No such document!');
-  }
-};
-
-export const initializeSession = () => (dispatch) => {
-  let currentUserData = null;
-  const unsubscribe = ondataStateChanged(data, (currentUser) => {
-    if (currentUser) {
-      getRol(currentUser.uid).then((rol) => {
-        currentUserData = {
-          uid: currentUser.uid,
-          email: currentUser.email,
-          rol: rol,
-        };
-        console.log(currentUserData);
-        dispatch(loginUserSuccess(currentUserData));
-      });
-    } else {
-      dispatch(logout());
-    }
-  });
-return unsubscribe;
-};
 
 export default dataSlice.reducer;
