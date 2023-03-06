@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import Sidebar from "../layout/Sidebar";
-import {getUSerData,getAllUSersData,getGroupData,getAllGroupsData,getGlobalNewsData,getGroupNewsData} from '../services/dataFirebaseService'
+import {getUSerData,getAllUSersData,getGroupData,getAllGroupsData,getGlobalNewsData,getGroupNewsData,getCoursesData,getContributionsData} from '../services/dataFirebaseService'
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -33,12 +33,22 @@ const Home = () => {
       const news = await getGroupNewsData('frontend-2',dispatch);
       console.log(news);
     };
+    const handleGetDataCourses = async () => {
+      const courses = await getCoursesData(dispatch);
+      console.log(courses);
+    };
+    const handleGetDataContributions = async () => {
+      const contributions = await getContributionsData(dispatch);
+      console.log(contributions);
+    };
     handleGetData();
     handleGetDataUser();
     handleGetDataGroup();
     handleGetDataAllGroups();
     handleGetDataGlobalNews();
     handleGetDataGroupNews();
+    handleGetDataCourses();
+    handleGetDataContributions();
   }, []);
  
   const handleClick = () => {

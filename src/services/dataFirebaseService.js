@@ -1,6 +1,6 @@
-import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
 import { db } from '../api/firebase';
-import { dataStart, dataFailure, getAllUsers, getUser,getGroup,getAllGroups,getGlobalNews,getGroupNews,setNews } from '../features/data/dataSlice';
+import { dataStart, dataFailure, getAllUsers, getUser,getGroup,getAllGroups,getGlobalNews,getGroupNews,setNews,getContributions,setContributions,getCourses } from '../features/data/dataSlice';
 
 export const getUSerData = async (uid,dispatch) => {
     try {
@@ -93,12 +93,44 @@ export const getGroupNewsData = async (idGroup,dispatch) => {
         } else {
             dispatch(dataFailure("Users not found!"));
         }
-
     } catch (error) {
         dispatch(dataFailure(error.ToString()));
         console.error('Error getting document:', error);
     }
 };
   
+export const getContributionsData = async (dispatch) => {
+    try {
+        dispatch(dataStart());
+        const querySnapshot = await getDocs(collection(db, 'contributions'));
+        const users = querySnapshot.docs.map((doc) => doc.data());
+        dispatch(getContributions(users));
+    } catch (error) {
+        dispatch(dataFailure(error.toString()));
+        console.error('Error getting documents:', error);
+    }
+};
+// SIN TERMINAR
+export const setContributionsData = async (data,dispatch) => {
+    try {
+        dispatch(dataStart());
+        const docRef = doc(db, `contributions/${data.id}`);
+        await setDoc(docRef, data);
+        dispatch(setContributions(data));
+    } catch (error) {
+        dispatch(dataFailure(error.ToString()));
+        console.error('Error getting document:', error);
+    }
+}
 
-
+export const getCoursesData = async (dispatch) => {
+    try {
+        dispatch(dataStart());
+        const querySnapshot = await getDocs(collection(db, 'courses'));
+        const users = querySnapshot.docs.map((doc) => doc.data());
+        dispatch(getCourses(users));
+    } catch (error) {
+        dispatch(dataFailure(error.toString()));
+        console.error('Error getting documents:', error);
+    }
+}
