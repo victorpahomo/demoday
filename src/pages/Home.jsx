@@ -12,7 +12,7 @@ const Home = () => {
     dispatch(logout());
   };
   return (
-    <div className="w-full h-full bg-white rounded-lg">
+    <div className="w-full h-full bg-white rounded-lg pb-14">
            <Header />
       <div className="body w-full h-full bg-white rounded-lg">
         {rol === "professor" && <h1>Home Profe</h1>}

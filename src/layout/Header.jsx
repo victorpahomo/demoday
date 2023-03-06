@@ -12,7 +12,7 @@ const Header = () => {
         <h1 className="normal-case text-xl">Inicio</h1>
       </div>
 
-      <div className="gap-5">
+      <div className="sm:gap-2">
         <ButtonNotification/>
         <ButtonProfile />
       </div>
