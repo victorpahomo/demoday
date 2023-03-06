@@ -7,49 +7,7 @@ import {getUSerData,getAllUSersData,getGroupData,getAllGroupsData,getGlobalNewsD
 const Home = () => {
   const dispatch = useDispatch();
   const rol = useSelector((state) => state.auth.user.rol);
-  
-  useEffect(() => {
-    const handleGetData = async () => {
-      const data = await getAllUSersData(dispatch);
-      console.log(data);
-    };
-    const handleGetDataUser = async () => {
-      const user = await getUSerData('6DUJWuYEz8N0QbJdxskGVbbmesm2',dispatch);
-      console.log(user);
-    };
-    const handleGetDataGroup = async () => {
-      const group = await getGroupData('frontend-2',dispatch);
-      console.log(group);
-    };
-    const handleGetDataAllGroups = async () => {
-      const groups = await getAllGroupsData(dispatch);
-      console.log(groups);
-    };
-    const handleGetDataGlobalNews = async () => {
-      const news = await getGlobalNewsData(dispatch);
-      console.log(news);
-    };
-    const handleGetDataGroupNews = async () => {
-      const news = await getGroupNewsData('frontend-2',dispatch);
-      console.log(news);
-    };
-    const handleGetDataCourses = async () => {
-      const courses = await getCoursesData(dispatch);
-      console.log(courses);
-    };
-    const handleGetDataContributions = async () => {
-      const contributions = await getContributionsData(dispatch);
-      console.log(contributions);
-    };
-    handleGetData();
-    handleGetDataUser();
-    handleGetDataGroup();
-    handleGetDataAllGroups();
-    handleGetDataGlobalNews();
-    handleGetDataGroupNews();
-    handleGetDataCourses();
-    handleGetDataContributions();
-  }, []);
+
  
   const handleClick = () => {
     dispatch(logout());
