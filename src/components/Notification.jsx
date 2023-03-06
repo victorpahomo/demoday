@@ -1,17 +1,18 @@
 import React from "react";
 
 const Notification = (props) => {
-  let backgroundColorClass = "bg-gray-50";
+  let backgroundColorClass = "bg-slate-50";
+
   if (props.rol === "admin") {
-    backgroundColorClass = "w-full h-1 bg-red-500 rounded-lg";
+    backgroundColorClass = "w-full h-1  rounded-lg bg-red-500";
   } else if (props.rol === "professor") {
-    backgroundColorClass = "w-full h-1 bg-yellow-400 rounded-lg";
+    backgroundColorClass = "w-full h-1  rounded-lg bg-yellow-400";
   } else if (props.rol === "student") {
     backgroundColorClass = "w-full h-1 bg-blue-200 rounded-lg";
   }
 
   return (
-    <div className="flex flex-col p-4 hover:bg-slate-100 cursor-pointer border-b-2 rounded-lg">
+    <div className="flex flex-col p-4 bg-slate-50 cursor-pointer border-b-2 rounded-lg mt-1">
       <span className={`${backgroundColorClass}`}></span>
       <h2 className="font-bold">{props.title}</h2>
       <p className="text-sm">{props.message}</p>
@@ -27,9 +28,6 @@ const Notification = (props) => {
 };
 
 export default Notification;
-
-
-
 
 // import React from "react";
 

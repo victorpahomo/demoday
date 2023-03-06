@@ -46,6 +46,14 @@ const ButtonNotification = () => {
           author: "JulioJavier",
           rol: "professor",
         },
+        {
+          id: 1,
+          title: "Title",
+          message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          date: "2023-03-05 12:00:00",
+          author: "JulioJavier",
+          rol: "professor",
+        },
       ];
       setNotifications(updatedNotifications);
     }, 1000);
@@ -53,18 +61,13 @@ const ButtonNotification = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleNotificationClick = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <div className="dropdown dropdown-end">
       <label
         tabIndex={0}
-        className="btn btn-ghost btn-circle btn-sm bg-slate-200 hover:bg-slate-300"
+        className="btn btn-ghost btn-circle btn-sm bg-slate-200 hover:bg-slate-300 indicator"
       >
+      <span className="indicator-item badge bg-red-500 border-none">{notifications.length}</span>
         <BellIcon className=" w-4 h-4 fill-black" />
       </label>
       <div
