@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signUp } from "../services/authService";
+import { signUp } from "../services/authFirebaseService";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
