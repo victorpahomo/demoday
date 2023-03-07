@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ButtonNotification, ButtonProfile, ButtonTheme } from "../components";
+import {
+  ButtonNotification,
+  ButtonProfile,
+  ButtonTheme,
+} from "../../components";
 
 const Header = () => {
   const rol = useSelector((state) => state.auth.user.rol);
-
 
   return (
     <div className="navbar bg-white rounded-lg">
@@ -13,7 +16,7 @@ const Header = () => {
       </div>
 
       <div className="sm:gap-2">
-        <ButtonNotification/>
+        <ButtonNotification />
         <ButtonProfile />
       </div>
     </div>
