@@ -4,7 +4,7 @@ const SideBar = () => {
   return (
     <div className="flex flex-col justify-center items-center w-auto bg-red-500 h-5/6">
       <div className="rounded-l-lg bg-yellow-500 hover:bg-white h-6 text-center ease-in-out duration-300">
-        <h1>side</h1>
+        Inicio
       </div>
     </div>
   );
