@@ -5,7 +5,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import esLocale from "@fullcalendar/core/locales/es";
 import timegrid from "@fullcalendar/timegrid";
 
-const MyCalendar = () => {
+const Calendar = () => {
     const [showModal, setShowModal] = useState(false);
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
@@ -52,6 +52,12 @@ const MyCalendar = () => {
             <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin, timegrid]}
                 locale={esLocale}
+                height={400}
+                dayCellContent={(arg) => (
+                  <div className="custom-cell" style={{ height: "30px", width: "30px" }}>
+                    {arg.dayNumberText}
+                  </div>
+                )}
                 initialView="dayGridMonth"
                 selectable={true}
                 editable={true}
@@ -154,4 +160,4 @@ const MyCalendar = () => {
     );
 };
 
-export default MyCalendar;
+export default Calendar;
