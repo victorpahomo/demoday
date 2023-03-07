@@ -4,6 +4,7 @@ import { logout } from "../features/auth/authSlice";
 import {getUSerData,getAllUSersData,getGroupData,getAllGroupsData,getGlobalNewsData,getGroupNewsData,getCoursesData,getContributionsData} from '../services/dataFirebaseService'
 import Header from "../layout/Header";
 
+import MyCalendar from '../components/calendar/CalendarFull'
 const Home = () => {
   const dispatch = useDispatch();
   const rol = useSelector((state) => state.auth.user.rol);
@@ -15,6 +16,7 @@ const Home = () => {
   return (
     <div className="w-full h-full bg-white rounded-lg pb-14">
       <Header />
+      <MyCalendar/>
       <div className="body w-full h-full bg-white rounded-lg">
         {rol === "professor" && <h1>Home Profe</h1>}
         {rol === "student" && <h1>Home Estudiante</h1>}
