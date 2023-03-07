@@ -19,42 +19,43 @@ const ButtonNotification = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
+    const updatedNotifications = [
+      {
+        id: 1,
+        title: "Title",
+        message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        date: "2023-03-05 12:00:00",
+        author: "JulioJavier",
+        rol: "admin",
+      },
+      {
+        id: 2,
+        title: "Title",
+        message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        date: "2023-03-05 12:00:00",
+        author: "JulioJavier",
+        rol: "student",
+      },
+      {
+        id: 3,
+        title: "Title",
+        message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        date: "2023-03-05 12:00:00",
+        author: "JulioJavier",
+        rol: "professor",
+      },
+      {
+        id: 4,
+        title: "Title",
+        message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        date: "2023-03-05 12:00:00",
+        author: "JulioJavier",
+        rol: "professor",
+      },
+    ];
+
     const interval = setInterval(() => {
       // Aquí se puede hacer una llamada a una API para obtener las notificaciones actualizadas
-      const updatedNotifications = [
-        {
-          id: 1,
-          title: "Title",
-          message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          date: "2023-03-05 12:00:00",
-          author: "JulioJavier",
-          rol: "admin",
-        },
-        {
-          id: 1,
-          title: "Title",
-          message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          date: "2023-03-05 12:00:00",
-          author: "JulioJavier",
-          rol: "student",
-        },
-        {
-          id: 1,
-          title: "Title",
-          message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          date: "2023-03-05 12:00:00",
-          author: "JulioJavier",
-          rol: "professor",
-        },
-        {
-          id: 1,
-          title: "Title",
-          message: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          date: "2023-03-05 12:00:00",
-          author: "JulioJavier",
-          rol: "professor",
-        },
-      ];
       setNotifications(updatedNotifications);
     }, 1000);
 
@@ -67,7 +68,9 @@ const ButtonNotification = () => {
         tabIndex={0}
         className="btn btn-ghost btn-circle btn-sm bg-slate-200 hover:bg-slate-300 indicator"
       >
-      <span className="indicator-item badge bg-red-500 border-none">{notifications.length}</span>
+        <span className="indicator-item badge bg-red-500 border-none">
+          {notifications.length}
+        </span>
         <BellIcon className=" w-4 h-4 fill-black" />
       </label>
       <div
@@ -77,82 +80,31 @@ const ButtonNotification = () => {
         <h2 className="font-bold text-lef p-2">Notificaciones</h2>
         <hr />
         <div className="overflow-y-auto h-60">
-          {notifications.length > 0 ? (
-            notifications.map((notification) => (
-              <Notification
-                key={notification.id}
-                title={notification.title}
-                message={notification.message}
-                author={notification.author}
-                date={notification.date}
-                rol={notification.rol}
-              />
-            ))
-          ) : (
+          {notifications.map((notification) => (
+            <Notification
+              key={notification.id}
+              title={notification.title}
+              message={notification.message}
+              author={notification.author}
+              date={notification.date}
+              rol={notification.rol}
+            />
+          ))}
+          {!notifications.length && (
             <div className="px-4 py-2">No hay notificaciones</div>
           )}
         </div>
         <a
           href="#"
-          class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-slate-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
+          className="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-slate-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
         >
-          <div class="inline-flex items-center ">
+          <div className="inline-flex items-center ">
             <ViewAllIcon className="w-4 h-4 mr-2 fill-gray-500 dark:fill-gray-400" />
             Ver todos
           </div>
         </a>
       </div>
     </div>
-    //     <div className="relative">
-    //       <div className="indicator">
-    //         <span className="indicator-item badge bg-red-500 border-none">
-    //           {notifications.length}
-    //         </span>
-    //         <button
-    //           onClick={handleNotificationClick}
-    //           className="btn btn-circle btn-ghost btn-sm bg-slate-200 hover:bg-slate-300 inline-flex items-center justify-center  focus:outline-none"
-    //         >
-    //           <BellIcon className=" w-4 h-4 fill-black" />
-    //         </button>
-    //       </div>
-
-    //       {isOpen && (
-    //   <div className="fixed inset-0 flex justify-center items-center">
-    //     <div className="w-full max-w-md">
-    //       <div className="relative rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-    //         <h2 className="font-bold text-lef p-2">Notificaciones</h2>
-    //         <hr />
-    //         <div className="overflow-y-auto h-60">
-    //           {notifications.length > 0 ? (
-    //             notifications.map((notification) => (
-    //               <Notification
-    //                 key={notification.id}
-    //                 title={notification.title}
-    //                 message={notification.message}
-    //                 author={notification.author}
-    //                 date={notification.date}
-    //               />
-    //             ))
-    //           ) : (
-    //             <div className="px-4 py-2">No hay notificaciones</div>
-    //           )}
-    //         </div>
-    //         <a
-    //           href="#"
-    //           class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-slate-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
-    //         >
-    //           <div class="inline-flex items-center ">
-    //             <ViewAllIcon className="w-4 h-4 mr-2 fill-gray-500 dark:fill-gray-400" />
-    //             Ver todos
-    //           </div>
-    //         </a>
-    //       </div>
-    //     </div>
-    //   </div>
-    // )}
-
-    //     </div>
   );
 };
-
 export default ButtonNotification;

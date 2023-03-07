@@ -7,13 +7,14 @@ import Header from "../layout/Header";
 const Home = () => {
   const dispatch = useDispatch();
   const rol = useSelector((state) => state.auth.user.rol);
-
+  console.log(rol);
   const handleClick = () => {
     dispatch(logout());
   };
+  let status = true;
   return (
     <div className="w-full h-full bg-white rounded-lg pb-14">
-           <Header />
+      <Header />
       <div className="body w-full h-full bg-white rounded-lg">
         {rol === "professor" && <h1>Home Profe</h1>}
         {rol === "student" && <h1>Home Estudiante</h1>}

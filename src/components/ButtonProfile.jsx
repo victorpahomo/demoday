@@ -13,6 +13,7 @@ const ButtonProfile = () => {
           <img src="https://static3.abc.es/media/summum/2021/10/01/maxi_iglesias-kXKH--620x349@abc.jpeg" />
         </div>
       </label>
+      <p>{}</p>
       <ul
         tabIndex={0}
         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"

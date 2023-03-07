@@ -7,7 +7,7 @@ const Header = () => {
 
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-white rounded-lg">
       <div className="flex-1">
         <h1 className="normal-case text-xl">Inicio</h1>
       </div>
