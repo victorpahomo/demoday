@@ -2,11 +2,9 @@ import React from "react";
 
 const SideBar = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-full w-auto">
-      <div className="flex flex-col gap-2">
-        <div className="rounded-l-lg bg-primary-azulCeleste5 hover:bg-white h-6 text-center ease-in-out duration-300">
-          Inicio
-        </div>
+    <div className="flex flex-col justify-center items-center w-auto bg-red-500 h-5/6">
+      <div className="rounded-l-lg bg-yellow-500 hover:bg-white h-6 text-center ease-in-out duration-300">
+        <h1>side</h1>
       </div>
     </div>
   );
