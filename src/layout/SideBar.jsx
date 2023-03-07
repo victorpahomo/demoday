@@ -6,36 +6,54 @@ const SideBar = () => {
   const [hoverIcon, setHoverIcon] = useState("fill-white");
 
   return (
-    <div className="_displaySideBar flex flex-col justify-center items-end w-10 hover:w-28 bg-primary-azulCeleste5 h-full">
+    <div className="_displaySideBar flex flex-col justify-center items-end w-12 hover:w-40 pl-2 bg-primary-azulCeleste5 h-full">
       <Link
         to="/home"
-        className="flex items-center h-10 w-24 justify-start rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
+        className="flex h-10 w-36 justify-between rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
         onMouseEnter={() => setHoverIcon("fill-black")}
         onMouseLeave={() => setHoverIcon("fill-white")}
       >
+        <span className="pl-3">Inicio</span>
         <HomeIcon
-          className={`ease-in-out duration-200 w-6 h-6 ${hoverIcon}`}
+          className={`ease-in-out duration-200 w-8 pr-3 ${hoverIcon}`}
           fill={hoverIcon}
         />
-        <span>Inicio</span>
       </Link>
       <Link
-        className="flex gap-1 p-1 items-center justify-start rounded-l-lg bg-primary-azulCeleste5 hover:bg-white h-10 w-24 text-center ease-in-out duration-300"
         to="/courses"
+        className="flex h-10 w-36 justify-between rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
+        onMouseEnter={() => setHoverIcon("fill-black")}
+        onMouseLeave={() => setHoverIcon("fill-white")}
       >
-        <CoursesIcon className={"w-6 h-6 fill-black"} /> Cursos
+        <span className="pl-3">Cursos</span>
+        <CoursesIcon
+          className={`ease-in-out duration-200 w-8 pr-3 ${hoverIcon}`}
+          fill={hoverIcon}
+        />
       </Link>
       <Link
-        className="flex gap-1 p-1 items-center justify-start rounded-l-lg bg-primary-azulCeleste5 hover:bg-white h-10 w-24 text-center ease-in-out duration-300"
         to="/grades"
+        className="flex h-10 w-36 justify-between rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
+        onMouseEnter={() => setHoverIcon("fill-black")}
+        onMouseLeave={() => setHoverIcon("fill-white")}
       >
-        <GradesIcon className={"w-6 h-6 fill-black"} /> Notas
+        <span className="pl-3">Grado</span>
+        <GradesIcon
+          className={`ease-in-out duration-200 w-8 pr-3 ${hoverIcon}`}
+          fill={hoverIcon}
+        />
       </Link>
       <Link
-        className="flex gap-1 p-1 items-center justify-start rounded-l-lg bg-primary-azulCeleste5  hover:bg-white h-10 w-24 text-center ease-in-out duration-300"
         to="/training"
+        className="flex h-10 w-36 justify-between rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
+        onMouseEnter={() => setHoverIcon("fill-black")}
+        onMouseLeave={() => setHoverIcon("fill-white")}
       >
-        <TrainingIcon className={"w-6 h-6 fill-black"} /> Formación
+        <span className="pl-3">Formacion</span>
+        <TrainingIcon
+          className={`ease-in-out duration-200 w-8 pr-3 ${hoverIcon}`}
+          fill={hoverIcon}
+        />
       </Link>
     </div>
   );
