@@ -3,9 +3,11 @@ import MainLayout from "../layout/MainLayout";
 import RolHome from "../components/home/RolHome";
 const Home = () => {
   return (
-    <MainLayout  >
-      <RolHome />
-    </MainLayout>
+    <div className="h-screen">
+      <MainLayout  >
+        <RolHome />
+      </MainLayout>
+    </div>
   );
 };
 

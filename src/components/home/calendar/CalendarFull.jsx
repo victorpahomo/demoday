@@ -52,6 +52,12 @@ const Calendar = () => {
             <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin, timegrid]}
                 locale={esLocale}
+                height={400}
+                dayCellContent={(arg) => (
+                  <div className="custom-cell" style={{ height: "30px", width: "30px" }}>
+                    {arg.dayNumberText}
+                  </div>
+                )}
                 initialView="dayGridMonth"
                 selectable={true}
                 editable={true}
