@@ -5,7 +5,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import esLocale from "@fullcalendar/core/locales/es";
 import timegrid from "@fullcalendar/timegrid";
 
-const MyCalendar = () => {
+const Calendar = () => {
     const [showModal, setShowModal] = useState(false);
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
@@ -154,4 +154,4 @@ const MyCalendar = () => {
     );
 };
 
-export default MyCalendar;
+export default Calendar;

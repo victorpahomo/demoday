@@ -1,19 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../features/auth/authSlice";
-import {
-  getUSerData,
-  getAllUSersData,
-  getGroupData,
-  getAllGroupsData,
-  getGlobalNewsData,
-  getGroupNewsData,
-  getCoursesData,
-  getContributionsData,
-} from "../services/dataFirebaseService";
+import { logout } from "../../features/auth/authSlice";
+import {getUSerData,getAllUSersData,getGroupData,getAllGroupsData,getGlobalNewsData,getGroupNewsData,getCoursesData,getContributionsData,} from "../../services/dataFirebaseService";
 
-import MyCalendar from "../components/home/calendar/CalendarFull";
-const Home = () => {
+import Calendar from "../../components/home/calendar/CalendarFull";
+const RolHome = () => {
   const dispatch = useDispatch();
   const rol = useSelector((state) => state.auth.user.rol);
   console.log(rol);
@@ -24,7 +15,7 @@ const Home = () => {
   return (
     <div className="w-full h-full bg-white rounded-lg pb-14">
 
-      <MyCalendar />
+      <Calendar />
       <div className="body w-full h-full bg-white rounded-lg">
         {rol === "professor" && <h1>Home Profe</h1>}
         {rol === "student" && <h1>Home Estudiante</h1>}
@@ -35,4 +26,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default RolHome;
