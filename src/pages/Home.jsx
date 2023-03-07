@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import Sidebar from "../layout/Sidebar";
 import {getUSerData,getAllUSersData,getGroupData,getAllGroupsData,getGlobalNewsData,getGroupNewsData,getCoursesData,getContributionsData} from '../services/dataFirebaseService'
-
+import MyCalendar from '../components/calendar/CalendarFull'
 const Home = () => {
   const dispatch = useDispatch();
   const rol = useSelector((state) => state.auth.user.rol);
@@ -14,7 +14,7 @@ const Home = () => {
   };
   return (
     <div className="w-full h-full bg-white rounded-lg">
-           
+      <MyCalendar/>
       <div className="body w-full h-full bg-white rounded-lg">
         <button onClick={handleClick}>Cerrar Sesion</button>
         {rol === "professor" && <h1>Home Profe</h1>}
