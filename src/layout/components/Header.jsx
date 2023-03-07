@@ -10,7 +10,7 @@ const Header = () => {
   const rol = useSelector((state) => state.auth.user.rol);
 
   return (
-    <div className="navbar bg-white rounded-lg">
+    <div className="navbar bg-white rounded-t-lg">
       <div className="flex-1">
         <h1 className="normal-case text-xl">Inicio</h1>
       </div>

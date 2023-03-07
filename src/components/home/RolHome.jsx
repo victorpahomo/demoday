@@ -12,9 +12,7 @@ const RolHome = () => {
   };
   let status = true;
   return (
-
-
-      <div className="body w-full h-5/6 bg-black rounded-lg">
+      <div className="body w-full h-5/6 bg-white rounded-b-lg">
         <h1>Bienvenido, {useSelector((state) => state.auth.user.rol)}</h1>
         {/* VISTA PROFESSOR */}
         {rol === "professor" && <div className="">
@@ -43,18 +41,18 @@ const RolHome = () => {
         {/* VISTA ADMIN */}
 
         {rol === "admin" && <div className="">
-          <section className="_Novedades bg-slate-400">
+          <section className="_Novedades bg-white">
             {/* Componente para novedades */}
             <h1>Novedad</h1>
           </section>
 
-          <section className="_Calendario flex items-center justify-center bg-blue-300">
+          <section className="_Calendario flex items-center justify-center bg-white">
             <div className="w-1/2 ">
               <Calendar />
             </div>
           </section>
 
-          <section className="_Proceso bg-slate-600">
+          <section className="_Proceso bg-white">
             {/* Componente para proceso */}
             <h1>Proceso</h1>
           </section>

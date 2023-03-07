@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { CoursesIcon, GradesIcon, HomeIcon, TrainingIcon } from "../assets";
 
 const SideBar = () => {
+  const [hoverIcon, setHoverIcon] = useState("fill-white");
+
   return (
-    <div className="flex flex-col justify-center items-center w-auto bg-red-500 h-5/6">
-      <div className="rounded-l-lg bg-yellow-500 hover:bg-white h-6 text-center ease-in-out duration-300">
-        Inicio
-      </div>
+    <div className="_displaySideBar flex flex-col justify-center items-end w-10 hover:w-28 bg-primary-azulCeleste5 h-full">
+      <Link
+        to="/home"
+        className="flex items-center h-10 w-24 justify-start rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
+        onMouseEnter={() => setHoverIcon("fill-black")}
+        onMouseLeave={() => setHoverIcon("fill-white")}
+      >
+        <HomeIcon
+          className={`ease-in-out duration-200 w-6 h-6 ${hoverIcon}`}
+          fill={hoverIcon}
+        />
+        <span>Inicio</span>
+      </Link>
+      <Link
+        className="flex gap-1 p-1 items-center justify-start rounded-l-lg bg-primary-azulCeleste5 hover:bg-white h-10 w-24 text-center ease-in-out duration-300"
+        to="/courses"
+      >
+        <CoursesIcon className={"w-6 h-6 fill-black"} /> Cursos
+      </Link>
+      <Link
+        className="flex gap-1 p-1 items-center justify-start rounded-l-lg bg-primary-azulCeleste5 hover:bg-white h-10 w-24 text-center ease-in-out duration-300"
+        to="/grades"
+      >
+        <GradesIcon className={"w-6 h-6 fill-black"} /> Notas
+      </Link>
+      <Link
+        className="flex gap-1 p-1 items-center justify-start rounded-l-lg bg-primary-azulCeleste5  hover:bg-white h-10 w-24 text-center ease-in-out duration-300"
+        to="/training"
+      >
+        <TrainingIcon className={"w-6 h-6 fill-black"} /> Formación
+      </Link>
     </div>
   );
 };
