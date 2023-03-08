@@ -20,13 +20,13 @@ const SideBar = () => {
         />
       </Link>
       <Link
-        to="/courses"
+        to="/training"
         className="flex h-10 w-36 justify-between rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
         onMouseEnter={() => setHoverIcon("fill-black")}
         onMouseLeave={() => setHoverIcon("fill-white")}
       >
-        <span className="pl-3">Cursos</span>
-        <CoursesIcon
+        <span className="pl-3">Formacion</span>
+        <TrainingIcon
           className={`ease-in-out duration-200 w-8 pr-3 ${hoverIcon}`}
           fill={hoverIcon}
         />
@@ -37,20 +37,21 @@ const SideBar = () => {
         onMouseEnter={() => setHoverIcon("fill-black")}
         onMouseLeave={() => setHoverIcon("fill-white")}
       >
-        <span className="pl-3">Grado</span>
+        <span className="pl-3">Notas</span>
         <GradesIcon
           className={`ease-in-out duration-200 w-8 pr-3 ${hoverIcon}`}
           fill={hoverIcon}
         />
       </Link>
+
       <Link
-        to="/training"
+        to="/courses"
         className="flex h-10 w-36 justify-between rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
         onMouseEnter={() => setHoverIcon("fill-black")}
         onMouseLeave={() => setHoverIcon("fill-white")}
       >
-        <span className="pl-3">Formacion</span>
-        <TrainingIcon
+        <span className="pl-3">Cursos</span>
+        <CoursesIcon
           className={`ease-in-out duration-200 w-8 pr-3 ${hoverIcon}`}
           fill={hoverIcon}
         />

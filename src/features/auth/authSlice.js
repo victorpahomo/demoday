@@ -65,6 +65,7 @@ export const initializeSession = () => (dispatch) => {
     if (currentUser) {
       getRol(currentUser.uid).then((rol) => {
         currentUserData = {
+          name: currentUser.displayName,
           uid: currentUser.uid,
           email: currentUser.email,
           rol: rol,

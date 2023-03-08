@@ -16,15 +16,17 @@ import Calendar from "../../components/home/calendar/CalendarFull";
 const RolHome = () => {
   const dispatch = useDispatch();
   const rol = useSelector((state) => state.auth.user.rol);
+  const name = useSelector((state) => state.auth.user.name);
+  console.log(useSelector((state) => state.auth.user));
   const handleClick = () => {
     dispatch(logout());
   };
   let status = true;
   return (
     <div className="body px-24 w-full h-5/6 bg-white rounded-b-lg">
-      <h1 className="py-5">
-        ¡Hola, {useSelector((state) => state.auth.user.rol)} bienvenido a Code
-        LMS!
+      <h1 className="mb-1">
+         {/* {useSelector((state) => state.auth.user.rol)} */}
+         ¡Hola, {name ? name : rol} bienvenido a Code LMS!
       </h1>
       {/* VISTA PROFESSOR */}
       {rol === "professor" && (
