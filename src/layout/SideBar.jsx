@@ -7,7 +7,7 @@ const SideBar = ({ props }) => {
   return (
 
     <div
-      className="_displaySideBar h-full flex flex-col  fixed  items-end w-12 gap-4 hover:w-40 pl-2 bg-primary-azulCeleste5 ease-in-out duration-200 transition-all"
+      className="_displaySideBar z-50 h-full flex flex-col  fixed  items-end w-12 gap-4 hover:w-40 pl-2 bg-primary-azulCeleste5 ease-in-out duration-200 transition-all"
       onMouseEnter={() => setShowText(true)}
       onMouseLeave={() => setShowText(false)}
     >
