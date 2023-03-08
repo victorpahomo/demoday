@@ -63,7 +63,10 @@ const ButtonNotification = () => {
   }, []);
 
   return (
-    <div className="dropdown dropdown-end">
+    <div
+      className="dropdown dropdown-end tooltip tooltip-bottom"
+      data-tip="Notificaciones"
+    >
       <label
         tabIndex={0}
         className="btn btn-ghost btn-circle btn-sm bg-slate-200 hover:bg-slate-300 indicator"
