@@ -5,7 +5,7 @@ const Grades = () => {
   return (
     <div className='h-screen'>
       <MainLayout>
-        <div className='bg-white'>
+        <div className='bg-white p-10'>
           <Table />
         </div>
       </MainLayout>
