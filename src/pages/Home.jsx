@@ -4,7 +4,7 @@ import RolHome from "../components/home/RolHome";
 const Home = () => {
   return (
     <div className="">
-      <MainLayout  >
+      <MainLayout props="Inicio" >
         <RolHome />
       </MainLayout>
     </div>

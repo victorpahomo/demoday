@@ -5,3 +5,4 @@ export { default as Login } from './Login';
 export { default as News } from './News';
 export { default as Panel } from './Panel';
 export { default as Profile } from './Profile';
+export { default as Training } from './Training';

@@ -4,7 +4,7 @@ import Table from '../components/Table'
 const Grades = () => {
   return (
     <div className=''>
-      <MainLayout>
+      <MainLayout props="Notas">
         <div className='bg-white px-24 py-10'>
           <Table />
         </div>
