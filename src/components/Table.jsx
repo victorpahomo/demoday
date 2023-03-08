@@ -39,9 +39,9 @@ const Table = () => {
   };
 
   return (
-    <div className="flex flex-col text-black">
-      <div>
-        <h2 className="text-center font-bold text-lg">Notas de Fundamentos</h2>
+    <div className="flex flex-col text-black gap-5">
+      <div className='_primeraTabla shadow-xl'>
+        <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">Notas de Fundamentos</h2>
         <table className="w-full table-auto">
           <thead>
             <tr>
@@ -63,8 +63,8 @@ const Table = () => {
           </tbody>
         </table>
       </div>
-      <div>
-        <h2 className="text-center font-bold text-lg">Notas de Profundización</h2>
+      <div className='_segundaTabla shadow-xl'>
+        <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">Notas de Profundización</h2>
         <table className="w-full table-auto">
           <thead>
             <tr>
@@ -72,9 +72,9 @@ const Table = () => {
               <th className="px-4 py-2">Nota</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {Object.entries(datos.grades.profundizacion).map(([sprint, nota]) => (
-              <tr key={sprint}>
+              <tr key={sprint} >
                 <td className="border px-4 py-2">{sprint}</td>
                 <td className="border px-4 py-2">{nota}</td>
               </tr>
@@ -86,8 +86,8 @@ const Table = () => {
           </tbody>
         </table>
       </div>
-      <div>
-        <h2 className="text-center font-bold text-lg">Promedio de Asistencia</h2>
+      <div className='_terceraTabla shadow-xl'>
+        <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">Asistencia</h2>
         <table className="w-full table-auto">
             <thead>
                 <tr>
