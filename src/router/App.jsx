@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { initializeSession } from "../features/auth/authSlice";
 import { ProtectedRoute } from "./ProtectedRoute";
-import { Courses, Grades, Home, Login, News, Panel, Profile,Training } from "../pages";
+import { Courses, Grades, Home, Login, News, Panel, Profile, Training,CodeBot } from "../pages";
 import AdminRegister from "../components/AdminRegister";
 
 function App() {
@@ -56,7 +56,7 @@ function App() {
           </ProtectedRoute>
         }
       />
-            <Route
+      <Route
         path="/training"
         element={
           <ProtectedRoute>
@@ -77,6 +77,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Panel />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/codebot"
+        element={
+          <ProtectedRoute>
+            <CodeBot />
           </ProtectedRoute>
         }
       />

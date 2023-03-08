@@ -9,7 +9,7 @@ import {
 const Header = ({props}) => {
   const rol = useSelector((state) => state.auth.user.rol);
   return (
-    <div className="navbar bg-white rounded-t-lg">
+    <div className="navbar fixed w-11/12 top-5  bg-white rounded-t-lg">
       <div className="flex-1">
         <h1 className="pl-4 normal-case text-xl font-medium text-primary-azulCeleste3">{props}</h1>
       </div>

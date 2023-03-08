@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CoursesIcon, GradesIcon, HomeIcon, TrainingIcon } from "../assets";
+import { CodeBotIcon, CoursesIcon, GradesIcon, HomeIcon, TrainingIcon } from "../assets";
 import SidebarLink from "./SidebarLink";
 
 const SideBar = ({ props }) => {
@@ -40,6 +40,13 @@ const SideBar = ({ props }) => {
           to="/courses"
           icon={CoursesIcon}
           text="Cursos"
+        />
+        <SidebarLink
+          page={props}
+          showText={showText}
+          to="/codebot"
+          icon={CodeBotIcon}
+          text="CodeBot"
         />
       </div>
 

@@ -6,4 +6,5 @@ export { default as HomeIcon } from './HomeIcon';
 export { default as CoursesIcon } from './CoursesIcon';
 export { default as GradesIcon } from './GradesIcon';
 export { default as TrainingIcon } from './TrainingIcon';
+export { default as CodeBotIcon } from './CodeBotIcon';
 
