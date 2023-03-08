@@ -1,147 +1,108 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CoursesIcon, GradesIcon, HomeIcon, TrainingIcon } from "../assets";
+import SidebarLink from "./SidebarLink";
 
 const SideBar = () => {
-  const [hoverIcon, setHoverIcon] = useState("fill-white");
-
+  const [showText, setShowText] = useState(false);
   return (
-    <div className="_displaySideBar flex flex-col justify-center items-end w-12 hover:w-40 pl-2 bg-primary-azulCeleste5 h-full">
-      <Link
+    <div
+      className="_displaySideBar flex flex-col justify-center items-end w-12 hover:w-40 pl-2 bg-primary-azulCeleste5 h-full"
+      onMouseEnter={() => setShowText(true)}
+      onMouseLeave={() => setShowText(false)}
+    >
+      <SidebarLink
+        showText={showText}
         to="/home"
-        className="flex h-10 w-36 justify-between rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
-        onMouseEnter={() => setHoverIcon("fill-black")}
-        onMouseLeave={() => setHoverIcon("fill-white")}
-      >
-        <span className="pl-3">Inicio</span>
-        <HomeIcon
-          className={`ease-in-out duration-200 w-8 pr-3 ${hoverIcon}`}
-          fill={hoverIcon}
-        />
-      </Link>
-      <Link
+        icon={HomeIcon}
+        text="Inicio"
+      />
+      <SidebarLink
+        showText={showText}
         to="/training"
-        className="flex h-10 w-36 justify-between rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
-        onMouseEnter={() => setHoverIcon("fill-black")}
-        onMouseLeave={() => setHoverIcon("fill-white")}
-      >
-        <span className="pl-3">Formacion</span>
-        <TrainingIcon
-          className={`ease-in-out duration-200 w-8 pr-3 ${hoverIcon}`}
-          fill={hoverIcon}
-        />
-      </Link>
-      <Link
+        icon={TrainingIcon}
+        text="Formacion"
+      />
+      <SidebarLink
+        showText={showText}
         to="/grades"
-        className="flex h-10 w-36 justify-between rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
-        onMouseEnter={() => setHoverIcon("fill-black")}
-        onMouseLeave={() => setHoverIcon("fill-white")}
-      >
-        <span className="pl-3">Notas</span>
-        <GradesIcon
-          className={`ease-in-out duration-200 w-8 pr-3 ${hoverIcon}`}
-          fill={hoverIcon}
-        />
-      </Link>
-
-      <Link
+        icon={GradesIcon}
+        text="Notas"
+      />
+      <SidebarLink
+        showText={showText}
         to="/courses"
-        className="flex h-10 w-36 justify-between rounded-l-lg bg-primary-azulCeleste5 gap-1 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
-        onMouseEnter={() => setHoverIcon("fill-black")}
-        onMouseLeave={() => setHoverIcon("fill-white")}
-      >
-        <span className="pl-3">Cursos</span>
-        <CoursesIcon
-          className={`ease-in-out duration-200 w-8 pr-3 ${hoverIcon}`}
-          fill={hoverIcon}
-        />
-      </Link>
+        icon={CoursesIcon}
+        text="Cursos"
+      />
     </div>
   );
 };
 
 export default SideBar;
 
-// import "./Sidebar.css";
-// import React, { useState, useEffect } from "react";
-// import { HomeIcon } from "../assets";
-
-// const SIDEBAR_SELECTOR = "#accordian";
-// const SELECTOR_ACTIVE_SELECTOR = ".selector-active";
-
-// const sidebarItems = [
-//   { index: 1, icon: "fas fa-tachometer-alt", label: "Dashboard" },
-//   { index: 2, icon: "far fa-address-book", label: "Address Book" },
-//   { index: 3, icon: "far fa-clone", label: "Components" },
-//   { index: 4, icon: "far fa-calendar-alt", label: "Calendar" },
-// ];
-
-// function SideBar() {
-//   const [activeIndex, setActiveIndex] = useState(1);
-//   const [activeItemTop, setActiveItemTop] = useState(0);
-//   const [activeItemHeight, setActiveItemHeight] = useState(0);
-
-//   useEffect(() => {
-//     const accordianRef = document.querySelector(SIDEBAR_SELECTOR);
-//     const selectorActiveRef = document.querySelector(SELECTOR_ACTIVE_SELECTOR);
-//     const activeItem = accordianRef.querySelector("li.active");
-//     const activeItemTop = activeItem.offsetTop;
-//     const activeItemHeight = activeItem.offsetHeight;
-//     selectorActiveRef.style.top = `${activeItemTop}px`;
-//     selectorActiveRef.style.height = `${activeItemHeight}px`;
-//     const path = window.location.pathname.split("/").pop();
-//     const target = accordianRef.querySelector(`a[href="${path}"]`);
-//     if (target) {
-//       setActiveIndex(Number(target.parentNode.dataset.index));
-//     }
-//   }, []);
-
-//   const handleItemClick = (index, top, height) => {
-//     setActiveIndex(index);
-//     setActiveItemTop(top);
-//     setActiveItemHeight(height);
-//   };
+// const SideBar = () => {
+//   const [hoverIconHome, setHoverIconHome] = useState("fill-white");
+//   const [hoverIconTraining, setHoverIconTraining] = useState("fill-white");
+//   const [hoverIconGrades, setHoverIconGrades] = useState("fill-white");
+//   const [hoverIconCourser, setHoverIconCourser] = useState("fill-white");
+//   const [showText, setShowText] = useState(false);
 
 //   return (
-//     <div id="accordian" className="flex items-center justify-end">
-//       <ul className="show-dropdown main-navbar">
-//         <div
-//           className="selector-active"
-//           style={{ top: `${activeItemTop}px`, height: `${activeItemHeight}px` }}
-//         >
-//           <div className="top"></div>
-//           <div className="bottom"></div>
-//         </div>
-//         {sidebarItems.map(({ index, icon, label }) => {
-//           const itemRef = React.createRef();
-//           return (
-//             <li
-//               key={index}
-//               data-index={index}
-//               className={`Sidebar-item ${
-//                 activeIndex === index ? "active " : null
-//               }`}
-//               onClick={() =>
-//                 handleItemClick(
-//                   index,
-//                   itemRef.current.offsetTop,
-//                   itemRef.current.offsetHeight
-//                 )
-//               }
-//               ref={itemRef}
-//             >
-//               <a className="w-auto" href={`#${label}`}>
-//                 <div className="flex flex-1 items-center justify-end gap-1 p-1">
-//                   <HomeIcon className={"h-7 w-7"} />
-//                   <p className="truncate">{label}</p>
-//                 </div>
-//               </a>
-//             </li>
-//           );
-//         })}
-//       </ul>
+//     <div
+//       className="_displaySideBar flex flex-col justify-center items-end w-12 hover:w-40 pl-2 bg-primary-azulCeleste5 h-full"
+//       onMouseEnter={() => setShowText(true)}
+//       onMouseLeave={() => setShowText(false)}
+//     >
+//       <Link
+//         to="/home"
+//         className="flex h-10 w-36 justify-end items-center rounded-l-full bg-primary-azulCeleste5 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
+//         onMouseEnter={() => setHoverIconHome("fill-black")}
+//         onMouseLeave={() => setHoverIconHome("fill-white")}
+//       >
+//         <HomeIcon
+//           className={`ease-in-out duration-200 w-8 pr-3 ${hoverIconHome}`}
+//         />
+
+//         {showText && <span className="mr-10">Inicio</span>}
+//       </Link>
+
+//       <Link
+//         to="/training"
+//         className="flex h-10 w-36 justify-end items-center rounded-l-full bg-primary-azulCeleste5 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
+//         onMouseEnter={() => setHoverIconTraining("fill-black")}
+//         onMouseLeave={() => setHoverIconTraining("fill-white")}
+//       >
+//         <TrainingIcon
+//           className={`ease-in-out duration-200 w-8 pr-3 ${hoverIconTraining}`}
+//         />
+//         {showText && <span className="mr-1">Formacion</span>}
+//       </Link>
+//       <Link
+//         to="/grades"
+//         className="flex h-10 w-36 justify-end items-center rounded-l-full bg-primary-azulCeleste5 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
+//         onMouseEnter={() => setHoverIconGrades("fill-black")}
+//         onMouseLeave={() => setHoverIconGrades("fill-white")}
+//       >
+//         <GradesIcon
+//           className={`ease-in-out duration-200 w-8 pr-3 ${hoverIconGrades}`}
+//         />
+//         {showText && <span className="mr-9">Notas</span>}
+//       </Link>
+
+//       <Link
+//         to="/courses"
+//         className="flex h-10 w-36 justify-end items-center rounded-l-full bg-primary-azulCeleste5 p-1 text-center ease-in-out duration-200 font-semibold text-white hover:text-black hover:bg-white"
+//         onMouseEnter={() => setHoverIconCourser("fill-black")}
+//         onMouseLeave={() => setHoverIconCourser("fill-white")}
+//       >
+//         <CoursesIcon
+//           className={`ease-in-out duration-200 w-8 pr-3 ${hoverIconCourser}`}
+//         />
+//         {showText && <span className="mr-8">Cursos</span>}
+//       </Link>
 //     </div>
 //   );
-// }
+// };
 
-// export default SideBar;
+// export default SideBar;
