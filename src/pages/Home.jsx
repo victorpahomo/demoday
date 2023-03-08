@@ -3,7 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import RolHome from "../components/home/RolHome";
 const Home = () => {
   return (
-    <div className="h-screen">
+    <div className="">
       <MainLayout  >
         <RolHome />
       </MainLayout>

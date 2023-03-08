@@ -23,8 +23,8 @@ const RolHome = () => {
   };
   let status = true;
   return (
-    <div className="body px-24 w-full h-5/6 bg-white rounded-b-lg">
-      <h1 className="mb-1">
+    <div className="body px-24 py-10 w-full bg-white rounded-b-lg">
+      <h1 className="mb-5">
          {/* {useSelector((state) => state.auth.user.rol)} */}
          ¡Hola, {name ? name : rol} bienvenido a Code LMS!
       </h1>
@@ -49,7 +49,7 @@ const RolHome = () => {
             {/* Componente para novedades */}
           </section>
           <section className="_Calendario">
-            <Calendar />
+          <Calendar />
           </section>
           <section className="_Proceso">
             {/* Componente para proceso */}
@@ -76,15 +76,14 @@ const RolHome = () => {
             </div>
           </section>
 
-          <section className="mt-10 _Calendario flex items-center justify-center bg-white">
+          <section className="my-14 _Calendario flex items-center justify-center bg-white">
             <div className="w-full">
               <Calendar />
             </div>
           </section>
 
           <section className="_Proceso bg-white">
-            {/* Componente para proceso */}
-            <h1>Proceso</h1>
+            <h1>Proceso de tu aprendizaje</h1>
           </section>
         </div>
       )}

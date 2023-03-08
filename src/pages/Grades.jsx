@@ -3,9 +3,9 @@ import MainLayout from '../layout/MainLayout'
 import Table from '../components/Table'
 const Grades = () => {
   return (
-    <div className='h-screen'>
+    <div className=''>
       <MainLayout>
-        <div className='bg-white p-10'>
+        <div className='bg-white px-24 py-10'>
           <Table />
         </div>
       </MainLayout>

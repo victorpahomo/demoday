@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Table = () => {
   const datos = {
@@ -13,7 +13,7 @@ const Table = () => {
         sprint1: 90,
         sprint2: 50,
         sprint3: 78,
-      }
+      },
     },
     attendance: {
       sesision1: true,
@@ -22,95 +22,123 @@ const Table = () => {
       sesision4: true,
       sesision5: false,
       sesision6: true,
-    }
+    },
   };
 
   // Calcular promedio de un objeto de notas
   const calcularPromedio = (notas) => {
-    const promedio = Object.values(notas).reduce((total, nota) => total + nota, 0) / Object.keys(notas).length;
+    const promedio =
+      Object.values(notas).reduce((total, nota) => total + nota, 0) /
+      Object.keys(notas).length;
     return isNaN(promedio) ? 0 : promedio.toFixed(2);
   };
   // Calcular promedio de asistencia
   const calcularPromedioAsistencia = (asistencia) => {
     const totalSesiones = Object.keys(asistencia).length;
-    const asistencias = Object.values(asistencia).filter(asistencia => asistencia === true).length;
+    const asistencias = Object.values(asistencia).filter(
+      (asistencia) => asistencia === true
+    ).length;
     const promedio = (asistencias / totalSesiones) * 100;
     return isNaN(promedio) ? 0 : promedio.toFixed(2);
   };
 
   return (
-    <div className="flex flex-col text-black gap-5">
-      <div className='_primeraTabla shadow-xl'>
-        <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">Notas de Fundamentos</h2>
-        <table className="w-full table-auto">
-          <thead>
-            <tr>
-              <th className="px-4 py-2">Sprint</th>
-              <th className="px-4 py-2">Nota</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.entries(datos.grades.fundamentos).map(([sprint, nota]) => (
-              <tr key={sprint}>
-                <td className="border px-4 py-2">{sprint}</td>
-                <td className="border px-4 py-2">{nota}</td>
-              </tr>
-            ))}
-            <tr>
-              <td className="border px-4 py-2 font-bold">Promedio</td>
-              <td className="border px-4 py-2 font-bold">{calcularPromedio(datos.grades.fundamentos)}</td>
-            </tr>
-          </tbody>
-        </table>
+    <>
+      <div className="text-center mb-10">
+        <h1 className="text-xl">Lorem ipsum dolor sit</h1>
+        <p> amet consectetur adipisicing elit. Sequi, doloribus voluptates. Fuga saepe debitis id vero itaque voluptates magni aliquid qui, labore dolores? Molestiae officiis aliquam neque dolor. Maiores, at.</p>
       </div>
-      <div className='_segundaTabla shadow-xl'>
-        <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">Notas de Profundización</h2>
-        <table className="w-full table-auto">
-          <thead>
-            <tr>
-              <th className="px-4 py-2">Sprint</th>
-              <th className="px-4 py-2">Nota</th>
-            </tr>
-          </thead>
-          <tbody >
-            {Object.entries(datos.grades.profundizacion).map(([sprint, nota]) => (
-              <tr key={sprint} >
-                <td className="border px-4 py-2">{sprint}</td>
-                <td className="border px-4 py-2">{nota}</td>
-              </tr>
-            ))}
-            <tr>
-              <td className="border px-4 py-2 font-bold">Promedio</td>
-              <td className="border px-4 py-2 font-bold">{calcularPromedio(datos.grades.profundizacion)}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div className='_terceraTabla shadow-xl'>
-        <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">Asistencia</h2>
-        <table className="w-full table-auto">
+      <div className="grid grid-cols-2 text-black gap-5">
+        <div className="_primeraTabla shadow-xl">
+          <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">
+            Notas de Fundamentos
+          </h2>
+          <table className="w-full table-auto">
             <thead>
-                <tr>
-                    <th className="px-4 py-2">Sesión</th>
-                    <th className="px-4 py-2">Asistencia</th>
-                </tr>
+              <tr>
+                <th className="px-4 py-2">Sprint</th>
+                <th className="px-4 py-2">Nota</th>
+              </tr>
             </thead>
             <tbody>
-                {Object.entries(datos.attendance).map(([sesion, asistencia]) => (
-                    <tr key={sesion}>
-                        <td className="border px-4 py-2">{sesion}</td>
-                        <td className="border px-4 py-2">{asistencia ? 'Asistió' : 'No asistió'}</td>
-                    </tr>
-                ))}
-                <tr>
-                    <td className="border px-4 py-2 font-bold">Promedio</td>
-                    <td className="border px-4 py-2 font-bold">{calcularPromedioAsistencia(datos.attendance)}%</td>
-                </tr>
+              {Object.entries(datos.grades.fundamentos).map(
+                ([sprint, nota]) => (
+                  <tr key={sprint}>
+                    <td className="border px-4 py-2">{sprint}</td>
+                    <td className="border px-4 py-2">{nota}</td>
+                  </tr>
+                )
+              )}
+              <tr>
+                <td className="border px-4 py-2 font-bold">Promedio</td>
+                <td className="border px-4 py-2 font-bold">
+                  {calcularPromedio(datos.grades.fundamentos)}
+                </td>
+              </tr>
             </tbody>
-        </table>
+          </table>
         </div>
-    </div>
-    );
+        <div className="_segundaTabla shadow-xl">
+          <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">
+            Notas de Profundización
+          </h2>
+          <table className="w-full table-auto">
+            <thead>
+              <tr>
+                <th className="px-4 py-2">Sprint</th>
+                <th className="px-4 py-2">Nota</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(datos.grades.profundizacion).map(
+                ([sprint, nota]) => (
+                  <tr key={sprint}>
+                    <td className="border px-4 py-2">{sprint}</td>
+                    <td className="border px-4 py-2">{nota}</td>
+                  </tr>
+                )
+              )}
+              <tr>
+                <td className="border px-4 py-2 font-bold">Promedio</td>
+                <td className="border px-4 py-2 font-bold">
+                  {calcularPromedio(datos.grades.profundizacion)}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="_terceraTabla shadow-xl md:col-span-2">
+          <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">
+            Asistencia
+          </h2>
+          <table className="w-full table-auto">
+            <thead>
+              <tr>
+                <th className="px-4 py-2">Sesión</th>
+                <th className="px-4 py-2">Asistencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(datos.attendance).map(([sesion, asistencia]) => (
+                <tr key={sesion}>
+                  <td className="border px-4 py-2">{sesion}</td>
+                  <td className="border px-4 py-2">
+                    {asistencia ? "Asistió" : "No asistió"}
+                  </td>
+                </tr>
+              ))}
+              <tr>
+                <td className="border px-4 py-2 font-bold">Promedio</td>
+                <td className="border px-4 py-2 font-bold">
+                  {calcularPromedioAsistencia(datos.attendance)}%
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Table;

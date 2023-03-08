@@ -3,9 +3,9 @@ import MainLayout from '../layout/MainLayout'
 import ListCourses from '../components/ListCourses'
 const Courses = () => {
   return (
-    <div className='h-screen'>
+    <div className=''>
       <MainLayout>
-        <div className='bg-white p-10'>
+        <div className='bg-white px-24 py-10'>
           <ListCourses />
         </div>
       </MainLayout>

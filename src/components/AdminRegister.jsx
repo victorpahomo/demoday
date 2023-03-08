@@ -29,7 +29,7 @@ const AdminRegister = () => {
 
 
     return (
-        <div className="flex flex-col justify-center items-center w-screen h-screen">
+        <div className="flex flex-col justify-center items-center">
             <div className="flex flex-col items-center justify-center w-72 ">
 
                 <p className="w-72 text-center text-sm text-gray-600">

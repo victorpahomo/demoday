@@ -7,7 +7,7 @@ const SideBar = () => {
   const [showText, setShowText] = useState(false);
   return (
     <div
-      className="_displaySideBar flex flex-col justify-center items-end w-12 hover:w-40 pl-2 bg-primary-azulCeleste5 h-full ease-in-out duration-200 transition-all"
+      className="_displaySideBar h-auto flex flex-col justify-center items-end w-12 hover:w-40 pl-2 bg-primary-azulCeleste5 ease-in-out duration-200 transition-all"
       onMouseEnter={() => setShowText(true)}
       onMouseLeave={() => setShowText(false)}
     >
