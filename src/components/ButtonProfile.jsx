@@ -7,7 +7,10 @@ const ButtonProfile = () => {
     dispatch(logout());
   };
   return (
-    <div className="dropdown dropdown-end">
+    <div
+      className="dropdown dropdown-end tooltip tooltip-bottom"
+      data-tip="Perfil"
+    >
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img src="https://static3.abc.es/media/summum/2021/10/01/maxi_iglesias-kXKH--620x349@abc.jpeg" />
