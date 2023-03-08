@@ -1,6 +1,6 @@
 import React from 'react'
 import MainLayout from '../layout/MainLayout'
-
+import ListCourses from '../components/ListCourses'
 const Courses = () => {
   return (
     <div className='h-screen'>

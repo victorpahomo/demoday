@@ -2,7 +2,9 @@ import React from 'react'
 
 const ListCourses = () => {
   return (
-    <div>ListCourses</div>
+    <div>
+        <h1>Hola</h1>
+    </div>
   )
 }
 
