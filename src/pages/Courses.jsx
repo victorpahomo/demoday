@@ -4,7 +4,7 @@ import ListCourses from '../components/ListCourses'
 const Courses = () => {
   return (
     <div className=''>
-      <MainLayout>
+      <MainLayout> 
         <div className='bg-white px-24 py-10'>
           <ListCourses />
         </div>
@@ -12,5 +12,4 @@ const Courses = () => {
     </div>
   )
 }
-
 export default Courses
