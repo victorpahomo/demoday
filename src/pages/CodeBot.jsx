@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import MainLayout from '../layout/MainLayout';
 const CodeBot = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -14,36 +14,41 @@ const CodeBot = () => {
   };
 
   return (
-    <div className="fixed bottom-0 right-0 mb-6 mr-6 z-50">
-      <div className="bg-white rounded-lg shadow-md p-4 w-80 h-80 overflow-y-auto">
+    <div className=''>
+      <MainLayout props="CodeBot">
+        <div className='bg-white px-24 py-10'>
+            <div className="bg-white rounded-lg shadow-md p-4 py-10">
 
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            className={`flex ${msg.isUser ? 'justify-end' : 'justify-start'
-              } mb-2`}
-          >
-            <div
-              className={`bg-gray-200 rounded-lg px-4 py-2 ${msg.isUser ? 'text-right' : 'text-left'
-                }`}
-            >
-              {msg.message}
+              {messages.map((msg, i) => (
+                <div
+                  key={i}
+                  className={`flex ${msg.isUser ? 'justify-end' : 'justify-start'
+                    } mb-2`}
+                >
+                  <div
+                    className={`bg-gray-200 rounded-lg px-4 py-2 ${msg.isUser ? 'text-right' : 'text-left'
+                      }`}
+                  >
+                    {msg.message}
+                  </div>
+                </div>
+              ))}
+              <form onSubmit={handleSubmit} className="flex">
+                <input value={inputValue}
+                  onChange={handleInput}
+                  placeholder="Escribe aquí tu mensaje..."
+                  className="mr-2 flex-grow bg-white border-none" />
+
+                <button type="submit" className="flex-shrink-0 bg-primary-AzulVerde4 p-2 rounded-xl">
+                  Enviar
+                </button>
+
+              </form>
             </div>
-          </div>
-        ))}
-        <form onSubmit={handleSubmit} className="flex">
-          <input value={inputValue}
-            onChange={handleInput}
-            placeholder="Escribe aquí tu mensaje..."
-            className="mr-2 flex-grow" />
-
-          <button type="submit" className="flex-shrink-0">
-            Enviar
-          </button>
-
-        </form>
-      </div>
+        </div>
+      </MainLayout>
     </div>
+
   );
 };
 
