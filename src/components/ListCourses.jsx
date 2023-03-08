@@ -4,15 +4,15 @@ const ListCourses = () => {
   const courses = {
     "2023-html-1": {
       title: "Curso inicial de HTML5",
-      description: "Aprende a crear páginas web con HTML5",
+      description: "Aprende a crear la estruccturas páginas web con HTML5",
       image:
         "https://miro.medium.com/v2/resize:fit:640/format:webp/1*Kbu_OnGEVUCvfMPYnj191g.png",
       hours: "4",
       category: "html",
     },
     "2023-redux-1": {
-      title: "Curso avanzado de Redux",
-      description: "Aprende a usar Redux y Redux Toolkit",
+      title: "Curso inicial de Redux",
+      description: "Aprende a usar Redux y Redux Toolkit en tus webs",
       image:
         "https://www.courses.tutorialswebsite.com/assets/front/img/category/react-redux-category.jpeg",
       hours: "10",
@@ -20,7 +20,7 @@ const ListCourses = () => {
     },
     "2023-css-1": {
       title: "Curso inicial de CSS3",
-      description: "Aprende a crear páginas web con CSS3",
+      description: "Aprende a crear páginas web sencillas con CSS3",
       image:
         "https://miro.medium.com/v2/resize:fit:336/1*nFj_gJtwus-ZVIwDE4oGrw.png",
       hours: "4",
@@ -48,7 +48,7 @@ const ListCourses = () => {
       {Object.values(courses).map((course) => (
         <div className="card h-80 shadow-xl bg-primary-azulCeleste1 text-primary-Azul5">
             <div className="h-96 bg-center bg-cover bg-no-repeat" style={{backgroundImage: `url(${course.image})`}} />
-          <div className="card-body">
+          <div className="card-body px-4">
             <h2 className="card-title">{course.title}</h2>
             <div className="flex justify-around">
               <div className="badge badge-outline">{course.category}</div>
