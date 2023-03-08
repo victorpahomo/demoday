@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { CoursesIcon, GradesIcon, HomeIcon, TrainingIcon } from "../assets";
 import SidebarLink from "./SidebarLink";
 

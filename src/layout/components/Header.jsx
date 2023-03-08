@@ -11,7 +11,7 @@ const Header = ({props}) => {
   return (
     <div className="navbar bg-white rounded-t-lg">
       <div className="flex-1">
-        <h1 className="normal-case text-xl">{props}</h1>
+        <h1 className="pl-4 normal-case text-xl font-medium text-primary-azulCeleste3">{props}</h1>
       </div>
 
       <div className="sm:gap-2">
