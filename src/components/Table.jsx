@@ -44,10 +44,7 @@ const Table = () => {
 
   return (
     <>
-      <div className="text-center mb-10">
-        <h1 className="text-xl">Lorem ipsum dolor sit</h1>
-        <p> amet consectetur adipisicing elit. Sequi, doloribus voluptates. Fuga saepe debitis id vero itaque voluptates magni aliquid qui, labore dolores? Molestiae officiis aliquam neque dolor. Maiores, at.</p>
-      </div>
+
       <div className="grid grid-cols-2 text-black gap-5">
         <div className="_primeraTabla shadow-xl">
           <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">

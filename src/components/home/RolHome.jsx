@@ -23,7 +23,7 @@ const RolHome = () => {
   };
   let status = true;
   return (
-    <div className="body px-24 py-10 w-full bg-white rounded-b-lg">
+    <>
       <h1 className="mb-5">
          {/* {useSelector((state) => state.auth.user.rol)} */}
          ¡Hola, {name ? name : rol} bienvenido a Code LMS!
@@ -87,7 +87,7 @@ const RolHome = () => {
           </section>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
