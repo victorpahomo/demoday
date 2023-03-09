@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Viewer, Worker } from '@react-pdf-viewer/core';
+/* import { Viewer, Worker } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'; */
 
-function PDFViewer() {
+/* function PDFViewer() {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
   const filePath = require('../assets/example.pdf');
  // Change this to the path of your PDF file
@@ -14,7 +14,7 @@ function PDFViewer() {
           </div>
       </Worker>
   );
-}
+} */
 
 import MainLayout from '../layout/MainLayout'
 const Training = () => {
@@ -39,9 +39,9 @@ const Training = () => {
             </button>
           </div>
 
-          <div className="App">
+         {/*  <div className="App">
             <PDFViewer />
-          </div> 
+          </div> */} 
         </div>
       </MainLayout>
     </div>
