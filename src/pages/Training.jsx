@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { Viewer, Worker } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 
 function PDFViewer() {
-  const PDF_URL = "https://www.africau.edu/images/default/sample.pdf"
-  const filePath = './assets/example.pdf';
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+  const filePath = require('../assets/example.pdf');
+ // Change this to the path of your PDF file
   return (
-    <Worker workerUrl="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.3.122/pdf.worker.min.js">
-      <Viewer fileUrl={filePath} />
-    </Worker>
+      <Worker workerUrl="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.3.122/pdf.worker.min.js">
+          <div style={{ height: '750px' }}>
+              <Viewer fileUrl={fileUrl} plugins={[defaultLayoutPluginInstance]} />
+          </div>
+      </Worker>
   );
 }
 
@@ -35,9 +39,9 @@ const Training = () => {
             </button>
           </div>
 
-    {/*       <div className="App">
+          <div className="App">
             <PDFViewer />
-          </div> */}
+          </div> 
         </div>
       </MainLayout>
     </div>
