@@ -5,7 +5,7 @@ const HomeAdmin = () => {
             {/* Componente para Calendario */}
             <section id='adminPanel'>
                 <div className="w-full">
-                {/* Componente Panel */}
+                    {/* Componente Panel */}
                 </div>
             </section>
         </>

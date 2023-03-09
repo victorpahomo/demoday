@@ -8,12 +8,12 @@ const SideBar = ({ props }) => {
   return (
 
     <div
-      className="_displaySideBar z-50 h-full max-h-screen  flex flex-col  fixed  items-end w-12 gap-4 hover:w-40 pl-2 bg-primary-azulCeleste5 ease-in-out hover:duration-200 hover:transition-all"
+      className=" _displaySideBar z-50 h-full max-h-screen  flex flex-col  fixed  items-end w-12 gap-4 hover:w-40 pl-2 bg-primary-azulCeleste5 ease-in-out hover:duration-200 hover:transition-all"
       onMouseEnter={() => setShowText(true)}
       onMouseLeave={() => setShowText(false)}
     >
-      <div className="absolute flex flex-col top-5 gap-3 ">
-        <figure className="bg-white mr-5 rounded-lg shadow-xl">
+      <div className="absolute flex flex-col top-5 gap-7 ">
+        <figure className="z-40 bg-white mr-5 rounded-lg shadow-xl">
           <img src={CodeLMSIcon} alt="CodeLMS icon" />
         </figure>
         <SidebarLink
