@@ -29,10 +29,9 @@ const HomeStudent = () => {
             {/* Componente para proceso */}
             <section id='studentProcess' className="w-full">
                 <ul className="steps">
-                    <li className="step step-primary">Register</li>
-                    <li className="step step-primary">Choose plan</li>
-                    <li className="step">Purchase</li>
-                    <li className="step">Receive Product</li>
+                    <li className="step step-primary ">Fundamentos</li>
+                    <li className="step step-primary">Profundización</li>
+                    <li className="step">Empleabilidad</li>
                 </ul>
             </section>
         </div>

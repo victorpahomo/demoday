@@ -13,7 +13,7 @@ const SideBar = ({ props }) => {
       onMouseLeave={() => setShowText(false)}
     >
       <div className="absolute flex flex-col top-5 gap-3 ">
-        <figure>
+        <figure className="bg-white mr-5 rounded-lg shadow-xl">
           <img src={CodeLMSIcon} alt="CodeLMS icon" />
         </figure>
         <SidebarLink
