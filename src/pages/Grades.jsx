@@ -5,9 +5,11 @@ const Grades = () => {
   return (
     <div className=''>
       <MainLayout props="Notas">
-        <div className='bg-white px-24 py-10'>
-          <Table />
+        <div className="text-center mb-10">
+          <h1 className="text-xl">Lorem ipsum dolor sit</h1>
+          <p> amet consectetur adipisicing elit. Sequi, doloribus voluptates. Fuga saepe debitis id vero itaque voluptates magni aliquid qui, labore dolores? Molestiae officiis aliquam neque dolor. Maiores, at.</p>
         </div>
+        <Table />
       </MainLayout>
     </div>
   )
