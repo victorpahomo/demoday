@@ -4,7 +4,7 @@ const HomeProfessor = () => {
     return (
         <>
             {/* Componente para novedades */}
-            <section id='professorNews'>
+            <section id='professorNews' className=" bg-white py-5 rounded-2xl border-4">
                 <div>
                     <div className="flex justify-around">
                         <h1 className="font-medium">Novedades</h1>
