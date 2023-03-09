@@ -2,7 +2,7 @@ import Calendar from "../../components/home/calendar/CalendarFull";
 
 const HomeStudent = () => {
     return (
-        <>
+        <div className="flex flex-col gap-10">
             {/* Componente para novedades */}
             <section id='studentNews' className=" bg-white py-5 rounded-2xl border-4">
                 <div>
@@ -20,16 +20,22 @@ const HomeStudent = () => {
             </section>
 
             {/* Componente para Calendario */}
-            <section id='studentCalendar'className="mt-10">
+            <section id='studentCalendar'>
                 <div className="w-full">
                     <Calendar />
                 </div>
             </section>
 
             {/* Componente para proceso */}
-            <section id='studentProcess'>
+            <section id='studentProcess' className="w-full">
+                <ul className="steps">
+                    <li className="step step-primary">Register</li>
+                    <li className="step step-primary">Choose plan</li>
+                    <li className="step">Purchase</li>
+                    <li className="step">Receive Product</li>
+                </ul>
             </section>
-        </>
+        </div>
     )
 }
 
