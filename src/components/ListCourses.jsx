@@ -46,7 +46,7 @@ const ListCourses = () => {
   return (
     <div className="container grid grid-cols-1 md:grid-cols-2 mx-auto lg:grid-cols-3 2xl:grid-cols-5 gap-4 p-4">
       {Object.values(courses).map((course) => (
-        <div className="card h-80 shadow-xl bg-primary-azulCeleste1 text-primary-Azul5">
+        <div key={course.title.trim()} className="card h-80 shadow-xl bg-primary-azulCeleste1 text-primary-Azul5">
             <div className="h-96 bg-center bg-cover bg-no-repeat" style={{backgroundImage: `url(${course.image})`}} />
           <div className="card-body px-4">
             <h2 className="card-title">{course.title}</h2>
