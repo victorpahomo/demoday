@@ -20,7 +20,7 @@ const HomeProfessor = () => {
             </section>
 
             {/* Componente para Calendario */}
-            <section id='professorCalendar'>
+            <section id='professorCalendar' className="mt-10">
                 <div className="w-full">
                     <Calendar />
                 </div>
