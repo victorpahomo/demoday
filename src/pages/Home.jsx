@@ -1,8 +1,17 @@
 import React from "react";
 import {  useSelector } from "react-redux";
 import MainLayout from "../layout/MainLayout";
-import RolHome from "../components/home/RolHome";
 import { HomeAdmin,HomeProfessor,HomeStudent } from "../components/home";
+import {
+  getUSerData,
+  getAllUSersData,
+  getGroupData,
+  getAllGroupsData,
+  getGlobalNewsData,
+  getGroupNewsData,
+  getCoursesData,
+  getContributionsData,
+} from "../services/dataFirebaseService";
 
 const Home = () => {
   const rol = useSelector((state) => state.auth.user.rol);
