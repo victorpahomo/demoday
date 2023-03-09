@@ -7,3 +7,4 @@ export { default as Panel } from './Panel';
 export { default as Profile } from './Profile';
 export { default as Training } from './Training';
 export { default as CodeBot } from './CodeBot';
+export { default as NotFound } from './NotFound';

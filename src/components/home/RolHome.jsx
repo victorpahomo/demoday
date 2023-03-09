@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
 import {
   getUSerData,
@@ -14,14 +14,10 @@ import {
 
 import Calendar from "../../components/home/calendar/CalendarFull";
 const RolHome = () => {
-  const dispatch = useDispatch();
   const rol = useSelector((state) => state.auth.user.rol);
   const name = useSelector((state) => state.auth.user.name);
   console.log(useSelector((state) => state.auth.user));
-  const handleClick = () => {
-    dispatch(logout());
-  };
-  let status = true;
+
   return (
     <>
       <h1 className="mb-5">

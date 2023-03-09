@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { initializeSession } from "../features/auth/authSlice";
 import { ProtectedRoute } from "./ProtectedRoute";
-import { Courses, Grades, Home, Login, News, Panel, Profile, Training,CodeBot } from "../pages";
+import { Courses, Grades, Home, Login, News, Panel, Profile, Training,CodeBot,NotFound } from "../pages";
 import AdminRegister from "../components/AdminRegister";
 
 function App() {
@@ -90,6 +90,7 @@ function App() {
       />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<AdminRegister />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
