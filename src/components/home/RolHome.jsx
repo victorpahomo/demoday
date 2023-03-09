@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import {  useSelector } from "react-redux";
-import { logout } from "../../features/auth/authSlice";
 import {
   getUSerData,
   getAllUSersData,
@@ -12,7 +11,6 @@ import {
   getContributionsData,
 } from "../../services/dataFirebaseService";
 
-import Calendar from "../../components/home/calendar/CalendarFull";
 const RolHome = () => {
   const rol = useSelector((state) => state.auth.user.rol);
   const name = useSelector((state) => state.auth.user.name);
@@ -20,10 +18,7 @@ const RolHome = () => {
 
   return (
     <>
-      <h1 className="mb-5">
-         {/* {useSelector((state) => state.auth.user.rol)} */}
-         ¡Hola, {name ? name : rol} bienvenido a Code LMS!
-      </h1>
+ 
       {/* VISTA PROFESSOR */}
       {rol === "professor" && (
         <div className="">
