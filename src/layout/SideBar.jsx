@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { CodeBotIcon, CoursesIcon, GradesIcon, HomeIcon, TrainingIcon } from "../assets";
 import SidebarLink from "./SidebarLink";
 import CodeLMSIcon from '../assets/CodeLMSIcon.svg'
+import CodeLMSIcon2 from '../assets/CodeLMSIcon/logo.svg'
+import CodeLMSIcon3 from '../assets/CodeLMSIcon/logoResp.svg'
 
 const SideBar = ({ props }) => {
   const [showText, setShowText] = useState(false);
@@ -13,8 +15,8 @@ const SideBar = ({ props }) => {
       onMouseLeave={() => setShowText(false)}
     >
       <div className="absolute flex flex-col top-5 gap-7 ">
-        <figure className="z-40 bg-white mr-5 rounded-lg shadow-xl">
-          <img src={CodeLMSIcon} alt="CodeLMS icon" />
+        <figure className="z-40  mr-5 rounded-lg shadow-xl">
+          <img src={CodeLMSIcon3} alt="CodeLMS icon" />
         </figure>
         <SidebarLink
           page={props}
