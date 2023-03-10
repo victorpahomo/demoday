@@ -1,5 +1,5 @@
-import React from "react";
-import {  useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import {  useDispatch, useSelector } from "react-redux";
 import MainLayout from "../layout/MainLayout";
 import { HomeAdmin,HomeProfessor,HomeStudent } from "../components/home";
 import {
@@ -14,9 +14,18 @@ import {
 } from "../services/dataFirebaseService";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const rol = useSelector((state) => state.auth.user.rol);
-  const name = useSelector((state) => state.auth.user.name);
-
+  const userUid = useSelector((state) => state.auth.user.uid);
+  
+  useEffect(() => {
+    const handleGetDataUser = async () => {
+      const user = await getUSerData(userUid, dispatch);
+    };
+    handleGetDataUser();
+  }, []);
+  const name = useSelector((state) => state.data.user.name);
+  
   return (
     <div className="">
       <MainLayout props="Inicio" >
