@@ -1,41 +1,42 @@
-import React, { useEffect } from "react";
-import {  useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import MainLayout from "../layout/MainLayout";
-import { HomeAdmin,HomeProfessor,HomeStudent } from "../components/home";
-import {
-  getUSerData,
-  getAllUSersData,
-  getGroupData,
-  getAllGroupsData,
-  getGlobalNewsData,
-  getGroupNewsData,
-  getCoursesData,
-  getContributionsData,
-} from "../services/dataFirebaseService";
+import { HomeAdmin, HomeProfessor, HomeStudent } from "../components/home";
+import { getUSerData } from "../services/dataFirebaseService";
 
 const Home = () => {
   const dispatch = useDispatch();
   const rol = useSelector((state) => state.auth.user.rol);
   const userUid = useSelector((state) => state.auth.user.uid);
-  
+  const [isLoading, setIsLoading] = useState(true); // Estado para indicar si la petición está en curso
+  console.log("antes de useEffect");
+
   useEffect(() => {
     const handleGetDataUser = async () => {
       const user = await getUSerData(userUid, dispatch);
+      setIsLoading(false); // La petición ha terminado, actualiza el estado
     };
     handleGetDataUser();
-  }, []);
-  const name = useSelector((state) => state.data.user.name);
-  
+  }, [dispatch, userUid]);
+
+  console.log("después de useEffect");
+
+  const name = useSelector((state) => state.data.user?.name);
   return (
     <div className="">
-      <MainLayout props="Inicio" >
-      <h1 className="mb-5">
-         ¡Hola, {name ? name : rol} bienvenido a Code LMS!
-      </h1>
-      {rol === "professor" && <HomeProfessor />}
-      {rol === "student" && <HomeStudent />}
-      {rol === "admin" && <HomeAdmin />}
-
+      <MainLayout props="Inicio">
+        {isLoading ? (
+          <h1>Cargando...</h1>
+        ) : (
+          <>
+            <h1 className="mb-5">
+              ¡Hola, {name ? name : rol} bienvenido a Code LMS!
+            </h1>
+            {rol === "professor" && <HomeProfessor />}
+            {rol === "student" && <HomeStudent />}
+            {rol === "admin" && <HomeAdmin />}
+          </>
+        )}
       </MainLayout>
     </div>
   );

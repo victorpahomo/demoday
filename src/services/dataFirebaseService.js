@@ -4,6 +4,7 @@ import { dataStart, dataFailure, getAllUsers, getUser,getGroup,getAllGroups,getG
 
 export const getUSerData = async (uid,dispatch) => {
     try {
+        console.log("Probando");
         dispatch(dataStart());
         const docRef = doc(db, `users/${uid}`);
         const docSnap = await getDoc(docRef);
