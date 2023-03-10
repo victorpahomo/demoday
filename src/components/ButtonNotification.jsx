@@ -71,7 +71,7 @@ const ButtonNotification = () => {
         tabIndex={0}
         className="btn btn-ghost btn-circle btn-sm bg-slate-200 hover:bg-slate-300 indicator"
       >
-        <span className="indicator-item badge bg-red-500 border-none">
+        <span className="indicator-item text-white badge bg-red-500 border-none">
           {notifications.length}
         </span>
         <BellIcon className=" w-4 h-4 fill-black" />
