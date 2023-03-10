@@ -1,41 +1,26 @@
-import React from 'react'
+import React from 'react';
+import Step from './Step';
 
-const StepProgress = ({props}) => {
-    let defaultStyleCircle =  'flex h-10 w-10 rounded-full items-center justify-center'
-    let defaultStyleLine = 'w-44 h-5 '
-    let styleCircle1,styleCircle2,styleCircle3 = ' bg-black'
-    let styleLine1,styleLine2 = ' bg-black'
+const StepProgress = ({ step }) => {
+    const colors = ['bg-gray-300', 'bg-primary-AzulVerde2'];
 
-    console.log(props);
+    const getStepColor = (index) => {
+        // Si el paso es mayor o igual al index + 1, entonces el color es el segundo, sino el primero
+        return step >= index + 1 ? colors[1] : colors[0];
+    };
 
-    if(props ==1){
-        styleCircle1 = ' bg-red-500'
-        console.log(styleCircle1);
-        console.log(styleCircle1,styleCircle2,styleCircle3,styleLine1,styleLine2);
-    }else if(props ==2){
-        styleCircle1= ' bg-red-500'
-        styleCircle2 = ' bg-red-500'
-        styleLine1 = ' bg-red-500'
-        console.log(styleCircle1,styleCircle2,styleLine1);
-    }else if(props ==3){
-        styleCircle1= ' bg-red-500'
-        styleCircle2 = ' bg-red-500'
-        styleCircle3 = ' bg-red-500'
-        styleLine2 = ' bg-red-500'
-        console.log(styleCircle1,styleCircle2,styleCircle3,styleLine2);
-    }
-  return (
-    <div className='flex items-center'>
- 
+    return (
+        <div className='flex items-center justify-center'>
+            {/*  Al Componente step le paso el numero y el color */}
+            <Step number={1} color={getStepColor(0)} />
+            {/*  Al span le paso el color */}
+            <span className={`w-1/3 h-3 rounded-sm shadow-md ${getStepColor(1)}`}></span>
+            
+            <Step number={2} color={getStepColor(1)} />
+            <span className={`w-1/3 h-3 rounded-sm shadow-md ${getStepColor(2)}`}></span>
+            <Step number={3} color={getStepColor(2)} />
+        </div>
+    );
+};
 
-        <div className={defaultStyleCircle + styleCircle1 }><span className='text-white '>1</span></div>
-        <div className={defaultStyleLine + styleLine1}></div>
-        <div className={defaultStyleCircle + styleCircle2}><span className='text-white '>2</span></div>
-        <div className={defaultStyleLine + styleLine2}></div>
-        <div className={defaultStyleCircle + styleCircle3}><span className='text-white '>3</span></div>
-
-    </div>
-  )
-}
-
-export default StepProgress
+export default StepProgress;
