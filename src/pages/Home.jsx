@@ -17,7 +17,7 @@ const Home = () => {
       setIsLoading(false); // La petición ha terminado, actualiza el estado
     };
     handleGetDataUser();
-  }, [dispatch, userUid]);
+  }, []);
 
   console.log("después de useEffect");
 
