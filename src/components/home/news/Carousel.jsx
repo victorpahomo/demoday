@@ -77,74 +77,97 @@ const noticias = [
   },
 ];
 
+const banner = [
+  "https://res.cloudinary.com/duxlfjdym/image/upload/v1678597940/Demoday/banner1_h5ivq1.jpg",
+  "https://res.cloudinary.com/duxlfjdym/image/upload/v1678597940/Demoday/banner2_k6fse6.jpg",
+  "https://res.cloudinary.com/duxlfjdym/image/upload/v1678597940/Demoday/banner3_msvmbd.jpg",
+  "https://res.cloudinary.com/duxlfjdym/image/upload/v1678597940/Demoday/banner4_sglmxa.jpg",
+  "https://res.cloudinary.com/duxlfjdym/image/upload/v1678597940/Demoday/banner5_yaepxt.jpg",
+];
+
 const Carousel = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 3000,
     slidesToShow: 2,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000, // 5 segundos
+    autoplaySpeed: 8000, // 5 segundos
+
+    // dots: true,
+    // infinite: true,
+    // speed: 500,
+    // slidesToShow: 2,
+    // slidesToScroll: 2,
+    // autoplay: true,
+    // autoplaySpeed: 5000, // 5 segundos
   };
   let rol = "professor";
   return (
     <div className=" bg-white rounded-lg shadow-md">
       <Slider {...settings}>
-        {noticias.map((noticia, index) => (
-          <Link key={index} to="training">
-            <div className="flex items-center p-1 bg-slate-10 gap-1">
-              <div
-                className={
-                  (noticia.role === "student" &&
-                    "w-3 h-28 rounded-full bg-blue-200") ||
-                  (noticia.role === "professor" &&
-                    "w-3 h-28 rounded-full bg-yellow-500") ||
-                  (noticia.role === "admin" &&
-                    "w-3 h-28 rounded-full bg-red-800")
-                }
-              ></div>
-              <div className="flex flex-col">
-                <div className="flex gap-2">
-                  <span
-                    className={
-                      (noticia.role === "student" &&
-                        "flex bg-blue-100 text-blue-400 rounded-lg w-auto text-xs items-center justify-center pr-1 pl-1") ||
-                      (noticia.role === "professor" &&
-                        "flex bg-yellow-100 text-yellow-500 rounded-lg w-auto text-xs items-center justify-center pr-1 pl-1") ||
-                      (noticia.role === "admin" &&
-                        "flex bg-red-100 text-red-800 rounded-lg w-auto text-xs items-center justify-center pr-1 pl-1")
-                    }
-                  >
-                    <p>
-                      {(noticia.role === "student" && "Estudiante") ||
-                        (noticia.role === "professor" && "Profesor") ||
-                        (noticia.role === "admin" && "ADMIN")}
-                    </p>
-                  </span>
-                  <h2
-                    href="#"
-                    className={
-                      (noticia.role === "student" &&
-                        "text-blue-500 hover:text-blue-700 font-semibold") ||
-                      (noticia.role === "professor" &&
-                        "text-yellow-500 hover:text-blue-700 font-semibold") ||
-                      (noticia.role === "admin" && "text-red-800 font-semibold")
-                    }
-                  >
-                    {noticia.title}
-                  </h2>
-                </div>
-                <p className="text-gray-500 text-sm p-2">
-                  {" "}
-                  {noticia.description}{" "}
-                </p>
-              </div>
-            </div>
-          </Link>
+        {banner.map((linkImg, index) => (
+          <img key={index} src={linkImg} alt="" className="w-52" />
         ))}
       </Slider>
     </div>
+    // <div className=" bg-white rounded-lg shadow-md">
+    //   <Slider {...settings}>
+    //     {noticias.map((noticia, index) => (
+    //       <Link key={index} to="training">
+    //         <div className="flex items-center p-1 bg-slate-10 gap-1">
+    //           <div
+    //             className={
+    //               (noticia.role === "student" &&
+    //                 "w-3 h-28 rounded-full bg-blue-200") ||
+    //               (noticia.role === "professor" &&
+    //                 "w-3 h-28 rounded-full bg-yellow-500") ||
+    //               (noticia.role === "admin" &&
+    //                 "w-3 h-28 rounded-full bg-red-800")
+    //             }
+    //           ></div>
+    //           <div className="flex flex-col">
+    //             <div className="flex gap-2">
+    //               <span
+    //                 className={
+    //                   (noticia.role === "student" &&
+    //                     "flex bg-blue-100 text-blue-400 rounded-lg w-auto text-xs items-center justify-center pr-1 pl-1") ||
+    //                   (noticia.role === "professor" &&
+    //                     "flex bg-yellow-100 text-yellow-500 rounded-lg w-auto text-xs items-center justify-center pr-1 pl-1") ||
+    //                   (noticia.role === "admin" &&
+    //                     "flex bg-red-100 text-red-800 rounded-lg w-auto text-xs items-center justify-center pr-1 pl-1")
+    //                 }
+    //               >
+    //                 <p>
+    //                   {(noticia.role === "student" && "Estudiante") ||
+    //                     (noticia.role === "professor" && "Profesor") ||
+    //                     (noticia.role === "admin" && "ADMIN")}
+    //                 </p>
+    //               </span>
+    //               <h2
+    //                 href="#"
+    //                 className={
+    //                   (noticia.role === "student" &&
+    //                     "text-blue-500 hover:text-blue-700 font-semibold") ||
+    //                   (noticia.role === "professor" &&
+    //                     "text-yellow-500 hover:text-blue-700 font-semibold") ||
+    //                   (noticia.role === "admin" && "text-red-800 font-semibold")
+    //                 }
+    //               >
+    //                 {noticia.title}
+    //               </h2>
+    //             </div>
+    //             <p className="text-gray-500 text-sm p-2">
+    //               {" "}
+    //               {noticia.description}{" "}
+    //             </p>
+    //           </div>
+    //         </div>
+    //       </Link>
+    //     ))}
+    //   </Slider>
+    // </div>
   );
 };
 
