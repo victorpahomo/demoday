@@ -1,90 +1,98 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
-const novedades = [
+const noticias = [
   {
     id: 1,
-    title: "Novedad 1",
+    title: "Titular de la noticia 1",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    author: "Author 1",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta optio quia neque cupiditate voluptate doloribus natus iusto eveniet quisquam quam mollitia quasi, itaque harum est nulla amet, aliquam, pariatur tempora.",
   },
   {
     id: 2,
-    title: "Novedad 2",
-    author: "Author 2",
+    title: "Titular de la noticia 2",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta optio quia neque cupiditate voluptate doloribus natus iusto eveniet quisquam quam mollitia quasi, itaque harum est nulla amet, aliquam, pariatur tempora.",
   },
   {
     id: 3,
-    title: "Novedad 3",
-    author: "Author 3",
+    title: "Titular de la noticia 3",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta optio quia neque cupiditate voluptate doloribus natus iusto eveniet quisquam quam mollitia quasi, itaque harum est nulla amet, aliquam, pariatur tempora.",
   },
   {
     id: 4,
-    title: "Novedad 4",
-    author: "Author 4",
+    title: "Titular de la noticia 4",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta optio quia neque cupiditate voluptate doloribus natus iusto eveniet quisquam quam mollitia quasi, itaque harum est nulla amet, aliquam, pariatur tempora.",
+  },
+  {
+    id: 5,
+    title: "Titular de la noticia 5",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta optio quia neque cupiditate voluptate doloribus natus iusto eveniet quisquam quam mollitia quasi, itaque harum est nulla amet, aliquam, pariatur tempora.",
+  },
+  {
+    id: 6,
+    title: "Titular de la noticia 6",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta optio quia neque cupiditate voluptate doloribus natus iusto eveniet quisquam quam mollitia quasi, itaque harum est nulla amet, aliquam, pariatur tempora.",
+  },
+  {
+    id: 7,
+    title: "Titular de la noticia 7",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta optio quia neque cupiditate voluptate doloribus natus iusto eveniet quisquam quam mollitia quasi, itaque harum est nulla amet, aliquam, pariatur tempora.",
+  },
+  {
+    id: 8,
+    title: "Titular de la noticia 8",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta optio quia neque cupiditate voluptate doloribus natus iusto eveniet quisquam quam mollitia quasi, itaque harum est nulla amet, aliquam, pariatur tempora.",
+  },
+  {
+    id: 9,
+    title: "Titular de la noticia 9",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta optio quia neque cupiditate voluptate doloribus natus iusto eveniet quisquam quam mollitia quasi, itaque harum est nulla amet, aliquam, pariatur tempora.",
+  },
+  {
+    id: 10,
+    title: "Titular de la noticia 10",
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta optio quia neque cupiditate voluptate doloribus natus iusto eveniet quisquam quam mollitia quasi, itaque harum est nulla amet, aliquam, pariatur tempora.",
   },
 ];
 
-
-
 const Carousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((currentIndex + 1) % novedades.length);
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, [currentIndex, novedades.length]);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    autoplay: true,
+    autoplaySpeed: 10000, // 5 segundos
+  };
 
   return (
-    <div className="relative h-64 transition-transform duration-1000 ease-in-out overflow-hidden">
-      {novedades.map((novedad, index) => (
-        <div
-          key={novedad.id}
-          className={`absolute w-full h-full transition-all duration-1000 ${
-            index === currentIndex ? "opacity-100" : "opacity-0"
-          }`}
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-          <div className="relative h-full">
-            <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-gray-900"></div>
-            <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-gray-900"></div>
-            <div className="absolute top-0 left-0 w-full h-full bg-gray-800 opacity-75"></div>
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-wrap -mx-8">
-                <div className="w-full lg:w-1/2 px-8">
-                  <div className="relative">
-                    <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl xl:text-6xl">
-                      {novedad.title}
-                    </h2>
-                    <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                      {novedad.description}
-                    </p>
-                    <div className="mt-8">
-                      <div className="inline-flex rounded-md shadow">
-                        <a
-                          href="#"
-                          className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
-                        >
-                          Leer más
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <div className=" bg-white rounded-lg shadow-md">
+      <h2 className="text-xl font-bold">Últimas noticias</h2>
+      <Slider {...settings}>
+        {noticias.map((noticia, index) => (
+          <Link key={index} to="training" >
+            <div className="p-1 bg-slate-10 mr-1">
+              <h2 href="#" className="text-yellow-500 hover:text-blue-700">
+                {noticia.title}
+              </h2>
+              <p className="text-gray-500 text-sm"> {noticia.description} </p>
             </div>
-          </div>
-        </div>
-      ))}
+          </Link>
+        ))}
+      </Slider>
     </div>
   );
 };
