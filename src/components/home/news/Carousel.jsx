@@ -89,26 +89,33 @@ const Carousel = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 3000,
-    slidesToShow: 2,
+    speed: 1000,
+    slidesToShow: 2, // por defecto mostrar 2 diapositivas
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 8000, // 5 segundos
-
-    // dots: true,
-    // infinite: true,
-    // speed: 500,
-    // slidesToShow: 2,
-    // slidesToScroll: 2,
-    // autoplay: true,
-    // autoplaySpeed: 5000, // 5 segundos
+    autoplaySpeed: 3000, // 5 segundos
+    responsive: [
+      {
+        breakpoint: 640, // ajustar la cantidad de diapositivas mostradas en pantallas pequeñas
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
-  let rol = "professor";
+  // dots: true,
+  // infinite: true,
+  // speed: 500,
+  // slidesToShow: 2,
+  // slidesToScroll: 2,
+  // autoplay: true,
+  // autoplaySpeed: 3000, // 5 segundos
+  // let rol = "professor";
   return (
-    <div className=" bg-white rounded-lg shadow-md">
-      <Slider {...settings}>
+    <div className="overflow-hidden w-full bg-black">
+      <Slider {...settings} >
         {banner.map((linkImg, index) => (
-          <img key={index} src={linkImg} alt="" className="w-52" />
+          <img key={index} src={linkImg} alt="" className="h-36 bg"/>
         ))}
       </Slider>
     </div>

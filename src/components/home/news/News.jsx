@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
-import Carousel from "./Carousel";
+import Carousels from "./Carousel";
 import LatestNews from "./LatestNews";
 
 const News = ({ group }) => {
   return (
     <section
       id="studentNews"
-      className=" bg-white p-1 w-11/12"
+      className="p-1 w-full"
+      
     >
-      <div>
+      <div className="">
         <h2 className="text-xl font-bold">Últimas noticias</h2>
-        <Carousel />
+        <Carousels />
       </div>
       {/* <a className="flex justify-end items-center mt-1">
         <Link to="/training" className="text-slate-500 hover:text-slate-600 bg-slate-200 hover:bg-slate-300 rounded-lg pr-1 pl-1 ">
