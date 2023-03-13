@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { CodeBotIcon, CoursesIcon, GradesIcon, HomeIcon, TrainingIcon } from "../assets";
 import SidebarLink from "./SidebarLink";
-import CodeLMSIcon from '../assets/CodeLMSIcon.svg'
-import CodeLMSIcon2 from '../assets/CodeLMSIcon/logo.svg'
 import CodeLMSIcon3 from '../assets/CodeLMSIcon/logoResp.svg'
 
 const SideBar = ({ props }) => {

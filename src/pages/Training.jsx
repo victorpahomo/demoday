@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 /* import { Viewer, Worker } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'; */
@@ -16,30 +16,97 @@ import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'; */
   );
 } */
 
-import MainLayout from '../layout/MainLayout'
+import MainLayout from "../layout/MainLayout";
 const Training = () => {
-  const PDF_URL = "https://www.africau.edu/images/default/sample.pdf"
+  const PDF_URL = "https://www.africau.edu/images/default/sample.pdf";
   return (
     <MainLayout props="Formación">
-      <h1 className='text-2xl font-bold text-primary-AzulVerde3'>Ruta Actual: <span className='text-xl text-primary-AzulVerde2'>Fundamentos</span></h1>
-      <p className='text-primary-azulCeleste5'>Link a la próxima clase: <a className='hover:text-primary-AzulVerde4' href="https://makaia-my.sharepoint.com/personal/mentoria2_bootcamp_makaia_org/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmentoria2%5Fbootcamp%5Fmakaia%5Forg%2FDocuments%2FFundamentos%20web%20frontend%202&ga=1">pulsa aquí</a> </p>
+      <div className="mx-auto">
+        <div className="flex justify-between my-4">
+          <h1 className="text-xl font-bold text-primary-AzulVerde3">
+            Ruta actual:
+            <span className="text-xl text-primary-AzulVerde2">
+              {" "}
+              fundamentos.
+            </span>
+          </h1>
+          <h1 className="text-xl font-bold text-primary-AzulVerde3">
+            Asistencia:
+            <span className="text-xl text-primary-AzulVerde2"> 20%.</span>
+          </h1>
+        </div>
+        <p className="text-primary-azulCeleste5 mb-2">
+          Link a la próxima clase:
+          <a
+            className="hover:text-primary-AzulVerde4"
+            href="https://makaia-my.sharepoint.com/personal/mentoria2_bootcamp_makaia_org/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmentoria2%5Fbootcamp%5Fmakaia%5Forg%2FDocuments%2FFundamentos%20web%20frontend%202&ga=1"
+          >
+            {" "}
+            pulsa aquí
+          </a>
+        </p>
 
-      <div className="btm-nav static rounded-md">
-        <button className="text-primary-Azul5 bg-slate-200 ">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-        </button>
-        <button className="text-primary-Azul5 bg-slate-200 active">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        </button>
-        <button className="text-primary-Azul5 bg-slate-200">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-        </button>
+        <div>
+          <ul className="relative grid grid-cols-2 bg-slate-100">
+            <li className="">
+              <input
+                defaultChecked
+                id="Temas"
+                type="radio"
+                name="tab"
+                className="peer absolute w-0 h-0 invisible"
+              />
+              <label
+                htmlFor="Temas"
+                className="block text-center  text-slate-600 font-medium peer-checked:bg-slate-300 py-4 cursor-pointer"
+              >
+                Temas
+              </label>
+              <div className="max-h-[26rem] p-8 overflow-auto absolute hidden peer-checked:block w-full left-0 bg-slate-300">
+                <ul>
+                  <li className="p-1"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, dolor corrupti iure error nostrum aut recusandae at nulla impedit deleniti quisquam cumque facilis nesciunt sint totam voluptatem! Impedit, possimus dolore?</li>
+                  <li className="p-1"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, dolor corrupti iure error nostrum aut recusandae at nulla impedit deleniti quisquam cumque facilis nesciunt sint totam voluptatem! Impedit, possimus dolore?</li>
+                  <li className="p-1"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, dolor corrupti iure error nostrum aut recusandae at nulla impedit deleniti quisquam cumque facilis nesciunt sint totam voluptatem! Impedit, possimus dolore?</li>
+                  <li className="p-1"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, dolor corrupti iure error nostrum aut recusandae at nulla impedit deleniti quisquam cumque facilis nesciunt sint totam voluptatem! Impedit, possimus dolore?</li>
+                  <li className="p-1"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, dolor corrupti iure error nostrum aut recusandae at nulla impedit deleniti quisquam cumque facilis nesciunt sint totam voluptatem! Impedit, possimus dolore?</li>
+                  <li className="p-1"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, dolor corrupti iure error nostrum aut recusandae at nulla impedit deleniti quisquam cumque facilis nesciunt sint totam voluptatem! Impedit, possimus dolore?</li>
+                </ul>
+              </div>
+            </li>
+            <li className="flex-grow h-fit">
+              <input
+                id="Grabaciones"
+                type="radio"
+                name="tab"
+                className="peer absolute w-0 h-0 invisible"
+              />
+              <label
+                htmlFor="Grabaciones"
+                className="block text-center text-slate-600 font-medium peer-checked:bg-slate-300  py-4 cursor-pointer"
+              >
+                Grabaciones
+              </label>
+              <div className="max-h-[26rem] p-8 overflow-auto absolute hidden peer-checked:block w-full left-0 bg-slate-300">
+              <ul>
+                  <li className="p-1"> luis</li>
+                  <li className="p-1"> petra</li>
+                  <li className="p-1"> luis</li>
+                  <li className="p-1"> petra</li>
+                  <li className="p-1"> luis</li>
+                  <li className="p-1"> petra</li>
+                  <li className="p-1"> luis</li>
+                  <li className="p-1"> petra</li>
+                  <li className="p-1"> luis</li>
+                  <li className="p-1"> petra</li>
+                  <li className="p-1"> luis</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-      {/*  <div className="App">
-            <PDFViewer />
-          </div> */}
     </MainLayout>
-  )
-}
+  );
+};
 
-export default Training
+export default Training;

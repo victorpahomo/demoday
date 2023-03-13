@@ -32,8 +32,8 @@ const Home = () => {
             <h1 className="mb-5">
               ¡Hola, {name ? name : rol} bienvenido a Code LMS!
             </h1>
-            {rol === "professor" && <HomeProfessor />}
-            {rol === "student" && <HomeStudent />}
+            {rol === "professor" ? <HomeProfessor /> : "no encontrado"}
+            {rol === "student" ? <HomeStudent /> : "no encontrado"}
             {rol === "admin" && <HomeAdmin />}
           </>
         )}

@@ -34,11 +34,11 @@ const SidebarLink = ({ to, icon: Icon, text, showText, page }) => {
         )}
 
         {cornerAnimation && <div>
-          <div id="curveTop" class="z-10 absolute right-0 bottom-10 menu  h-5 w-7 bg-white">
-            <span class=" top-0 right-0 h-5 w-7  rounded-br-full bg-primary-azulCeleste5 "></span>
+          <div id="curveTop" className="z-10 absolute right-0 bottom-10 menu  h-5 w-7 bg-white">
+            <span className=" top-0 right-0 h-5 w-7  rounded-br-full bg-primary-azulCeleste5 "></span>
           </div>
-          <div id="curveBott" class="z-10 absolute right-0 top-10 menu  h-5 w-7 bg-white">
-            <span class=" top-0 right-0 h-5 w-7  rounded-tr-full bg-primary-azulCeleste5 "></span>
+          <div id="curveBott" className="z-10 absolute right-0 top-10 menu  h-5 w-7 bg-white">
+            <span className=" top-0 right-0 h-5 w-7  rounded-tr-full bg-primary-azulCeleste5 "></span>
           </div>
         </div>}
       </Link>
