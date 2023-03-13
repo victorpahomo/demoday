@@ -513,6 +513,11 @@
   resolved "https://registry.yarnpkg.com/@fullcalendar/react/-/react-6.1.4.tgz#8113d1e05b1310be43e6eed1e9ffc9b1a52f373b"
   integrity sha512-9nc0uHr7zfhNIMyaM+ftoVqX9UEn+frCjTeofN3lcl3bCYvo2dwLw+n9jBJx//f+NRrSwmIvKq2JrqmF2IrwJA==
 
+"@fullcalendar/rrule@^6.1.4":
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/rrule/-/rrule-6.1.4.tgz#95d8d18035fe104a71578985ed3b8e91d7de5528"
+  integrity sha512-xVQOo7uiNHIpKe6F9YVzxumrzoJQf6jdIi93HKA+K+SLxc7+9mAJX7fllDr8/23adoeHz2rsQLwBOC6pyZe14g==
+
 "@fullcalendar/timegrid@^6.1.4":
   version "6.1.4"
   resolved "https://registry.yarnpkg.com/@fullcalendar/timegrid/-/timegrid-6.1.4.tgz#b3370b80726d52445ec6f988744220a93c884f94"
@@ -1490,6 +1495,13 @@ rollup@^3.10.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
+rrule@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/rrule/-/rrule-2.7.2.tgz#cb899cb21bbe6c71b587107956604173b69f9143"
+  integrity sha512-NkBsEEB6FIZOZ3T8frvEBOB243dm46SPufpDckY/Ap/YH24V1zLeMmDY8OA10lk452NdrF621+ynDThE7FQU2A==
+  dependencies:
+    tslib "^2.4.0"
+
 run-parallel@^1.1.9:
   version "1.2.0"
   resolved "https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz"
@@ -1583,7 +1595,7 @@ tr46@~0.0.3:
   resolved "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz"
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
 
-tslib@^2.1.0:
+tslib@^2.1.0, tslib@^2.4.0:
   version "2.5.0"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.5.0.tgz"
   integrity sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==
