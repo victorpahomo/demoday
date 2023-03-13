@@ -29,8 +29,9 @@ const Home = () => {
           <h1>Cargando...</h1>
         ) : (
           <>
-            <h1 className="mb-5">
-              ¡Hola, {name ? name : rol} bienvenido a Code LMS!
+            <h1 className="mb-5 flex gap-1">
+              ¡Hola,<p className="font-semibold">{name ? name : rol}</p>
+              bienvenido a Code LMS!
             </h1>
             {rol === "professor" && <HomeProfessor />}
             {rol === "student" && <HomeStudent />}

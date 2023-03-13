@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { BellIcon, ViewAllIcon } from "../assets";
 import Notification from "./Notification";
 
@@ -101,10 +102,10 @@ const ButtonNotification = () => {
           href="#"
           className="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-slate-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
         >
-          <div className="inline-flex items-center ">
+          <Link to="/notifications" className="inline-flex items-center ">
             <ViewAllIcon className="w-4 h-4 mr-2 fill-gray-500 dark:fill-gray-400" />
             Ver todos
-          </div>
+          </Link>
         </a>
       </div>
     </div>

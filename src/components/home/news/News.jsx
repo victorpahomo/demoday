@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Carousels from "./Carousel";
-import LatestNews from "./LatestNews";
 
 const News = ({ group }) => {
   return (
@@ -10,7 +9,7 @@ const News = ({ group }) => {
       
     >
       <div className="">
-        <h2 className="text-xl font-bold">Últimas noticias</h2>
+        <h2 className="text-sm font-semibold">Últimas noticias</h2>
         <Carousels />
       </div>
       {/* <a className="flex justify-end items-center mt-1">
