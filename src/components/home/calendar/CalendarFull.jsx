@@ -4,7 +4,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import esLocale from "@fullcalendar/core/locales/es";
 import timegrid from "@fullcalendar/timegrid";
-import rrulePlugin from '@fullcalendar/rrule';
+import rrulePlugin from "@fullcalendar/rrule";
 import ModalCalendar from "./ModalCalendar";
 import './index.css';
 const Calendar = () => {
