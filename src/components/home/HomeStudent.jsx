@@ -24,10 +24,6 @@ const HomeStudent = () => {
   }, []);
   return (
     <div className="flex flex-col gap-5">
-      {/* Componente para proceso */}
-      <section>
-        <StepProgress step={2} />
-      </section>
       {/* Componente para novedades */}
       <div className="flex justify-center w-full overflow-hidden">
       <News />
