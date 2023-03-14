@@ -1,8 +1,23 @@
-import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
-import { db } from '../api/firebase';
-import { dataStart, dataFailure, getAllUsers, getUser,getGroup,getAllGroups,getGlobalNews,getGroupNews,setNews,getContributions,setContributions,getCourses } from '../features/data/dataSlice';
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import { db } from "../api/firebase";
+import {
+    dataStart,
+    dataFailure,
+    getAllUsers,
+    getUser,
+    getGroup,
+    getAllGroups,
+    getGlobalNews,
+    getGroupNews,
+    getContributions,
+    setContributions,
+    getCourses,
+    getGroupTodos,
+    getGroupRecurringTodos,
+} from "../features/data/dataSlice";
 
-export const getUSerData = async (uid,dispatch) => {
+/* HOME */
+export const getUSerData = async (uid, dispatch) => {
     try {
         dispatch(dataStart());
         const docRef = doc(db, `users/${uid}`);
@@ -12,24 +27,46 @@ export const getUSerData = async (uid,dispatch) => {
         } else {
             dispatch(dataFailure("User not found!"));
         }
-
     } catch (error) {
         dispatch(dataFailure(error.ToString()));
-        console.error('Error getting document:', error);
+        console.error("Error getting document:", error);
     }
-}
+};
+
+export const getGroupTodosData = async (idGroup, dispatch) => {
+    try {
+        dispatch(dataStart());
+        const docRef = doc(db, `groups/${idGroup}`);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            dispatch(getGroupTodos(docSnap.data().todo));
+            dispatch(getGroupRecurringTodos(docSnap.data().recurring_todo));
+        } else {
+            dispatch(dataFailure("Group not found!"));
+        }
+    } catch (error) {
+        dispatch(dataFailure(error.ToString()));
+        console.error("Error getting document:", error);
+    }
+};
+
+/* TRAINING */
+/* GRADES */
+/* COURSES */
+
+
 export const getAllUSersData = async (dispatch) => {
     try {
         dispatch(dataStart());
-        const querySnapshot = await getDocs(collection(db, 'users'));
+        const querySnapshot = await getDocs(collection(db, "users"));
         const users = querySnapshot.docs.map((doc) => doc.data());
         dispatch(getAllUsers(users));
     } catch (error) {
         dispatch(dataFailure(error.toString()));
-        console.error('Error getting documents:', error);
+        console.error("Error getting documents:", error);
     }
 };
-export const getGroupData = async (idGroup,dispatch) => {
+export const getGroupData = async (idGroup, dispatch) => {
     try {
         dispatch(dataStart());
         const docRef = doc(db, `groups/all-groups`);
@@ -39,10 +76,9 @@ export const getGroupData = async (idGroup,dispatch) => {
         } else {
             dispatch(dataFailure("Users not found!"));
         }
-
     } catch (error) {
         dispatch(dataFailure(error.ToString()));
-        console.error('Error getting document:', error);
+        console.error("Error getting document:", error);
     }
 };
 export const getAllGroupsData = async (dispatch) => {
@@ -57,10 +93,9 @@ export const getAllGroupsData = async (dispatch) => {
         } else {
             dispatch(dataFailure("Users not found!"));
         }
-
     } catch (error) {
         dispatch(dataFailure(error.ToString()));
-        console.error('Error getting document:', error);
+        console.error("Error getting document:", error);
     }
 };
 
@@ -74,14 +109,13 @@ export const getGlobalNewsData = async (dispatch) => {
         } else {
             dispatch(dataFailure("Users not found!"));
         }
-
     } catch (error) {
         dispatch(dataFailure(error.ToString()));
-        console.error('Error getting document:', error);
+        console.error("Error getting document:", error);
     }
 };
 
-export const getGroupNewsData = async (idGroup,dispatch) => {
+export const getGroupNewsData = async (idGroup, dispatch) => {
     try {
         dispatch(dataStart());
         const docRef = doc(db, `groups/all-groups`);
@@ -95,23 +129,23 @@ export const getGroupNewsData = async (idGroup,dispatch) => {
         }
     } catch (error) {
         dispatch(dataFailure(error.ToString()));
-        console.error('Error getting document:', error);
+        console.error("Error getting document:", error);
     }
 };
-  
+
 export const getContributionsData = async (dispatch) => {
     try {
         dispatch(dataStart());
-        const querySnapshot = await getDocs(collection(db, 'contributions'));
+        const querySnapshot = await getDocs(collection(db, "contributions"));
         const users = querySnapshot.docs.map((doc) => doc.data());
         dispatch(getContributions(users));
     } catch (error) {
         dispatch(dataFailure(error.toString()));
-        console.error('Error getting documents:', error);
+        console.error("Error getting documents:", error);
     }
 };
 // SIN TERMINAR
-export const setContributionsData = async (data,dispatch) => {
+export const setContributionsData = async (data, dispatch) => {
     try {
         dispatch(dataStart());
         const docRef = doc(db, `contributions/${data.id}`);
@@ -119,18 +153,18 @@ export const setContributionsData = async (data,dispatch) => {
         dispatch(setContributions(data));
     } catch (error) {
         dispatch(dataFailure(error.ToString()));
-        console.error('Error getting document:', error);
+        console.error("Error getting document:", error);
     }
-}
+};
 
 export const getCoursesData = async (dispatch) => {
     try {
         dispatch(dataStart());
-        const querySnapshot = await getDocs(collection(db, 'courses'));
+        const querySnapshot = await getDocs(collection(db, "courses"));
         const users = querySnapshot.docs.map((doc) => doc.data());
         dispatch(getCourses(users));
     } catch (error) {
         dispatch(dataFailure(error.toString()));
-        console.error('Error getting documents:', error);
+        console.error("Error getting documents:", error);
     }
-}
+};

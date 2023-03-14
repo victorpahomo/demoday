@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -7,79 +7,75 @@ import timegrid from "@fullcalendar/timegrid";
 import rrulePlugin from "@fullcalendar/rrule";
 import ModalCalendar from "./ModalCalendar";
 import './index.css';
-const Calendar = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
-  const [events, setEvents] = useState([
-    {
-      title: "Evento 1",
-      start: new Date('2023-03-12T14:00:00'),
-      end: new Date('2023-03-15T18:06:00'),
-      backgroundColor: '#e0efed',
-      borderColor: '#acdaeb',
-      textColor: '#7e7e7f',
-    },
+import { getGroupTodosData } from "../../../services/dataFirebaseService"
+import { useDispatch, useSelector } from "react-redux";
 
-  ]);
-  const recurringEvent = {
-    title: 'Clase diaria',
-    backgroundColor: '#e0efed',
-    borderColor: '#acdaeb',
-    textColor: '#7e7e7f',
-    rrule: {
-      freq: 'weekly', // Repetir semanalmente
-      interval: 1, // Repetir cada 1 semana
-      byweekday: ['mo', 'tu', 'we', 'th', 'fr'], // Repetir de lunes a viernes
-      dtstart: new Date('2023-03-12T14:00:00'), // Comenzar el 15 de marzo de 2023
-      until: new Date('2023-06-30T00:00:00'), // Hasta el 30 de junio de 2023
-      /* byhour:14, */
-    },
-/*     exdate: ['2023-03-12T10:00:00'],
- */     extendedProps: {
-      start: new Date('2023-03-15T10:00:00'),
-      end: new Date('2023-03-15T11:00:00'),
-      description: 'Reunión semanal del equipo de ventas'
-    },
-  };
+const Calendar = () => {
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true)
+  const [editModal, setEditModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [dateSelected, setDateSelected] = useState("");
+  const [eventSelected, setEventSelected] = useState("")
+  const [events, setEvents] = useState(useSelector((state) => state.data.user?.todo));
+
+  useEffect(() => {
+    const handleGetGroupTodo = async () => {
+      const todo = await getGroupTodosData("frontend-1", dispatch);
+      setLoading(false); // La petición ha terminado, actualiza el estado
+    };
+    handleGetGroupTodo();
+  }, []);
+  const recurringEvent = useSelector((state) => state.data.groupRecurringTodos);
+
   const eventSources = [
     {
-      events: [recurringEvent]
-    }
+      events: recurringEvent.map((event) => ({
+        ...event,
+        rrule: {
+          ...event?.rrule,
+          dtstart: new Date(Date.parse(event?.rrule?.dtstart)),
+          until: new Date(Date.parse(event?.rrule?.until)),
+        },
+        extendedProps: {
+          ...event?.extendedProps,
+          startTime: new Date(event?.rrule?.dtstart),
+          endTime: new Date(event?.rrule?.until),
+        },
+      })),
+    },
   ];
-
-  const handleClose = () => setShowModal(false);
+console.log(eventSources);
+  const handleClose = () =>{
+    setShowModal(false);
+    setEditModal(false);
+  }
   const handleShow = () => setShowModal(true);
+  const handleEdit = () => setEditModal(true);
 
-  const handleDateClick = (arg) => {
-    handleShow();
-    console.log(showModal);
-    console.log("SI");
-    setDate(arg.date);
 
-  };
-
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
-  };
 
   const handleSave = () => {
-    setEvents([...events, { title, date }]);
-    setTitle("");
-    setDate("");
+    setEvents([...events, { title, dateSelected }]);
+    setDateSelected("");
     handleClose();
   };
+
+  const handleDateClick = (daySelected) => {
+    handleShow();
+    setDateSelected(daySelected.date);
+
+  };
   const handleEventClick = (eventInfo) => {
-    console.log("Evento:", eventInfo.event.title);
-    console.log("Hora:", eventInfo.event.extendedProps.start.toLocaleString());
-    console.log("Hora:", eventInfo.event.extendedProps.end.toLocaleTimeString());
-    console.log("Evento:", eventInfo.event.extendedProps.description);
+    handleEdit();
+    setEventSelected(eventInfo.event);
+
   };
 
 
   return (
     <>
-      <FullCalendar
+      {loading ? <p>Cargando...</p> : <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin, timegrid, rrulePlugin]}
         locale={esLocale}
         height={"auto"}
@@ -96,9 +92,10 @@ const Calendar = () => {
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay",
         }}
-      />
-      {showModal && <ModalCalendar title={title} handleTitleChange={handleTitleChange} handleSave={handleSave} handleClose={handleClose} />}
+      />}
 
+      {editModal && <ModalCalendar edit={true} event={eventSelected} handleSave={handleSave} handleClose={handleClose} />}
+      {showModal && <ModalCalendar edit={false} handleSave={handleSave} handleClose={handleClose} />}
     </>
   );
 };
