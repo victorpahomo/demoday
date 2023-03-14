@@ -8,7 +8,7 @@ import {
     getGroup,
     getAllGroups,
     getGlobalNews,
-    getGroupNews,
+    getGroupNotifications,
     getContributions,
     setContributions,
     getCourses,
@@ -115,20 +115,19 @@ export const getGlobalNewsData = async (dispatch) => {
     }
 };
 
-export const getGroupNewsData = async (idGroup, dispatch) => {
+export const getGroupNotificationsData = async (idGroup, dispatch) => {
     try {
         dispatch(dataStart());
-        const docRef = doc(db, `groups/all-groups`);
+        const docRef = doc(db, `groups/${idGroup}`);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-            const groupsData = docSnap.data()[`${idGroup}`];
-            delete groupsData.students; // delete student from News
-            dispatch(getGroupNews(groupsData));
+            const groupsData = docSnap.data().notifications;
+            dispatch(getGroupNotifications(groupsData));
         } else {
             dispatch(dataFailure("Users not found!"));
         }
     } catch (error) {
-        dispatch(dataFailure(error.ToString()));
+        dispatch(dataFailure(error));
         console.error("Error getting document:", error);
     }
 };

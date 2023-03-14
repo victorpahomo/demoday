@@ -6,7 +6,7 @@ const initialState = {
   group: null,
   groups: [],
   globalNews: [],
-  groupNews: [],
+  groupNotifications: [],
   contributions: [],
   courses: [],
   userTodos: [],
@@ -52,9 +52,9 @@ const dataSlice = createSlice({
       state.globalNews = action.payload;
       state.error = null;
     },
-    getGroupNews: (state, action) => {
+    getGroupNotifications: (state, action) => {
       state.loading = false;
-      state.groupNews = action.payload;
+      state.groupNotifications = action.payload;
       state.error = null;
     },
     setNews: (state, action) => {
@@ -98,7 +98,7 @@ export const {
   getGroup,
   getAllGroups,
   getGlobalNews,
-  getGroupNews,
+  getGroupNotifications,
   setNews,
   getContributions,
   setContributions,
