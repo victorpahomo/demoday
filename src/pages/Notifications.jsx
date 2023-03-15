@@ -31,7 +31,7 @@ const noticias = [
 const Notifications = () => {
   return (
     <div>
-      <MainLayout>
+      <MainLayout props="Notificaciones">
         <div className="flex flex-col items-center">
           <div className="flex justify-start items-start w-1/2">
             <h2 className="font-bold text-xl ">Notificaciones</h2>
