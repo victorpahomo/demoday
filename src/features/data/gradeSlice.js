@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    grade: {},
-    attendance: {},
-    allGrades: [],
+    userGrades: [],
+    groupGrades: [],
     error: null,
     loading: true,
 };
@@ -16,17 +15,12 @@ const gradeSlice = createSlice({
             state.loading = true;
             state.error = null;
         },
-        getGrade: (state, action) => {
+        getUserGrades: (state, action) => {
             state.loading = false;
             state.allUsers = action.payload;
             state.error = null;
         },
-        getAttendance: (state, action) => {
-            state.loading = false;
-            state.allUsers = action.payload;
-            state.error = null;
-        },
-        getAllGrades: (state, action) => {
+        getGroupGrades: (state, action) => {
             state.loading = false;
             state.allUsers = action.payload;
             state.error = null;
@@ -41,9 +35,8 @@ const gradeSlice = createSlice({
 export const {
     fetchDataStart,
     fetchDataFailure,
-    getGrade,
-    getAttendance,
-    getAllGrades
+    getUserGrades,
+    getGroupGrades,
 
 } = gradeSlice.actions;
 
