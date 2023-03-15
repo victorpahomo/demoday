@@ -1,14 +1,20 @@
 import React, { useState } from "react";
-import { CodeBotIcon, CoursesIcon, GradesIcon, HomeIcon, TrainingIcon } from "../assets";
+import {
+  CodeBotIcon,
+  CoursesIcon,
+  GradesIcon,
+  HomeIcon,
+  TrainingIcon,
+  ServicesIcon,
+} from "../assets";
 import SidebarLink from "./SidebarLink";
-import CodeLMSIcon from '../assets/CodeLMSIcon.svg'
-import CodeLMSIcon2 from '../assets/CodeLMSIcon/logo.svg'
-import CodeLMSIcon3 from '../assets/CodeLMSIcon/logoResp.svg'
+import CodeLMSIcon from "../assets/CodeLMSIcon.svg";
+import CodeLMSIcon2 from "../assets/CodeLMSIcon/logo.svg";
+import CodeLMSIcon3 from "../assets/CodeLMSIcon/logoResp.svg";
 
 const SideBar = ({ props }) => {
   const [showText, setShowText] = useState(false);
   return (
-
     <div
       className=" _displaySideBar z-50 h-full max-h-screen  flex flex-col  fixed  items-end w-12 gap-4 hover:w-40 pl-2 bg-primary-azulCeleste5 ease-in-out hover:duration-200 hover:transition-all"
       onMouseEnter={() => setShowText(true)}
@@ -54,11 +60,16 @@ const SideBar = ({ props }) => {
           icon={CodeBotIcon}
           text="CodeBot"
         />
+        <SidebarLink
+          page={props}
+          showText={showText}
+          to="/services"
+          icon={ServicesIcon}
+          text="Servicios"
+        />
       </div>
-
     </div>
   );
 };
 
 export default SideBar;
-
