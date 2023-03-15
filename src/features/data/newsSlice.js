@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getAllNewsData } from "../../services/dataFirebaseService"
 
 const initialState = {
-    AllNews: [],
+    allNews: [],
     error: null,
-    loading: true,
+    loading: "idle",
 };
 
 const newsSlice = createSlice({
     name: "news",
     initialState,
     reducers: {
-        newsStart: (state) => {
+/*         newsStart: (state) => {
             state.loading = true;
             state.error = null;
         },
@@ -22,14 +23,28 @@ const newsSlice = createSlice({
         newsFailure: (state, action) => {
             state.loading = false;
             state.error = action.payload;
-        },
+        }, */
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getAllNewsData.pending, (state) => {
+                state.loading = "pending";
+            })
+            .addCase(getAllNewsData.fulfilled, (state, action) => {
+                state.loading = "fulfilled";
+                state.allNews = action.payload;
+            })
+            .addCase(getAllNewsData.rejected, (state, action) => {
+                state.loading = "rejected";
+                state.error = action.payload;
+            });
     }
 });
 
-export const {
+/* export const {
     newsStart,
     newsFailure,
     getAllNews,
-} = newsSlice.actions;
+} = newsSlice.actions; */
 
 export default newsSlice.reducer;

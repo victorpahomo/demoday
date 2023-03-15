@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {getContributionsData} from "../../services/dataFirebaseService"
 
 const initialState = {
     allContributions: [],
     error: null,
-    loading: true,
+    loading: "idle",
 };
 
 const contributionSlice = createSlice({
     name: "contribution",
     initialState,
     reducers: {
-        contributionStart: (state) => {
+/*         contributionStart: (state) => {
             state.loading = true;
             state.error = null;
         },
@@ -22,15 +23,29 @@ const contributionSlice = createSlice({
         contributionFailure: (state, action) => {
             state.loading = false;
             state.error = action.payload;
-        },
+        }, */
+    },
+    extraReducers: (builder) => {
+        builder 
+            .addCase(getContributionsData.pending, (state) => {
+                state.loading = "pending";
+            })
+            .addCase(getContributionsData.fulfilled, (state, action) => {
+                state.loading = "fulfilled";
+                state.allContributions = action.payload;
+            })
+            .addCase(getContributionsData.rejected, (state, action) => {
+                state.loading = "rejected";
+                state.error = action.payload;
+            });
     }
 });
 
-export const {
+/* export const {
     contributionStart,
     contributionFailure,
     getAllContributions
 
-} = contributionSlice.actions;
+} = contributionSlice.actions; */
 
 export default contributionSlice.reducer;
