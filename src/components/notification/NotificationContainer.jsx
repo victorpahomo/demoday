@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { BellIcon, ViewAllIcon } from "../../assets";
 import { NotificationCard } from "./"
@@ -10,8 +10,10 @@ const NotificationContainer = () => {
   const groupStatus = useSelector((state) => state.group.loading);
   const userStatus = useSelector((state) => state.user.loading);
   const userLastNotification = useSelector((state) => state.user.user?.last_notification)
-  const [notificaciones, setNotificaciones] = useState(useSelector((state) => state.group.group?.notifications));
-
+  const notificationsSelector = useSelector((state) => state.group.group?.notifications);
+  const notificaciones = useMemo(() => notificationsSelector, [notificationsSelector]);
+/*   const [notificaciones, setNotificaciones] = useState(useSelector((state) => state.group.group?.notifications));
+ */
   /* ----------------- CONTENT ---------------------- */
   let content;
   if (groupStatus === "pending" || userStatus === "pending" || userStatus === "idle") {
@@ -21,8 +23,9 @@ const NotificationContainer = () => {
     let lastNotification = notificaciones?.reduce(function (prev, current) {
       return (prev.date > current.date) ? prev : current
     })
-    if (lastNotification > userLastNotification) {
 
+    if (lastNotification > userLastNotification) {
+      
       toast.custom((t) => (
         <div
           className={`${t.visible ? "animate-enter" : "animate-leave"
