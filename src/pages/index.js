@@ -8,4 +8,5 @@ export { default as Profile } from "./Profile";
 export { default as Training } from "./Training";
 export { default as CodeBot } from "./CodeBot";
 export { default as Notifications } from "./Notifications";
+export { default as Services } from "./Services";
 export { default as NotFound } from "./NotFound";

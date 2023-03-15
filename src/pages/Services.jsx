@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import MainLayout from "../layout/MainLayout";
 
 const Services = () => {
   return (
-    <div>Services</div>
-  )
-}
+    <MainLayout props="Servicios">
+      <div>Services</div>
+    </MainLayout>
+  );
+};
 
-export default Services
+export default Services;
