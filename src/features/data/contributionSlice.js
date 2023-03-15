@@ -10,7 +10,7 @@ const contributionSlice = createSlice({
     name: "contribution",
     initialState,
     reducers: {
-        fetchDataStart: (state) => {
+        contributionStart: (state) => {
             state.loading = true;
             state.error = null;
         },
@@ -19,7 +19,7 @@ const contributionSlice = createSlice({
             state.allUsers = action.payload;
             state.error = null;
         },
-        fetchDataFailure: (state, action) => {
+        contributionFailure: (state, action) => {
             state.loading = false;
             state.error = action.payload;
         },
@@ -27,8 +27,8 @@ const contributionSlice = createSlice({
 });
 
 export const {
-    fetchDataStart,
-    fetchDataFailure,
+    contributionStart,
+    contributionFailure,
     getAllContributions
 
 } = contributionSlice.actions;

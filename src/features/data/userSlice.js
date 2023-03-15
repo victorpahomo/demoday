@@ -11,7 +11,7 @@ const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        fetchDataStart: (state) => {
+        userStart: (state) => {
             state.loading = true;
             state.error = null;
         },
@@ -25,7 +25,7 @@ const userSlice = createSlice({
             state.allUsers = action.payload;
             state.error = null;
         },
-        fetchDataFailure: (state, action) => {
+        userFailure: (state, action) => {
             state.loading = false;
             state.error = action.payload;
         },
@@ -33,8 +33,8 @@ const userSlice = createSlice({
 });
 
 export const {
-    fetchDataStart,
-    fetchDataFailure,
+    userStart,
+    userFailure,
     getUser,
     getAllUsers,
 

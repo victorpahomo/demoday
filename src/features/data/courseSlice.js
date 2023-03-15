@@ -10,7 +10,7 @@ const courseSlice = createSlice({
     name: "course",
     initialState,
     reducers: {
-        fetchDataStart: (state) => {
+        courseStart: (state) => {
             state.loading = true;
             state.error = null;
         },
@@ -19,7 +19,7 @@ const courseSlice = createSlice({
             state.allUsers = action.payload;
             state.error = null;
         },
-        fetchDataFailure: (state, action) => {
+        courseFailure: (state, action) => {
             state.loading = false;
             state.error = action.payload;
         },
@@ -27,8 +27,8 @@ const courseSlice = createSlice({
 });
 
 export const {
-    fetchDataStart,
-    fetchDataFailure,
+    courseStart,
+    courseFailure,
     getAllCourses
 
 } = courseSlice.actions;

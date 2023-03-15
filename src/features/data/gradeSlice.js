@@ -11,7 +11,7 @@ const gradeSlice = createSlice({
     name: "grade",
     initialState,
     reducers: {
-        fetchDataStart: (state) => {
+        gradeStart: (state) => {
             state.loading = true;
             state.error = null;
         },
@@ -25,7 +25,7 @@ const gradeSlice = createSlice({
             state.allUsers = action.payload;
             state.error = null;
         },
-        fetchDataFailure: (state, action) => {
+        gradeFailure: (state, action) => {
             state.loading = false;
             state.error = action.payload;
         },
@@ -33,8 +33,8 @@ const gradeSlice = createSlice({
 });
 
 export const {
-    fetchDataStart,
-    fetchDataFailure,
+    gradeStart,
+    gradeFailure,
     getUserGrades,
     getGroupGrades,
 

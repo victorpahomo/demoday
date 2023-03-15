@@ -10,7 +10,7 @@ const newsSlice = createSlice({
     name: "news",
     initialState,
     reducers: {
-        fetchDataStart: (state) => {
+        newsStart: (state) => {
             state.loading = true;
             state.error = null;
         },
@@ -19,7 +19,7 @@ const newsSlice = createSlice({
             state.allUsers = action.payload;
             state.error = null;
         },
-        fetchDataFailure: (state, action) => {
+        newsFailure: (state, action) => {
             state.loading = false;
             state.error = action.payload;
         },
@@ -27,8 +27,8 @@ const newsSlice = createSlice({
 });
 
 export const {
-    fetchDataStart,
-    fetchDataFailure,
+    newsStart,
+    newsFailure,
     getAllNews,
 } = newsSlice.actions;
 

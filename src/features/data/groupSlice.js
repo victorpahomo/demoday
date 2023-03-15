@@ -11,7 +11,7 @@ const groupSlice = createSlice({
     name: "group",
     initialState,
     reducers: {
-        fetchDataStart: (state) => {
+        groupStart: (state) => {
             state.loading = true;
             state.error = null;
         },
@@ -25,7 +25,7 @@ const groupSlice = createSlice({
             state.allUsers = action.payload;
             state.error = null;
         },
-        fetchDataFailure: (state, action) => {
+        groupFailure: (state, action) => {
             state.loading = false;
             state.error = action.payload;
         },
@@ -33,8 +33,8 @@ const groupSlice = createSlice({
 });
 
 export const {
-    fetchDataStart,
-    fetchDataFailure,
+    groupStart,
+    groupFailure,
     getGroup,
     getAllGroups,
 

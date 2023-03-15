@@ -11,7 +11,7 @@ const curriculumSlice = createSlice({
     name: "curriculum",
     initialState,
     reducers: {
-        fetchDataStart: (state) => {
+        curriculumStart: (state) => {
             state.loading = true;
             state.error = null;
         },
@@ -25,7 +25,7 @@ const curriculumSlice = createSlice({
             state.allUsers = action.payload;
             state.error = null;
         },
-        fetchDataFailure: (state, action) => {
+        curriculumFailure: (state, action) => {
             state.loading = false;
             state.error = action.payload;
         },
@@ -33,8 +33,8 @@ const curriculumSlice = createSlice({
 });
 
 export const {
-    fetchDataStart,
-    fetchDataFailure,
+    curriculumStart,
+    curriculumFailure,
     getCurriculum,
     getAllCurriculums
 
