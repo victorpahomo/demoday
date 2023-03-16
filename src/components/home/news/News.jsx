@@ -1,15 +1,21 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SkeletonCarousel from "../../skeletonLoaders/SkeletonCarousel";
 import Carousels from "./Carousel";
 
 const News = ({ group }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
   return (
-    <section
-      id="studentNews"
-      className="p-1 w-full"
-      
-    >
+    <section id="studentNews" className="p-1 w-full">
       <div className="">
         <h2 className="text-sm font-semibold">Últimas noticias</h2>
+        {/* {loading ? <SkeletonCarousel /> : <Carousels />} */}
         <Carousels />
       </div>
       {/* <a className="flex justify-end items-center mt-1">
