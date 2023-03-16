@@ -11,3 +11,5 @@ export { default as ChevronDownIcon } from "./ChevronDownIcon";
 export { default as infoIcon } from "./infoIcon";
 export { default as ServicesIcon } from "./ServicesIcon";
 export { default as TechnicalSupportIcon } from "./TechnicalSupportIcon";
+export { default as PsychosocialSupportIcon } from "./PsychosocialSupportIcon";
+export { default as AbsenceReportIcon } from "./AbsenceReportIcon";

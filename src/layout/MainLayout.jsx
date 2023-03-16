@@ -19,7 +19,7 @@ const MainLayout = ({ children, props }) => {
           id="body"
           className="mt-16 bg-white w-full h-[calc(100%-4rem)] rounded-b-2xl"
         >
-          <div className="px-5 pb-5">{children}</div>
+          <div className="px-7 pb-5">{children}</div>
         </section>
       </div>
     </div>

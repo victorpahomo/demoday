@@ -90,7 +90,7 @@ const Carousel = () => {
     dots: true,
     infinite: true,
     speed: 1000,
-    slidesToShow: 2, // por defecto mostrar 2 diapositivas
+    slidesToShow: 3, // por defecto mostrar 2 diapositivas
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000, // 5 segundos
