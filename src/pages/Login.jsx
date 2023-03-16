@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {login} from "../services/authFirebaseService";
+import { login } from "../services/authFirebaseService";
 import { useDispatch } from "react-redux";
+import logo_border from "../assets/CodeLMSIcon/logo_border.svg"
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -23,16 +24,13 @@ const Login = () => {
   const handleChange = ({ target: { value, name } }) =>
     setUser({ ...user, [name]: value });
 
-
-
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col h-screen justify-center items-center bg-[#f2f2f2] gap-10">
+      <img className="w-96 shadow-lg shadow-gray-300" src={logo_border} alt="" />
       <div className="flex flex-col items-center justify-center w-72 ">
-
         <p className="w-72 text-center text-sm text-gray-600">
           Login or create an account with your email to start ordering
         </p>
-
       </div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-72">
         <label htmlFor="email" className="text-sm font-medium">
@@ -51,7 +49,7 @@ const Login = () => {
           Password
         </label>
         <input
-        autoComplete="current-password"
+          autoComplete="current-password"
           type="password"
           name="password"
           id="password"
@@ -67,14 +65,12 @@ const Login = () => {
           Login
         </button>
       </form>
-      <div className="flex justify-between mt-2 w-64 h-8 border-red-400">
+      <div className="flex justify-between mt-2 w-64 h-8 border-red-400"></div>
 
-
+      <div className="text-center absolute bottom-2 justify-center">
+        <p>CodeLMS® 2023</p>
+        <p>Hecho por y para estudiantes</p>
       </div>
-      <p className="text-xs flex justify-between gap-1 mt-2">
-        Don't have an account?
-
-      </p>
     </div>
   );
 };
