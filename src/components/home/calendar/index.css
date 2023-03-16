@@ -1,0 +1,27 @@
+.fc-button-group .fc-button {
+    background-color: #acdaeb!important;
+    border: none!important;
+    outline: none!important;
+    width: 50%;
+}
+.fc-button-group .fc-button:hover {
+    background-color: #67abd1!important;
+}
+
+.fc .fc-button-group .fc-button-active {
+    background-color: #1a86b3!important;
+    border: none;
+    width: 50%;
+}
+.fc-today-button {
+    margin-top: 5px!important;
+    background-color: #1a86b3!important;
+    outline: none!important;
+    border: none!important;
+    width: 50%;
+}
+.fc-day-today{
+    background-color: #edefcacc!important;
+}
+
+

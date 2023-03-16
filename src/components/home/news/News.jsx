@@ -1,21 +1,24 @@
+import { Link } from "react-router-dom";
+import Carousels from "./Carousel";
 
-const News = ({group}) => {
+const News = ({ group }) => {
   return (
-    <section id='studentNews' className=" bg-white py-5 rounded-2xl border-4 ">
-    <div>
-        <div className="flex justify-around">
-            <h1 className="font-medium">Novedades</h1>
-            <h1 className="font-medium">Link a la proxima clase</h1>
-        </div>
-        <h1 className="mt-5 text-3xl font-medium text-center">
-            Ultima novedad
-        </h1>
-        <div className="flex justify-end">
-            <span className="btn mr-20">ver mas</span>
-        </div>
-    </div>
-</section>
-  )
-}
+    <section
+      id="studentNews"
+      className="p-1 w-full"
+      
+    >
+      <div className="">
+        <h2 className="text-sm font-semibold">Últimas noticias</h2>
+        <Carousels />
+      </div>
+      {/* <a className="flex justify-end items-center mt-1">
+        <Link to="/training" className="text-slate-500 hover:text-slate-600 bg-slate-200 hover:bg-slate-300 rounded-lg pr-1 pl-1 ">
+          Ver todas
+        </Link>
+      </a> */}
+    </section>
+  );
+};
 
-export default News
+export default News;

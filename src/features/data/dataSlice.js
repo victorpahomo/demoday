@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
@@ -6,21 +6,24 @@ const initialState = {
   group: null,
   groups: [],
   globalNews: [],
-  groupNews: [],
+  groupNotifications: [],
   contributions: [],
   courses: [],
+  userTodos: [],
+  groupTodos: [],
+  groupRecurringTodos: [],
   error: null,
   loading: true,
 };
 
 const dataSlice = createSlice({
-  name: 'data',
+  name: "data",
   initialState,
   reducers: {
     dataStart: (state) => {
       state.loading = true;
       state.error = null;
-    }, 
+    },
     dataFailure: (state) => {
       state.loading = false;
     },
@@ -49,9 +52,9 @@ const dataSlice = createSlice({
       state.globalNews = action.payload;
       state.error = null;
     },
-    getGroupNews: (state, action) => {
+    getGroupNotifications: (state, action) => {
       state.loading = false;
-      state.groupNews = action.payload;
+      state.groupNotifications = action.payload;
       state.error = null;
     },
     setNews: (state, action) => {
@@ -73,11 +76,36 @@ const dataSlice = createSlice({
       state.loading = false;
       state.courses = action.payload;
       state.error = null;
+    },
+    getGroupTodos: (state, action) => {
+      state.loading = false;
+      state.groupTodos = action.payload;
+      state.error = null;
+    },
+    getGroupRecurringTodos: (state, action) => {
+      state.loading = false;
+      state.groupRecurringTodos = action.payload;
+      state.error = null;
     }
   },
 });
 
-export const { dataStart, dataFailure,getUser,getAllUsers,getGroup,getAllGroups,getGlobalNews,getGroupNews,setNews,getContributions,setContributions,getCourses} =
-  dataSlice.actions;
+export const {
+  dataStart,
+  dataFailure,
+  getUser,
+  getAllUsers,
+  getGroup,
+  getAllGroups,
+  getGlobalNews,
+  getGroupNotifications,
+  setNews,
+  getContributions,
+  setContributions,
+  getCourses,
+  getGroupTodos,
+  getGroupRecurringTodos,
+
+} = dataSlice.actions;
 
 export default dataSlice.reducer;
