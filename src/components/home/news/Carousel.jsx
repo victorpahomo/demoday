@@ -103,6 +103,8 @@ const Carousel = () => {
       },
     ],
   };
+
+
   // dots: true,
   // infinite: true,
   // speed: 500,
@@ -113,9 +115,9 @@ const Carousel = () => {
   // let rol = "professor";
   return (
     <div className="overflow-hidden w-full bg-black">
-      <Slider {...settings} >
+      <Slider {...settings}>
         {banner.map((linkImg, index) => (
-          <img key={index} src={linkImg} alt="" className="h-36 bg"/>
+          <img key={index} src={linkImg} alt="" className="h-36 bg" />
         ))}
       </Slider>
     </div>

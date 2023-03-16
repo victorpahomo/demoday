@@ -4,6 +4,7 @@ import Calendar from "../../components/home/calendar/CalendarFull";
 import StepProgress from "../../components/home/stepProgress/StepProgress";
 import { getGroupData, getAllNewsData } from "../../services/dataFirebaseService";
 import News from "../../components/home/news/News";
+import { SkeletonCalendar } from "../skeletonLoaders";
 const HomeStudent = () => {
   const dispatch = useDispatch();
   const userGroup = useSelector((state) => state.user.user.groupStudent);
@@ -35,6 +36,7 @@ const HomeStudent = () => {
       {/* Componente para Calendario */}
       <section id="studentCalendar">
         <div className="w-full">
+          
           <Calendar />
         </div>
       </section>

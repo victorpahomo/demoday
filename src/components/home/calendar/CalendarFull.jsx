@@ -8,6 +8,7 @@ import rrulePlugin from "@fullcalendar/rrule";
 import ModalCalendar from "./ModalCalendar";
 import './index.css';
 import { useDispatch, useSelector } from "react-redux";
+import { SkeletonCalendar } from "../../skeletonLoaders";
 
 const Calendar = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Calendar = () => {
   /* ----------------- CONTENT ---------------------- */
   let content;
   if (groupState === "pending") {
-    content = <h1>Cargando...</h1>
+    content = <SkeletonCalendar/>
   } else if (groupState === "fulfilled") {
     const eventSources = [
       {
