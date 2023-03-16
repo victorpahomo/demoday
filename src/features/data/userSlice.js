@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserData, getAllUsersData } from "../../services/dataFirebaseService"
+import { getUserData, getAllUsersData, setUserLastNotification } from "../../services/dataFirebaseService"
 
 const initialState = {
     user: null,
     allUsers: [],
     error: null,
     errorAll: null,
+    errorPost: null,
     loading: "idle",
     loadingAll: "idle",
+    loadingPost: "idle",
+
 };
 
 const userSlice = createSlice({
@@ -56,16 +59,16 @@ const userSlice = createSlice({
             .addCase(getUserData.rejected, (state, action) => {
                 state.loading = "rejected";
                 state.error = action.payload;
-            });
+            })
+            .addCase(setUserLastNotification.pending, (state) => {
+                state.loadingPost = "pending";
+            })
+            .addCase(setUserLastNotification.rejected, (state, action) => {
+                state.loading = "rejected";
+                state.errorPost = action.payload;
+            })
     }
 });
 
-/* export const {
-    userStart,
-    userFailure,
-    getUser,
-    getAllUsers,
-
-} = userSlice.actions; */
 
 export default userSlice.reducer;

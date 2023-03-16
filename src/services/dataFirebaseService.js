@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../api/firebase";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 /* import { contributionStart, contributionFailure, getAllContributions } from "../features/data/contributionSlice";
@@ -377,3 +377,19 @@ export const getAllUSersData = async (dispatch) => {
     }
 };
 */
+
+export const setUserLastNotification = createAsyncThunk(
+    "user/setLastNotification",
+    async ({ uid, date }) => {
+        console.log("setUserLastNotification", uid, date);
+        try {
+            const docRef = doc(db, `users/${uid}`);
+            await updateDoc(docRef, {
+                last_notification: date,
+            });
+        } catch (error) {
+            console.error("Error updating document:", error);
+            throw error;
+        }
+    }
+);

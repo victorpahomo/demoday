@@ -4,9 +4,12 @@ import { BellIcon, ViewAllIcon } from "../../assets";
 import { NotificationCard } from "./"
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
+import { setUserLastNotification } from "../../services/dataFirebaseService";
+
 
 const NotificationContainer = () => {
   const dispatch = useDispatch();
+  const userUid = useSelector((state) => state.auth.user.uid);
   const groupStatus = useSelector((state) => state.group.loading);
   const userStatus = useSelector((state) => state.user.loading);
   const userLastNotification = useSelector((state) => state.user.user?.last_notification)
@@ -24,8 +27,9 @@ const NotificationContainer = () => {
       return (prev.date > current.date) ? prev : current
     })
 
-    if (lastNotification > userLastNotification) {
-      
+    if ((lastNotification.date > userLastNotification) && userUid !== undefined) {
+      const newLastNotification = lastNotification.date
+      dispatch(setUserLastNotification({uid:userUid,date:newLastNotification}))
       toast.custom((t) => (
         <div
           className={`${t.visible ? "animate-enter" : "animate-leave"
