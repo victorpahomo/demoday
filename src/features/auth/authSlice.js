@@ -52,7 +52,6 @@ export const getRol = async (uid) => {
   const docRef = doc(db, `users/${uid}`);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-    console.log('Document data:', docSnap.data().rol);
     return docSnap.data().rol;
   } else {
     console.log('No such document!');
@@ -70,7 +69,6 @@ export const initializeSession = () => (dispatch) => {
           email: currentUser.email,
           rol: rol,
         };
-        console.log(currentUserData);
         dispatch(loginUserSuccess(currentUserData));
       });
     } else {
