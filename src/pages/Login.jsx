@@ -46,7 +46,7 @@ const Login = () => {
             name="email"
             placeholder="nombre@codelms.com"
             onChange={handleChange}
-            className="w-full h-10 border-2 border-[#f2f2f2] rounded-xl p-1 bg-[#f2f2f2] text-primary-azulCeleste5 placeholder:text-gray-400 font-semibold transition-all hover:-translate-y-1"
+            className="w-full h-10 border-2 border-[#f2f2f2] rounded-xl p-1 bg-[#f2f2f2] text-primary-azulCeleste5 placeholder:text-gray-400 font-semibold transition-all hover:-translate-y-1 focus:text-primary-azulCeleste5 "
           />
 
           <label htmlFor="password" className="text-sm font-medium text-gray-600">
