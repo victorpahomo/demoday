@@ -1,6 +1,7 @@
 import { collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../api/firebase";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import * as cleanMethods from "../features/data/cleanMethods";
 /* import { contributionStart, contributionFailure, getAllContributions } from "../features/data/contributionSlice";
 import { courseStart, courseFailure, getAllCourses } from "../features/data/courseSlice";
 import { curriculumStart, curriculumFailure, getCurriculum, getAllCurriculums } from "../features/data/curriculumSlice";
@@ -10,6 +11,17 @@ import { newsStart, newsFailure, getAllNews } from "../features/data/newsSlice";
 import { userStart, userFailure, getAllUsers, getUser } from "../features/data/userSlice";
 */
 
+/* ----------- FUNCIONES GENERALES */
+export function cleanAllSlices(dispatch) {
+    //In progress
+    dispatch(cleanMethods.cleanContribution())
+    dispatch(cleanMethods.cleanCourse())
+    dispatch(cleanMethods.cleanCurriculum())
+    dispatch(cleanMethods.cleanGrade())
+    dispatch(cleanMethods.cleanGroup())
+    dispatch(cleanMethods.cleanNews())
+    dispatch(cleanMethods.cleanUser())
+}
 
 /* --------------- Peticiones a Contributions */
 export const getContributionsData = createAsyncThunk(
@@ -26,17 +38,8 @@ export const getContributionsData = createAsyncThunk(
     }
 );
 
-export const clean = createAsyncThunk(
-    "contribution/clean",
-    async () => {
-        try {
-            return [];
-        } catch (error) {
-            console.error("Error getting documents:", error);
-            throw error;
-        }
-    }
-);
+
+
 
 /* Version sin Thunk
     export const getContributionsData = async (dispatch) => {

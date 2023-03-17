@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainLayout from "../layout/MainLayout";
 import { HomeAdmin, HomeProfessor, HomeStudent } from "../components/home";
-import { getUserData } from "../services/dataFirebaseService";
+import { getUserData, getContributionsData} from "../services/dataFirebaseService";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const constributionsStatus = useSelector((state) => state.contribution.loading);
   const rol = useSelector((state) => state.auth.user.rol);
   const userUid = useSelector((state) => state.auth.user.uid);
   const name = useSelector((state) => state.user.user?.name);
@@ -16,6 +17,11 @@ const Home = () => {
       dispatch(getUserData(userUid));
     }
   }, [userStatus, dispatch]);
+  useEffect(() => {
+    if (constributionsStatus === "idle") {
+      dispatch(getContributionsData(userUid));
+    }
+  }, [constributionsStatus, dispatch]);
 
   /* ----------------- CONTENT ---------------------- */
   let content;
