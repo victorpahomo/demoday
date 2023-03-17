@@ -1,10 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/auth/authSlice";
+import { cleanAllSlices } from "../services/dataFirebaseService";
+import { logoutService } from "../services/authFirebaseService";
+
+
 const ButtonProfile = () => {
   const dispatch = useDispatch();
   const handleClick = () => {
-    dispatch(logout());
+    logoutService(dispatch);
+    cleanAllSlices(dispatch)
   };
   return (
     <div
