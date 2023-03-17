@@ -50,9 +50,9 @@ const ListCourses = () => {
           <input
             type="text"
             placeholder="Search…"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full bg-primary-AzulVerde4 text-white"
           />
-          <button className="btn btn-square">
+          <button className="btn btn-square bg-primary-AzulVerde4 text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -76,21 +76,21 @@ const ListCourses = () => {
           {Object.values(courses).map((course) => (
             <div
               key={course.title.trim()}
-              className="card h-80 shadow-xl bg-primary-azulCeleste1 text-primary-Azul5"
+              className=" h-80 shadow-xl bg-primary-azulCeleste1 text-primary-Azul5"
             >
               <div
-                className="h-96 bg-center bg-cover bg-no-repeat"
+                className="h-32 bg-center bg-cover bg-no-repeat"
                 style={{ backgroundImage: `url(${course.image})` }}
               />
-              <div className="card-body px-4">
+              <div className=" px-4">
                 <h2 className="card-title">{course.title}</h2>
                 <div className="flex justify-around">
                   <div className="badge badge-outline">{course.category}</div>
                   <div className="badge badge-secondary">NEW</div>
                 </div>
-                <p>{course.description}</p>
-                <div className="card-actions justify-center">
-                  <button className="btn btn-primary bg-primary-AzulVerde4 border-none hover:bg-primary-Azul5">
+                <p className="text-sm">{course.description}</p>
+                <div className="flex justify-center">
+                  <button className="btn mt-3 btn-primary btn-sm bg-primary-AzulVerde4 border-none hover:bg-primary-Azul5">
                     Abrir curso
                   </button>
                 </div>
@@ -100,43 +100,57 @@ const ListCourses = () => {
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        <h2 className="font-bold text-2xl text-slate-600 py-10">Aportes</h2>
-        <div className="card shadow-xl bg-slate-600">
+        <h2 className="font-bold text-2xl text-slate-600 py-4">Aportes</h2>
+        <div className="card shadow-xl bg-slate-200 text-slate-600">
           <div className="p-4">
             <h2 className="card-title pb-4">React</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum eveniet eligendi doloremque nemo quasi quo? Laudantium, neque, provident necessitatibus voluptatem laborum aliquid eaque nam ab itaque numquam vel ipsa iste?</p>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum
+              eveniet eligendi doloremque nemo quasi quo? Laudantium, neque,
+              provident necessitatibus voluptatem laborum aliquid eaque nam ab
+              itaque numquam vel ipsa iste?
+            </p>
             <div className="card-actions justify-end">
-              <button className="py-2 px-3 bg-slate-800 rounded-xl">Leer mas</button>
+              <button className="py-2 px-3 bg-primary-AzulVerde4 text-white rounded-xl">
+                Leer mas
+              </button>
             </div>
           </div>
         </div>
-        <div className="card shadow-xl bg-slate-600">
+        <div className="card shadow-xl bg-slate-200 text-slate-600">
           <div className="p-4">
             <h2 className="card-title pb-4">React</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum eveniet eligendi doloremque nemo quasi quo? Laudantium, neque, provident necessitatibus voluptatem laborum aliquid eaque nam ab itaque numquam vel ipsa iste?</p>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum
+              eveniet eligendi doloremque nemo quasi quo? Laudantium, neque,
+              provident necessitatibus voluptatem laborum aliquid eaque nam ab
+              itaque numquam vel ipsa iste?
+            </p>
             <div className="card-actions justify-end">
-              <button className="py-2 px-3 bg-slate-800 rounded-xl">Leer mas</button>
+              <button className="py-2 px-3 bg-primary-AzulVerde4 text-white rounded-xl">
+                Leer mas
+              </button>
             </div>
           </div>
         </div>
-        <div className="card shadow-xl bg-slate-600">
+        <div className="card shadow-xl bg-slate-200 text-slate-600">
           <div className="p-4">
             <h2 className="card-title pb-4">React</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum eveniet eligendi doloremque nemo quasi quo? Laudantium, neque, provident necessitatibus voluptatem laborum aliquid eaque nam ab itaque numquam vel ipsa iste?</p>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum
+              eveniet eligendi doloremque nemo quasi quo? Laudantium, neque,
+              provident necessitatibus voluptatem laborum aliquid eaque nam ab
+              itaque numquam vel ipsa iste?
+            </p>
             <div className="card-actions justify-end">
-              <button className="py-2 px-3 bg-slate-800 rounded-xl">Leer mas</button>
+              <button className="py-2 px-3 bg-primary-AzulVerde4 text-white rounded-xl">
+                Leer mas
+              </button>
             </div>
           </div>
         </div>
-        <div className="card shadow-xl bg-slate-600">
-          <div className="p-4">
-            <h2 className="card-title pb-4">React</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum eveniet eligendi doloremque nemo quasi quo? Laudantium, neque, provident necessitatibus voluptatem laborum aliquid eaque nam ab itaque numquam vel ipsa iste?</p>
-            <div className="card-actions justify-end">
-              <button className="py-2 px-3 bg-slate-800 rounded-xl">Leer mas</button>
-            </div>
-          </div>
-        </div>
+
+
       </div>
     </>
   );

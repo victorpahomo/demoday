@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { auth, db } from '../../api/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged,  } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 const initialState = {
   user: null,

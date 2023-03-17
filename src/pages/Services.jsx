@@ -11,7 +11,7 @@ const Services = () => {
   // title, icon, description, link
   return (
     <MainLayout props="Apoyo Técnico">
-      <div className="flex flex-wrap gap-5 mt-5">
+      <div className="flex flex-wrap gap-10 mt-5 justify-center items-center">
         <CardServices
           title="Apoyo Técnico"
           description="Preguntas que necesitas resolver en el marco del proceso formativo"

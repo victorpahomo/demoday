@@ -26,6 +26,18 @@ export const getContributionsData = createAsyncThunk(
     }
 );
 
+export const clean = createAsyncThunk(
+    "contribution/clean",
+    async () => {
+        try {
+            return [];
+        } catch (error) {
+            console.error("Error getting documents:", error);
+            throw error;
+        }
+    }
+);
+
 /* Version sin Thunk
     export const getContributionsData = async (dispatch) => {
     try {

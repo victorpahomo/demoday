@@ -58,3 +58,12 @@ export const login = async (email, password,dispatch) => {
         console.log(error);
     }
 };
+
+export const logoutService = async (dispatch) => {
+    dispatch(logout());
+    try {
+        await auth.signOut();
+    } catch (error) {
+        console.log(error);
+    }
+}
