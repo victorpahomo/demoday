@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getAllNewsData } from "../../services/dataFirebaseService"
 
 const initialState = {
@@ -11,19 +11,19 @@ const newsSlice = createSlice({
     name: "news",
     initialState,
     reducers: {
-/*         newsStart: (state) => {
-            state.loading = true;
-            state.error = null;
-        },
-        getAllNews: (state, action) => {
-            state.loading = false;
-            state.allUsers = action.payload;
-            state.error = null;
-        },
-        newsFailure: (state, action) => {
-            state.loading = false;
-            state.error = action.payload;
-        }, */
+        /*         newsStart: (state) => {
+                    state.loading = true;
+                    state.error = null;
+                },
+                getAllNews: (state, action) => {
+                    state.loading = false;
+                    state.allUsers = action.payload;
+                    state.error = null;
+                },
+                newsFailure: (state, action) => {
+                    state.loading = false;
+                    state.error = action.payload;
+                }, */
     },
     extraReducers: (builder) => {
         builder
@@ -37,6 +37,9 @@ const newsSlice = createSlice({
             .addCase(getAllNewsData.rejected, (state, action) => {
                 state.loading = "rejected";
                 state.error = action.payload;
+            })
+            .addCase(clean.fulfilled, (state) => {
+                Object.assign(state, initialState);
             });
     }
 });
@@ -48,3 +51,15 @@ const newsSlice = createSlice({
 } = newsSlice.actions; */
 
 export default newsSlice.reducer;
+
+export const clean = createAsyncThunk(
+    "news/clean",
+    async () => {
+        try {
+            return null;
+        } catch (error) {
+            console.error("Error getting documents:", error);
+            throw error;
+        }
+    }
+);
