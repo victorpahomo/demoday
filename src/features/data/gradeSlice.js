@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getUserGradesData, getGroupGradesData } from "../../services/dataFirebaseService"
 
 const initialState = {
@@ -56,6 +56,9 @@ const gradeSlice = createSlice({
             .addCase(getUserGradesData.rejected, (state, action) => {
                 state.loading = "rejected";
                 state.error = action.payload;
+            })
+            .addCase(clean.fulfilled, (state) => {
+                Object.assign(state, initialState);
             });
     }
 });
@@ -69,3 +72,15 @@ const gradeSlice = createSlice({
 } = gradeSlice.actions; */
 
 export default gradeSlice.reducer;
+
+export const clean = createAsyncThunk(
+    "grade/clean",
+    async () => {
+        try {
+            return null;
+        } catch (error) {
+            console.error("Error getting documents:", error);
+            throw error;
+        }
+    }
+);

@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import {getCoursesData} from "../../services/dataFirebaseService"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { getCoursesData } from "../../services/dataFirebaseService"
 
 const initialState = {
     allCourses: [],
@@ -11,22 +11,22 @@ const courseSlice = createSlice({
     name: "course",
     initialState,
     reducers: {
-/*         courseStart: (state) => {
-            state.loading = true;
-            state.error = null;
-        },
-        getAllCourses: (state, action) => {
-            state.loading = false;
-            state.allUsers = action.payload;
-            state.error = null;
-        },
-        courseFailure: (state, action) => {
-            state.loading = false;
-            state.error = action.payload;
-        }, */
+        /*         courseStart: (state) => {
+                    state.loading = true;
+                    state.error = null;
+                },
+                getAllCourses: (state, action) => {
+                    state.loading = false;
+                    state.allUsers = action.payload;
+                    state.error = null;
+                },
+                courseFailure: (state, action) => {
+                    state.loading = false;
+                    state.error = action.payload;
+                }, */
     },
     extraReducers: (builder) => {
-        builder 
+        builder
             .addCase(getCoursesData.pending, (state) => {
                 state.loading = "pending";
             })
@@ -37,6 +37,9 @@ const courseSlice = createSlice({
             .addCase(getCoursesData.rejected, (state, action) => {
                 state.loading = "rejected";
                 state.error = action.payload;
+            })
+            .addCase(clean.fulfilled, (state) => {
+                Object.assign(state, initialState);
             });
     }
 });
@@ -49,3 +52,15 @@ const courseSlice = createSlice({
 } = courseSlice.actions; */
 
 export default courseSlice.reducer;
+
+export const clean = createAsyncThunk(
+    "course/clean",
+    async () => {
+        try {
+            return null;
+        } catch (error) {
+            console.error("Error getting documents:", error);
+            throw error;
+        }
+    }
+);

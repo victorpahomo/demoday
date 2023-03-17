@@ -1,8 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import {
-  getContributionsData,
-  clean,
-} from "../../services/dataFirebaseService";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getContributionsData } from "../../services/dataFirebaseService";
 
 const initialState = {
   allContributions: [],
@@ -42,9 +39,7 @@ const contributionSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(clean.fulfilled, (state) => {
-        state.allContributions = [];
-        state.error = null;
-        state.loading = "idle";
+        Object.assign(state, initialState);
       });
   },
 });
@@ -57,3 +52,15 @@ const contributionSlice = createSlice({
 } = contributionSlice.actions; */
 
 export default contributionSlice.reducer;
+
+export const clean = createAsyncThunk(
+  "contribution/clean",
+  async () => {
+    try {
+      return null;
+    } catch (error) {
+      console.error("Error getting documents:", error);
+      throw error;
+    }
+  }
+);

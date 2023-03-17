@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getUserData, getAllUsersData, setUserLastNotification } from "../../services/dataFirebaseService"
 
 const initialState = {
@@ -67,8 +67,23 @@ const userSlice = createSlice({
                 state.loading = "rejected";
                 state.errorPost = action.payload;
             })
+            .addCase(clean.fulfilled, (state) => {
+                Object.assign(state, initialState);
+            });
     }
 });
 
 
 export default userSlice.reducer;
+
+export const clean = createAsyncThunk(
+    "user/clean",
+    async () => {
+        try {
+            return null;
+        } catch (error) {
+            console.error("Error getting documents:", error);
+            throw error;
+        }
+    }
+);

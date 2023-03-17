@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getAllCurriculumsData, getCurriculumData } from "../../services/dataFirebaseService"
 
 const initialState = {
@@ -57,6 +57,9 @@ const curriculumSlice = createSlice({
             .addCase(getCurriculumData.rejected, (state, action) => {
                 state.loading = "rejected";
                 state.error = action.payload;
+            })
+            .addCase(clean.fulfilled, (state) => {
+                Object.assign(state, initialState);
             });
     }
 });
@@ -70,3 +73,15 @@ const curriculumSlice = createSlice({
 } = curriculumSlice.actions; */
 
 export default curriculumSlice.reducer;
+
+export const clean = createAsyncThunk(
+    "curriculum/clean",
+    async () => {
+        try {
+            return null;
+        } catch (error) {
+            console.error("Error getting documents:", error);
+            throw error;
+        }
+    }
+);
