@@ -121,7 +121,7 @@ const NotificationContainer = () => {
               <div className="px-4 py-2">No hay notificaciones</div>
             )}
           </div>
-          <a
+          <div
             href="#"
             className="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-slate-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
           >
@@ -129,7 +129,7 @@ const NotificationContainer = () => {
               <ViewAllIcon className="w-4 h-4 mr-2 fill-gray-500 dark:fill-gray-400" />
               Ver todos
             </Link>
-          </a>
+          </div>
         </div>
       </div>
     );
