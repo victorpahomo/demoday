@@ -12,13 +12,13 @@ const CardServices = ({ title, icon: Icon, description, link, stylesIcon }) => {
         <div className="flex text-center"></div>
         <p className="text-base ">{description}</p>
         <div className="card-actions justify-center">
-          <a
-            target="_blank"
-            href={link}
+          <label
+            id={title}
+            htmlFor="my-modal-6"
             className="btn btn-primary btn-xs bg-primary-AzulVerde4 border-none hover:bg-primary-Azul5 mt-2 w-32"
           >
-            Ir
-          </a>
+            Abrir
+          </label>
         </div>
       </div>
     </div>
