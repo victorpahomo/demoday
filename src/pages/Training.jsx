@@ -1,33 +1,39 @@
-import React, { useState } from "react";
-/* import { Viewer, Worker } from '@react-pdf-viewer/core';
-import '@react-pdf-viewer/core/lib/styles/index.css';
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'; */
-
-/* function PDFViewer() {
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
-  const filePath = require('../assets/example.pdf');
- // Change this to the path of your PDF file
-  return (
-      <Worker workerUrl="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.3.122/pdf.worker.min.js">
-          <div style={{ height: '750px' }}>
-              <Viewer fileUrl={fileUrl} plugins={[defaultLayoutPluginInstance]} />
-          </div>
-      </Worker>
-  );
-} */
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import ShowCurriculumCard from "../components/training/ShowCurriculumCard";
 import MainLayout from "../layout/MainLayout";
+import { getCurriculumData } from "../services/dataFirebaseService"
 const Training = () => {
-  const PDF_URL = "https://www.africau.edu/images/default/sample.pdf";
+  const dispatch = useDispatch();
+  // Loaders
+  const curriculumFetchStatus = useSelector((state) => state.curriculum.loading);
+  const groupFetchStatus = useSelector((state) => state.group.loading);
+  // Data
+  const objCurriculum = useSelector((state) => state.curriculum?.curriculum);
+  const stepOfUser = useSelector((state) => state.group.group?.step);
+
+  // Get curriculum data
+  useEffect(() => {
+    if (curriculumFetchStatus === "idle") {
+      dispatch(getCurriculumData("frontend"));
+    }
+  }, [curriculumFetchStatus]);
+
   return (
     <MainLayout props="Formación">
+      {curriculumFetchStatus === "pending" ?
+        (<h1>Cargando...</h1>)
+          :
+          curriculumFetchStatus === "rejected" ?
+      (<h1>Hubo un error</h1>)
+      :
+      (
       <div className="mx-auto">
         <div className="flex justify-between my-4">
           <h1 className="text-xl font-bold text-primary-AzulVerde3">
             Ruta actual:
             <span className="text-xl text-primary-AzulVerde2">
-              {" "}
-              fundamentos.
+            {stepOfUser == 1 ? "Fundamentos Web" : stepOfUser == 2 ? "Profundización Frontend" : "Empleabilidad"}
             </span>
           </h1>
           <h1 className="text-xl font-bold text-primary-AzulVerde3">
@@ -62,212 +68,9 @@ const Training = () => {
               >
                 Temas
               </label>
-              <div className="h-auto p-8 overflow-auto hidden peer-checked:block w-full left-0 bg-slate-300 ">
-                <ul>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore?
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore?
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore?
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore?
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore?
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                  <li className="p-1">
-                    {" "}
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Assumenda, dolor corrupti iure error nostrum aut recusandae
-                    at nulla impedit deleniti quisquam cumque facilis nesciunt
-                    sint totam voluptatem! Impedit, possimus dolore? xxxxxxxxxxx
-                  </li>
-                </ul>
+              <div className="max-h-screen p-8 w-full overflow-auto absolute hidden peer-checked:block left-0 bg-slate-100"
+                style={{ height: "calc(100vh - 18rem)" }}>
+               <ShowCurriculumCard data={objCurriculum.fundamentos} />
               </div>
             </li>
             <li className="flex-grow h-fit">
@@ -283,9 +86,10 @@ const Training = () => {
               >
                 Grabaciones
               </label>
-              {/* <div className="max-h-[26rem] p-8 overflow-auto absolute hidden peer-checked:block w-full left-0 bg-slate-300"> " */}
-              <div className="h-auto w-full p-8 overflow-auto hidden peer-checked:block  left-0 bg-slate-300 ">
-                <ul>
+              <div className="max-h-screen p-8 w-full overflow-auto absolute hidden peer-checked:block left-0 bg-slate-100"
+                style={{ height: "calc(100vh - 18rem)" }}>
+                {/*               <div className="h-auto w-full p-8 overflow-auto hidden peer-checked:block  left-0 bg-slate-300 ">
+       */}                <ul>
                   <li className="p-1"> luis</li>
                   <li className="p-1"> petra</li>
                   <li className="p-1"> luis</li>
@@ -303,6 +107,9 @@ const Training = () => {
           </ul>
         </div>
       </div>
+      )
+          }
+
     </MainLayout>
   );
 };
