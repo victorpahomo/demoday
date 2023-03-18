@@ -7,16 +7,14 @@ const Grades = () => {
     <div className="">
       <MainLayout props="Notas">
         {/* Componente para proceso */}
-        <section>
+        <section className="mb-5">
+        <h1 className="text-xl text-center">Tu progreso general</h1>
           <StepProgress step={2} />
         </section>
-        <div id="descriptionGrades" className="text-center mb-10">
-          <h1 className="text-xl">Lorem ipsum dolor sit</h1>
+        <div id="descriptionGrades" className="mb-5">
           <p>
             {" "}
-            amet consectetur adipisicing elit. Sequi, doloribus voluptates. Fuga
-            saepe debitis id vero itaque voluptates magni aliquid qui, labore
-            dolores? Molestiae officiis aliquam neque dolor. Maiores, at.
+            Aquí podrás ver todas tus notas por etapa y proyectos, así como los promedios y asistencias.
           </p>
         </div>
         <Table />
