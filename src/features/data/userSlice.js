@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getUserData, getAllUsersData, setUserLastNotification } from "../../services/dataFirebaseService"
 
 const initialState = {
-    user: null,
+    user: {},
     allUsers: [],
     error: null,
     errorAll: null,

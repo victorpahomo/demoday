@@ -6,22 +6,20 @@ import { getUserData, getContributionsData} from "../services/dataFirebaseServic
 
 const Home = () => {
   const dispatch = useDispatch();
-  const constributionsStatus = useSelector((state) => state.contribution.loading);
   const rol = useSelector((state) => state.auth.user.rol);
   const userUid = useSelector((state) => state.auth.user.uid);
   const name = useSelector((state) => state.user.user?.name);
   const userStatus = useSelector((state) => state.user.loading);
+
+  /* Corrigiendo logica */
+  const [returnTest, setReturnTest] = useState(<></>)
+   /* Corrigiendo logica */
 
   useEffect(() => {
     if (userStatus === "idle") {
       dispatch(getUserData(userUid));
     }
   }, [userStatus, dispatch]);
-  useEffect(() => {
-    if (constributionsStatus === "idle") {
-      dispatch(getContributionsData(userUid));
-    }
-  }, [constributionsStatus, dispatch]);
 
   /* ----------------- CONTENT ---------------------- */
   let content;
