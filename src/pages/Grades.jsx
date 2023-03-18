@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import MainLayout from "../layout/MainLayout";
-import Table from "../components/Table";
+import Table from "../components/grades/Table";
 import StepProgress from "../components/home/stepProgress/StepProgress";
 import { getUserGradesData } from "../services/dataFirebaseService";
 import { useDispatch, useSelector } from "react-redux";
