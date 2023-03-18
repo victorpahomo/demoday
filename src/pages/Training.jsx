@@ -16,7 +16,6 @@ const Training = () => {
 
   // Get curriculum data
   useEffect(() => {
-    console.log("SI");
     if (curriculumFetchStatus === "idle") {
       dispatch(getCurriculumData("frontend"));
     }
