@@ -1,218 +1,7 @@
 import React from "react";
 
-const Table = () => {
-  const datos = {
-    "fundamentos": {
-      "grades": [
-        {
-          "title": "Sprint 1",
-          "grade": 55,
-          "state": "graded",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Sprint 2",
-          "grade": 90,
-          "state": "graded",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Sprint 3",
-          "grade": 80,
-          "state": "graded",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Sprint 4",
-          "grade": 55,
-          "state": "graded",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Workshop 1",
-          "grade": 90,
-          "state": "graded",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Workshop 2",
-          "grade": 80,
-          "state": "graded",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Workshop 3",
-          "grade": 90,
-          "state": "graded",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        }
-      ],
-      "attendance": {
-        "sesion1": true,
-        "sesion2": false,
-        "sesion3": true,
-        "sesion4": true,
-        "sesion5": true,
-        "sesion6": true,
-        "sesion7": true,
-        "sesion8": true,
-        "sesion9": false,
-        "sesion10": true,
-        "sesion11": true,
-        "sesion12": true,
-        "sesion13": true,
-        "sesion14": false,
-        "sesion15": true
-      }
-    },
-    "profundizacion": {
-      "grades": [
-        {
-          "title": "Sprint 1",
-          "grade": -1,
-          "state": "delivered",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Sprint 2",
-          "grade": 0,
-          "state": "undelivered",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Sprint 3",
-          "grade": 0,
-          "state": "undelivered",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Sprint 4",
-          "grade": 90,
-          "state": "graded",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Workshop 1",
-          "grade": 95,
-          "state": "graded",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Workshop 2",
-          "grade": 90,
-          "state": "graded",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        },
-        {
-          "title": "Workshop 3",
-          "grade": 95,
-          "state": "graded",
-          "anotation": [
-            {
-              "author": "Profesor",
-              "date": "2018-10-01",
-              "anotation": "Muy bien"
-            }
-          ]
-        }
-      ],
-      "attendance": {
-        "sesion1": true,
-        "sesion2": false,
-        "sesion3": true,
-        "sesion4": true,
-        "sesion5": true,
-        "sesion6": true,
-        "sesion7": true,
-        "sesion8": true,
-        "sesion9": false,
-        "sesion10": true,
-        "sesion11": true,
-        "sesion12": true,
-        "sesion13": true,
-        "sesion14": false,
-        "sesion15": true
-      }
-    }
-  };
+const Table = ({data}) => {
+
 
   // Calcular promedio de un objeto de notas
   const calcularPromedio = (notas) => {
@@ -254,7 +43,7 @@ const Table = () => {
               </tr>
             </thead>
             <tbody>
-              {datos.fundamentos.grades.map(
+              {data.fundamentos.grades.map(
                 (grade) => (
                   <tr key={grade.title}>
                     <td className="border px-4 py-2">{grade.title}</td>
@@ -265,7 +54,7 @@ const Table = () => {
               <tr>
                 <td className="border px-4 py-2 font-bold">Promedio</td>
                 <td className="border px-4 py-2 font-bold">
-                  {calcularPromedio(datos.fundamentos.grades)}
+                  {calcularPromedio(data.fundamentos.grades)}
                 </td>
               </tr>
             </tbody>
@@ -283,7 +72,7 @@ const Table = () => {
               </tr>
             </thead>
             <tbody>
-              {datos.profundizacion.grades.map(
+              {data.profundizacion.grades.map(
                 (grade) => (
                   <tr key={grade.title}>
                     <td className="border px-4 py-2">{grade.title}</td>
@@ -294,15 +83,15 @@ const Table = () => {
               <tr>
                 <td className="border px-4 py-2 font-bold">Promedio</td>
                 <td className="border px-4 py-2 font-bold">
-                  {calcularPromedio(datos.profundizacion.grades)}
+                  {calcularPromedio(data.profundizacion.grades)}
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div className="_terceraTabla shadow-xl md:col-span-2">
+        <div className="_terceraTabla shadow-xl">
           <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">
-            Asistencia
+            Asistencia Fundamentos
           </h2>
           <table className="w-full table-auto">
             <thead>
@@ -312,7 +101,7 @@ const Table = () => {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(datos.fundamentos.attendance).map(([sesion, asistencia]) => (
+              {Object.entries(data.fundamentos.attendance).map(([sesion, asistencia]) => (
                 <tr key={sesion}>
                   <td className="border px-4 py-2">{sesion}</td>
                   <td className="border px-4 py-2">
@@ -323,7 +112,36 @@ const Table = () => {
               <tr>
                 <td className="border px-4 py-2 font-bold">Promedio</td>
                 <td className="border px-4 py-2 font-bold">
-                  {calcularPromedioAsistencia(datos.fundamentos.attendance)}%
+                  {calcularPromedioAsistencia(data.fundamentos.attendance)}%
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="_cuartaTabla shadow-xl ">
+          <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">
+            Asistencia Profundización
+          </h2>
+          <table className="w-full table-auto">
+            <thead>
+              <tr>
+                <th className="px-4 py-2">Sesión</th>
+                <th className="px-4 py-2">Asistencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(data.profundizacion.attendance).map(([sesion, asistencia]) => (
+                <tr key={sesion}>
+                  <td className="border px-4 py-2">{sesion}</td>
+                  <td className="border px-4 py-2">
+                    {asistencia ? "Asistió" : "No asistió"}
+                  </td>
+                </tr>
+              ))}
+              <tr>
+                <td className="border px-4 py-2 font-bold">Promedio</td>
+                <td className="border px-4 py-2 font-bold">
+                  {calcularPromedioAsistencia(data.profundizacion.attendance)}%
                 </td>
               </tr>
             </tbody>
