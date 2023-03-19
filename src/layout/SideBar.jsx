@@ -11,6 +11,7 @@ import SidebarLink from "./SidebarLink";
 import CodeLMSIcon from "../assets/CodeLMSIcon.svg";
 import CodeLMSIcon2 from "../assets/CodeLMSIcon/logo_border.svg";
 import CodeLMSIcon3 from "../assets/CodeLMSIcon/logoResp.svg";
+import logoWhite from "../assets/CodeLMSIcon/logoWhite.svg";
 
 const SideBar = ({ props }) => {
   const [showText, setShowText] = useState(false);
@@ -21,8 +22,8 @@ const SideBar = ({ props }) => {
       onMouseLeave={() => setShowText(false)}
     >
       <div className="absolute flex flex-col top-5 gap-7 ">
-        <figure className="z-40  mr-5 rounded-md shadow-xl bg-white p-2">
-          <img src={CodeLMSIcon2} alt="CodeLMS icon" />
+        <figure className="z-40  mr-5 rounded-md shadow-xl">
+          <img src={logoWhite} alt="CodeLMS icon" />
         </figure>
         <SidebarLink
           page={props}
