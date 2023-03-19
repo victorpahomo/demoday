@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { useSelector } from "react-redux";
 import { toast, Toaster } from "react-hot-toast";
-import Swal from "sweetalert2";
 
 const FormSendEmail = (props) => {
   const name = useSelector((state) => state.user.user.name);
