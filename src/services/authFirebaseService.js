@@ -45,7 +45,7 @@ export const login = async (email, password,dispatch) => {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password)
         const user = userCredential.user;
-
+        
         const userData = {
             uid: user.uid,
             email: user.email,

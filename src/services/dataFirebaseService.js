@@ -77,7 +77,7 @@ export const getCurriculumData = createAsyncThunk(
     "curriculum/getCurriculum",
     async (idCurriculum) => {
         try {
-            const docRef = doc(db, `curriculums/${idCurriculum}`);
+            const docRef = doc(db, `curriculum/${idCurriculum}`);
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 return docSnap.data();
@@ -185,6 +185,7 @@ export const getAllNewsData = createAsyncThunk(
 export const getUserData = createAsyncThunk(
     "user/getUser",
     async (uid) => {
+        console.log("uid", uid);
         try {
             const docRef = doc(db, `users/${uid}`);
             const docSnap = await getDoc(docRef);

@@ -1,43 +1,43 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Calendar from "../../components/home/calendar/CalendarFull";
-import StepProgress from "../../components/home/stepProgress/StepProgress";
 import { getGroupData, getAllNewsData } from "../../services/dataFirebaseService";
-import News from "../../components/home/news/News";
-import { SkeletonCalendar } from "../skeletonLoaders";
+import Carousel from "../../components/home/news/Carousel";
+
 const HomeStudent = () => {
   const dispatch = useDispatch();
-  const userGroup = useSelector((state) => state.user.user.groupStudent);
-  const groupStatus = useSelector((state) => state.group.loading);
+  // Loaders
   const userStatus = useSelector((state) => state.user.loading);
+  const groupStatus = useSelector((state) => state.group.loading);
+  //Data
+  const userGroup = useSelector((state) => state.user.user?.groupStudent);
 
   useEffect(() => {
-    if (groupStatus === "idle") {
-      dispatch(getGroupData(userGroup));
+    if (userStatus === "fulfilled") {
+      if (groupStatus === "idle") {
+        dispatch(getGroupData(userGroup));
+      }
     }
-  }, [groupStatus, dispatch]);
+  }, [groupStatus]);
 
-  /*  Anterior useEffect
-     const handleGetDataGroup = async () => {
-        const group = await getGroupData(userGroup, dispatch);
-      };
-      const handleGetDataNews = async () => {
-        const news = await getNewsData(dispatch);
-      }; */
-  /*     handleGetDataNews();
-      handleGetDataGroup(); */
 
   return (
     <div className="flex flex-col gap-5">
       {/* Componente para novedades */}
       <div className="flex justify-center w-full overflow-hidden">
-        <News />
       </div>
       {/* Componente para Calendario */}
       <section id="studentCalendar">
-        <div className="w-full">
-          
+        <div className="flex items-start justify-center w-full h-full gap-8">
+          <div className="w-3/4">
+
           <Calendar />
+          </div>
+          <div className="w-1/4">
+
+          <Carousel />
+          </div>
+
         </div>
       </section>
     </div>

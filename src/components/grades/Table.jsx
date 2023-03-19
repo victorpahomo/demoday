@@ -1,35 +1,20 @@
 import React from "react";
 
-const Table = () => {
-  const datos = {
-    id: 1,
-    grades: {
-      fundamentos: {
-        sprint1: 90,
-        sprint2: 87,
-        sprint3: 80,
-      },
-      profundizacion: {
-        sprint1: 90,
-        sprint2: 50,
-        sprint3: 78,
-      },
-    },
-    attendance: {
-      sesision1: true,
-      sesision2: true,
-      sesision3: true,
-      sesision4: true,
-      sesision5: false,
-      sesision6: true,
-    },
-  };
+const Table = ({data}) => {
+
 
   // Calcular promedio de un objeto de notas
   const calcularPromedio = (notas) => {
+    let cont = 0;
     const promedio =
-      Object.values(notas).reduce((total, nota) => total + nota, 0) /
-      Object.keys(notas).length;
+      notas.reduce((total, grade) => {
+        if (grade.grade !== -1) {
+          cont++;
+          return total + grade.grade;
+        } else {
+          return total;
+        }
+      }, 0) / cont;
     return isNaN(promedio) ? 0 : promedio.toFixed(2);
   };
   // Calcular promedio de asistencia
@@ -58,18 +43,18 @@ const Table = () => {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(datos.grades.fundamentos).map(
-                ([sprint, nota]) => (
-                  <tr key={sprint}>
-                    <td className="border px-4 py-2">{sprint}</td>
-                    <td className="border px-4 py-2">{nota}</td>
+              {data.fundamentos.grades.map(
+                (grade) => (
+                  <tr key={grade.title}>
+                    <td className="border px-4 py-2">{grade.title}</td>
+                    <td className="border px-4 py-2">{grade.grade === -1 ? grade.state : grade.grade}</td>
                   </tr>
                 )
               )}
               <tr>
                 <td className="border px-4 py-2 font-bold">Promedio</td>
                 <td className="border px-4 py-2 font-bold">
-                  {calcularPromedio(datos.grades.fundamentos)}
+                  {calcularPromedio(data.fundamentos.grades)}
                 </td>
               </tr>
             </tbody>
@@ -87,26 +72,26 @@ const Table = () => {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(datos.grades.profundizacion).map(
-                ([sprint, nota]) => (
-                  <tr key={sprint}>
-                    <td className="border px-4 py-2">{sprint}</td>
-                    <td className="border px-4 py-2">{nota}</td>
+              {data.profundizacion.grades.map(
+                (grade) => (
+                  <tr key={grade.title}>
+                    <td className="border px-4 py-2">{grade.title}</td>
+                    <td className="border px-4 py-2">{grade.grade === -1 ? grade.state : grade.grade}</td>
                   </tr>
                 )
               )}
               <tr>
                 <td className="border px-4 py-2 font-bold">Promedio</td>
                 <td className="border px-4 py-2 font-bold">
-                  {calcularPromedio(datos.grades.profundizacion)}
+                  {calcularPromedio(data.profundizacion.grades)}
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div className="_terceraTabla shadow-xl md:col-span-2">
+        <div className="_terceraTabla shadow-xl">
           <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">
-            Asistencia
+            Asistencia Fundamentos
           </h2>
           <table className="w-full table-auto">
             <thead>
@@ -116,7 +101,7 @@ const Table = () => {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(datos.attendance).map(([sesion, asistencia]) => (
+              {Object.entries(data.fundamentos.attendance).map(([sesion, asistencia]) => (
                 <tr key={sesion}>
                   <td className="border px-4 py-2">{sesion}</td>
                   <td className="border px-4 py-2">
@@ -127,7 +112,36 @@ const Table = () => {
               <tr>
                 <td className="border px-4 py-2 font-bold">Promedio</td>
                 <td className="border px-4 py-2 font-bold">
-                  {calcularPromedioAsistencia(datos.attendance)}%
+                  {calcularPromedioAsistencia(data.fundamentos.attendance)}%
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="_cuartaTabla shadow-xl ">
+          <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">
+            Asistencia Profundización
+          </h2>
+          <table className="w-full table-auto">
+            <thead>
+              <tr>
+                <th className="px-4 py-2">Sesión</th>
+                <th className="px-4 py-2">Asistencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(data.profundizacion.attendance).map(([sesion, asistencia]) => (
+                <tr key={sesion}>
+                  <td className="border px-4 py-2">{sesion}</td>
+                  <td className="border px-4 py-2">
+                    {asistencia ? "Asistió" : "No asistió"}
+                  </td>
+                </tr>
+              ))}
+              <tr>
+                <td className="border px-4 py-2 font-bold">Promedio</td>
+                <td className="border px-4 py-2 font-bold">
+                  {calcularPromedioAsistencia(data.profundizacion.attendance)}%
                 </td>
               </tr>
             </tbody>

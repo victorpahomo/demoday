@@ -8,7 +8,6 @@ import {
   Grades,
   Home,
   Login,
-  News,
   Panel,
   Profile,
   Training,
@@ -58,14 +57,6 @@ function App() {
         element={
           <ProtectedRoute>
             <Grades />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/news"
-        element={
-          <ProtectedRoute>
-            <News />
           </ProtectedRoute>
         }
       />
