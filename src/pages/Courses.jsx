@@ -6,6 +6,7 @@ import { getCoursesData, getContributionsData } from '../services/dataFirebaseSe
 import { useDispatch, useSelector } from 'react-redux'
 import Searcher from '../components/courses/Searcher'
 const Courses = () => {
+  // This component needs Contributions and Courses data
   const dispatch = useDispatch();
   // Loaders
   const courseFetchStatus = useSelector((state) => state.course.loading)//idle, pending, fulfilled, rejected
@@ -14,13 +15,13 @@ const Courses = () => {
   const objCourses = useSelector((state) => state.course?.allCourses)
   const arrayContributions = useSelector((state) => state.contribution?.allContributions)
 
-  // Get courses data
+  // Get courses data always on page load
   useEffect(() => {
     if (courseFetchStatus === "idle") {
       dispatch(getCoursesData());
     }
   }, [courseFetchStatus])
-  // Get contributions data
+  // Get contributions data always on page load
   useEffect(() => {
     if (contributionsFetchStatus === "idle") {
       dispatch(getContributionsData());

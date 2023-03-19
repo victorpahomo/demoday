@@ -8,29 +8,29 @@ const Training = () => {
   // This component needs Group,Curriculum and User data
   const dispatch = useDispatch();
   // Loaders
-  const curriculumFetchStatus = useSelector((state) => state.curriculum.loading);
-  const groupFetchStatus = useSelector((state) => state.group.loading);
-  const userFetchStatus = useSelector((state) => state.group.loading);
+  const groupFetchStatus = useSelector((state) => state.group.loading);//idle, pending, fulfilled, rejected
+  const userFetchStatus = useSelector((state) => state.group.loading);//idle, pending, fulfilled, rejected
+  const curriculumFetchStatus = useSelector((state) => state.curriculum.loading);//idle, pending, fulfilled, rejected
   // Data
-  
+  const userUid = useSelector((state) => state.auth.user?.uid);
   const objCurriculum = useSelector((state) => state.curriculum?.curriculum);
   const arrayRecordings = useSelector((state) => state.group.group?.recordings);
   const stepOfUser = useSelector((state) => state.group.group?.step);
 
-  // Get user data
+  // Get user data only on page reload
   useEffect(() => {
     if (userFetchStatus === "idle") {
       dispatch(getUserData(userUid));
     }
   }, [userFetchStatus]);
-  // Get group data
+  // Get group data only on page reload
   useEffect(() => {
     if (groupFetchStatus === "idle") {
       dispatch(getGroupData("frontend-1"));
     }
   }, [groupFetchStatus]);
 
-  // Get curriculum data
+  // Get curriculum data always on page load
   useEffect(() => {
     if (curriculumFetchStatus === "idle") {
       dispatch(getCurriculumData("frontend"));

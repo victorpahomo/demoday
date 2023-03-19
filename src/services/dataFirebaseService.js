@@ -185,7 +185,6 @@ export const getAllNewsData = createAsyncThunk(
 export const getUserData = createAsyncThunk(
     "user/getUser",
     async (uid) => {
-        console.log("uid", uid);
         try {
             const docRef = doc(db, `users/${uid}`);
             const docSnap = await getDoc(docRef);

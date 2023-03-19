@@ -2,18 +2,26 @@ import React, { useEffect } from "react";
 import MainLayout from "../layout/MainLayout";
 import Table from "../components/grades/Table";
 import StepProgress from "../components/home/stepProgress/StepProgress";
-import { getUserGradesData } from "../services/dataFirebaseService";
+import { getUserGradesData, getUserData } from "../services/dataFirebaseService";
 import { useDispatch, useSelector } from "react-redux";
 const Grades = () => {
+    // This component needs Grades and User data
   const dispatch = useDispatch();
   // Loaders
   const authFetchStatus = useSelector((state) => state.auth.loading);//true loading, false succes
   const gradesFetchStatus = useSelector((state) => state.grade.loading);//idle, pending, fulfilled, rejected
+  const userFetchStatus = useSelector((state) => state.group.loading); //idle, pending, fulfilled, rejected
   // Data
   const objGrades = useSelector((state) => state.grade?.userGrades)
   const userUid = useSelector((state) => state.auth.user?.uid)
 
-  // Get user Grades data
+  // Get user data only on page reload
+  useEffect(() => {
+    if (userFetchStatus === "idle") {
+      dispatch(getUserData(userUid));
+    }
+  }, [userFetchStatus]);
+  // Get user Grades data always on page load
   useEffect(() => {
     if (!authFetchStatus) {
       if (gradesFetchStatus === "idle") {
