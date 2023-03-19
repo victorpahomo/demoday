@@ -3,30 +3,47 @@ import { useDispatch, useSelector } from "react-redux";
 import ShowCurriculumCard from "../components/training/ShowCurriculumCard";
 import ShowRecordingCard from "../components/training/ShowRecordingCard";
 import MainLayout from "../layout/MainLayout";
-import { getCurriculumData } from "../services/dataFirebaseService"
+import { getCurriculumData, getGroupData, getUserData } from "../services/dataFirebaseService"
 const Training = () => {
+  // This component needs Group,Curriculum and User data
   const dispatch = useDispatch();
   // Loaders
   const curriculumFetchStatus = useSelector((state) => state.curriculum.loading);
   const groupFetchStatus = useSelector((state) => state.group.loading);
+  const userFetchStatus = useSelector((state) => state.group.loading);
   // Data
+  
   const objCurriculum = useSelector((state) => state.curriculum?.curriculum);
   const arrayRecordings = useSelector((state) => state.group.group?.recordings);
   const stepOfUser = useSelector((state) => state.group.group?.step);
+
+  // Get user data
+  useEffect(() => {
+    if (userFetchStatus === "idle") {
+      dispatch(getUserData(userUid));
+    }
+  }, [userFetchStatus]);
+  // Get group data
+  useEffect(() => {
+    if (groupFetchStatus === "idle") {
+      dispatch(getGroupData("frontend-1"));
+    }
+  }, [groupFetchStatus]);
 
   // Get curriculum data
   useEffect(() => {
     if (curriculumFetchStatus === "idle") {
       dispatch(getCurriculumData("frontend"));
     }
+
   }, [curriculumFetchStatus]);
 
   return (
     <MainLayout props="Formación">
-      {curriculumFetchStatus === "pending" ?
+      {curriculumFetchStatus === "pending" || groupFetchStatus === "pending" ?
         (<h1>Cargando...</h1>)
         :
-        curriculumFetchStatus === "rejected" ?
+        curriculumFetchStatus === "rejected" || groupFetchStatus === "rejected" ?
           (<h1>Hubo un error</h1>)
           :
           (
@@ -72,7 +89,7 @@ const Training = () => {
                     </label>
                     <div className="max-h-screen p-8 w-full overflow-auto absolute hidden peer-checked:block left-0 bg-slate-100"
                       style={{ height: "calc(100vh - 18rem)" }}>
-                      {curriculumFetchStatus === "fulfilled" && <ShowCurriculumCard data={objCurriculum.fundamentos} />}
+                      {(curriculumFetchStatus === "fulfilled" && groupFetchStatus === "fulfilled") && <ShowCurriculumCard data={objCurriculum.fundamentos} />}
                     </div>
                   </li>
                   <li className="flex-grow h-fit">
@@ -91,8 +108,7 @@ const Training = () => {
                     <div className="max-h-screen p-8 w-full overflow-auto absolute hidden peer-checked:block left-0 bg-slate-100"
                       style={{ height: "calc(100vh - 18rem)" }}>
 
-                      { }
-                      <ShowRecordingCard data={arrayRecordings} />
+                      {(curriculumFetchStatus === "fulfilled" && groupFetchStatus === "fulfilled") && <ShowRecordingCard data={arrayRecordings} />}
                     </div>
                   </li>
                 </ul>

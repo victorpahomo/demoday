@@ -1,5 +1,4 @@
 function ShowRecordingCard({ data }) {
-    console.log(data);
     return (
       <div className="flex flex-col flex-wrap w-full gap-3">
         {data.map((session) => (
