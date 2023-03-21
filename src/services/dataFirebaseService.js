@@ -66,7 +66,11 @@ export const getCoursesData = createAsyncThunk(
     async () => {
         try {
             const querySnapshot = await getDocs(collection(db, "courses"));
-            const courses = querySnapshot.docs.map((doc) => doc.data());
+            const courses = querySnapshot.docs.map((doc) => {
+                const course = doc.data();
+                course.id = doc.id;
+                return course;
+            });
             return courses;
         } catch (error) {
             console.error("Error getting documents:", error);

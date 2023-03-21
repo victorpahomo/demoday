@@ -1,5 +1,12 @@
 
-const ListCourses = ({courses}) => {
+import { useNavigate } from "react-router-dom";
+const ListCourses = ({ courses }) => {
+  const navigate = useNavigate();
+  
+  const handleClick = (id) => {
+    console.log(id);
+    navigate(`/course/${id}`);
+  }
 
   return (
     <>
@@ -19,11 +26,14 @@ const ListCourses = ({courses}) => {
                 <h2 className="card-title">{course.title}</h2>
                 <div className="flex justify-around">
                   <div className="badge badge-outline">{course.category}</div>
-{/*                   <div className="badge badge-secondary">NEW</div>
+                  {/*                   <div className="badge badge-secondary">NEW</div>
  */}                </div>
                 <p className="text-sm">{course.description}</p>
                 <div className="flex justify-center">
-                  <button className="btn mt-3 btn-primary btn-sm bg-primary-AzulVerde4 border-none hover:bg-primary-Azul5 rounded-md">
+                  <button
+                    onClick={() => handleClick(course.id)}
+                    className="btn mt-3 btn-primary btn-sm bg-primary-AzulVerde4 border-none hover:bg-primary-Azul5 rounded-md"
+                  >
                     Abrir curso
                   </button>
                 </div>

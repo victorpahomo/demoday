@@ -15,6 +15,7 @@ import {
   NotFound,
   Notifications,
   Services,
+  CourseOpen,
 } from "../pages";
 import AdminRegister from "../components/AdminRegister";
 
@@ -73,6 +74,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Courses />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/course/:id"
+        element={
+          <ProtectedRoute>
+            <CourseOpen />
           </ProtectedRoute>
         }
       />
