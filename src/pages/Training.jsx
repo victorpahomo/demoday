@@ -49,9 +49,10 @@ const Training = () => {
           (
             <div className="mx-auto">
               <div className="flex justify-between my-4">
-                <h1 className="text-xl font-bold text-primary-AzulVerde3">
+                <h1 className="text-xl font-medium  text-primary-AzulVerde3">
                   Ruta actual:
-                  <span className="text-xl text-primary-AzulVerde2">
+                  &nbsp;
+                  <span className="text-xl font-light text-primary-Azul5">
                     {stepOfUser == 1 ? "Fundamentos Web" : stepOfUser == 2 ? "Profundización Frontend" : "Empleabilidad"}
                   </span>
                 </h1>

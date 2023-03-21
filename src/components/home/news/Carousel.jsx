@@ -42,7 +42,7 @@ const Carousel = () => {
 
   return (
     <section id="studentNews" className="p-1 w-full">
-      <h2 className="text-sm font-semibold">Últimas noticias</h2>
+      <h2 className="text-sm text-primary-AzulVerde3 font-semibold mb-2">Últimas noticias</h2>
       {newsFetchStatus === "pending" ?//Loading
         (
           <SkeletonCarousel />

@@ -3,7 +3,7 @@ import { TechnicalSupportIcon } from "../assets";
 
 const CardServices = ({ title, icon: Icon, description, link, stylesIcon }) => {
   return (
-    <div className="mt-2 card w-64 h-auto shadow-xl shadow-gray-300 bg-primary-azulCeleste1 text-primary-Azul5 transition-all hover:-translate-y-2 ">
+    <div className="mt-2 card w-64 h-auto shadow-md  bg-slate-200 text-primary-Azul5 transition-all hover:-translate-y-2 ">
       <div className="flex justify-center pt-5">
         <Icon className={stylesIcon} />
       </div>

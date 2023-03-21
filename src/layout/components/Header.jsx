@@ -11,7 +11,7 @@ const Header = ({ props }) => {
   return (
     <div className="navbar z-40 fixed w-[calc(100%-4.25rem)] top-5  bg-primary-white rounded-t-2xl">
       <div className="flex-1">
-        <h1 className="pl-4 normal-case text-xl font-medium text-primary-azulCeleste3">{props}</h1>
+        <h1 className="pl-4 normal-case text-xl font-medium text-primary-AzulVerde3">{props}</h1>
       </div>
 
       <div className="sm:gap-2">

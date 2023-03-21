@@ -43,9 +43,9 @@ const Courses = () => {
               <>
 
                   <Searcher />
-                  <h2 className="font-bold text-2xl text-slate-600">Cursos</h2>
+                  <h2 className="font-bold text-2xl text-primary-AzulVerde3">Cursos</h2>
                   {courseFetchStatus === "fulfilled" && <ListCourses courses={objCourses} />}
-                  <h2 className="font-bold text-2xl text-slate-600 py-4">Aportes</h2>
+                  <h2 className="font-bold text-2xl text-primary-AzulVerde3 py-4">Aportes</h2>
                   {contributionsFetchStatus === "fulfilled" && <ListContributions contributions={arrayContributions} />}
 
               </>

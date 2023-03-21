@@ -37,7 +37,7 @@ const Home = () => {
               : //Success
               (
                 <>
-                  <h1 className="mb-5 flex gap-1">
+                  <h1 className="mb-5 flex gap-1 text-primary-Azul5">
                     ¡Hola,<p className="font-semibold">{name ? name : rol}</p>
                     bienvenido a Code LMS!
                   </h1>
