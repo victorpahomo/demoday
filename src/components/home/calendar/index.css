@@ -34,9 +34,25 @@
     border: none!important;
 
 }
-
+/* Actual Day */
 .fc-day-today{
     background-color: #edefcacc!important;
 }
+/* Title */
+.fc-toolbar-title{
+    color: #082340df;
+}
 
+/* Day Title */
+.fc-col-header-cell-cushion{
+    color: #11345adf!important;
+/*     font-size: 1.2rem!important;
+ */}
+
+.fc-daygrid-day-frame .fc-scrollgrid-sync-inner{
+    background-color: white!important;
+}
+.fc-col-header{
+    background-color:#94a6b03f!important;
+}
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Step from './Step';
 
 const StepProgress = ({ step }) => {
-    const colors = ['bg-gray-300', 'bg-primary-AzulVerde2'];
+    const colors = ['bg-gray-300', 'bg-[#3c526a]'];
 
     const getStepColor = (index) => {
         // Si el paso es mayor o igual al index + 1, entonces el color es el segundo, sino el primero
@@ -10,7 +10,7 @@ const StepProgress = ({ step }) => {
     };
 
     return (
-        <div className='flex items-center justify-center'>
+        <div className='flex items-center justify-center w-full'>
             {/*  Al Componente step le paso el numero y el color */}
             <Step number={1} color={getStepColor(0)} />
             {/*  Al span le paso el color */}

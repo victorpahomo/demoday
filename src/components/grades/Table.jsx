@@ -31,8 +31,8 @@ const Table = ({data}) => {
     <>
 
       <div className="grid grid-cols-2 text-black gap-5">
-        <div className="_primeraTabla shadow-xl">
-          <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">
+        <div className="_primeraTabla shadow-md">
+          <h2 className="h-8  text-center font-bold text-lg bg-gray-300 text-primary-azulCeleste5 rounded-t-md">
             Notas de Fundamentos
           </h2>
           <table className="w-full table-auto">
@@ -60,8 +60,8 @@ const Table = ({data}) => {
             </tbody>
           </table>
         </div>
-        <div className="_segundaTabla shadow-xl">
-          <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">
+        <div className="_segundaTabla shadow-md">
+          <h2 className="h-8  text-center font-bold text-lg bg-gray-300 text-primary-azulCeleste5 rounded-t-md">
             Notas de Profundización
           </h2>
           <table className="w-full table-auto">
@@ -89,8 +89,8 @@ const Table = ({data}) => {
             </tbody>
           </table>
         </div>
-        <div className="_terceraTabla shadow-xl">
-          <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">
+        <div className="_terceraTabla shadow-md">
+          <h2 className="h-8  text-center font-bold text-lg bg-gray-300 text-primary-azulCeleste5 rounded-t-md">
             Asistencia Fundamentos
           </h2>
           <table className="w-full table-auto">
@@ -118,8 +118,8 @@ const Table = ({data}) => {
             </tbody>
           </table>
         </div>
-        <div className="_cuartaTabla shadow-xl ">
-          <h2 className="h-8  text-center font-bold text-lg bg-primary-AzulVerde3 text-white rounded-t-lg shadow-lg">
+        <div className="_cuartaTabla shadow-md ">
+          <h2 className="h-8  text-center font-bold text-lg bg-gray-300 text-primary-azulCeleste5 rounded-t-md">
             Asistencia Profundización
           </h2>
           <table className="w-full table-auto">

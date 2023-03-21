@@ -43,14 +43,14 @@ const Grades = () => {
             : //Success
             (
               <>
-                <section className="mb-5">
-                  <h1 className="text-xl text-center">Tu progreso general</h1>
+                <section className="mb-5 items-center">
+                  <h1 className="text-base text-start text-primary-Azul5 w-1/4">Tu progreso general :</h1>
                   <StepProgress step={2} />
                 </section>
-                <div id="descriptionGrades" className="mb-5">
+                <div id="descriptionGrades" className="mb-5 text-primary-Azul5">
                   <p>
                     {" "}
-                    Aquí podrás ver todas tus notas por etapa y proyectos, así como los promedios y asistencias.
+                    Aquí podrás ver todas tus notas por etapa y proyectos, así como los promedios y asistencias :
                   </p>
                 </div>
                 {gradesFetchStatus === "fulfilled" && <Table data={objGrades} /> } 
