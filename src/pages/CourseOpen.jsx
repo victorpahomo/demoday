@@ -1,23 +1,24 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import MainLayout from '../layout/MainLayout'
 import { getCoursesData } from '../services/dataFirebaseService'
 
 const CourseOpen = () => {
+    const dispatch = useDispatch();
     const location = useLocation()
     const currentCourse = location.pathname.split('/')[2]
     // Loaders
     const courseFetchStatus = useSelector((state) => state.course.loading)//idle, pending, fulfilled, rejected
     // Data
     const courseData = useSelector((state) => state.course.allCourses?.find((course) => course.id === currentCourse))
-    console.log(courseData);
     // Get courses data always on page load
     const [currentPage, setCurrentPage] = useState(0);
 
+    // Get courses data always on page load
     useEffect(() => {
         if (courseFetchStatus === "idle") {
-            getCoursesData()
+            dispatch(getCoursesData());
         }
     }, [courseFetchStatus])
 
@@ -29,7 +30,7 @@ const CourseOpen = () => {
     }
     return (
         <>
-            <MainLayout props="Curso">
+            <MainLayout props={courseData?.title || "Curso"}>
                 {courseFetchStatus === "pending" ? //Loading
                     (
                         <h1>Cargando...</h1>
@@ -41,28 +42,27 @@ const CourseOpen = () => {
                         (
                             <>
                                 <div>
-                                    <h1 className='text-primary-azulCeleste5 text-xl font-medium'>{courseData?.title}</h1>
                                     {courseData?.pages[currentPage] &&
                                         <div key={courseData?.pages[currentPage].page}>
-                                            <h2 className='text-primary-azulCeleste5 text-lg font-medium'>{courseData?.pages[currentPage].title}</h2>
+                                            <div className='vid'>
+                                                {courseData?.pages[currentPage].video && <iframe className='rounded-lg' width="560" height="315" src={courseData?.pages[currentPage].video} frameborder="0" allow="encrypted-media" allowFullScreen></iframe>}
+                                            </div>
+                                            <h1 className='text-primary-AzulVerde3 text-lg font-medium'>{courseData?.pages[currentPage].title}</h1>
                                             {courseData?.pages[currentPage].content.map((content, index) => (
                                                 <div key={index}>
                                                     <h3 className='text-primary-azulCeleste5 text-base font-medium'>{content.title}</h3>
                                                     <img src={content.image} alt="" />
-                                                    <p>{content.text}</p>
+                                                    <p className='text-primary-Azul5'>{content.text}</p>
 
                                                 </div>
                                             ))}
-                                            <div className='vid'>
-                                                {courseData?.pages[currentPage].video && <iframe width="560" height="315" src={courseData?.pages[currentPage].video + "?autoplay=1"} frameborder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>}         
-                                            </div>
                                             <p>Pruebdda</p>
+                                            < div className="btn-group grid w-1/4 grid-cols-2">
+                                                <button className="btn btn-outline" onClick={handlePreviousPage}>Previous page</button>
+                                                <button className="btn btn-outline" onClick={handleNextPage}>Next</button>
+                                            </div>
                                         </div>
                                     }
-                                </div>
-                                < div className="btn-group grid grid-cols-2">
-                                    <button className="btn btn-outline" onClick={handlePreviousPage}>Previous page</button>
-                                    <button className="btn btn-outline" onClick={handleNextPage}>Next</button>
                                 </div>
                             </>
                         )

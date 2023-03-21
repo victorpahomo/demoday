@@ -30,7 +30,7 @@ const Courses = () => {
 
   return (
     <div className=''>
-      <MainLayout props="Cursos y Aportes">
+      <MainLayout props="Cursos">
         {courseFetchStatus === "pending" || contributionsFetchStatus === "pending" ? //Loading 
           (
             <h1>Cargando...</h1>
