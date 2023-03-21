@@ -3,7 +3,7 @@ const ListCourses = ({ contributions }) => {
         <>
             <div className="flex flex-col gap-4">
                 {Object.entries(contributions).map(([key, value]) => (
-                    <div className="card shadow-xl bg-slate-200 text-slate-600" key={key}>
+                    <div className="card shadow-md bg-slate-200 text-slate-600" key={key}>
                         <div className="p-4">
                             <h2 className="card-title pb-4">{value.title}</h2>
                             <h3>Categoría: {value.category}</h3>

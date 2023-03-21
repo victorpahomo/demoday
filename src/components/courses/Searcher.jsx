@@ -1,13 +1,13 @@
 const Searcher = () => {
     return (
         <div className="form-control pb-8">
-            <div className="input-group">
+            <div className="input-group flex justify-center">
                 <input
                     type="text"
                     placeholder="Search…"
-                    className="input input-bordered w-full bg-primary-AzulVerde4 text-white"
+                    className="input input-bordered w-2/3 bg-slate-200 text-primary-azulCeleste5 focus:outline-none"
                 />
-                <button className="btn btn-square bg-primary-AzulVerde4 text-white">
+                <button className="btn btn-square bg-gray-400 border-none text-white hover:bg-gray-500">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"

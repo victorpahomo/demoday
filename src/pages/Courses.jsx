@@ -41,13 +41,13 @@ const Courses = () => {
             : //Success
             (
               <>
-                <div className='bg-white px-24 py-10'>
+
                   <Searcher />
                   <h2 className="font-bold text-2xl text-slate-600">Cursos</h2>
                   {courseFetchStatus === "fulfilled" && <ListCourses courses={objCourses} />}
                   <h2 className="font-bold text-2xl text-slate-600 py-4">Aportes</h2>
                   {contributionsFetchStatus === "fulfilled" && <ListContributions contributions={arrayContributions} />}
-                </div>
+
               </>
             )
         }
