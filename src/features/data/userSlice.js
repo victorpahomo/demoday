@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getUserData, getAllUsersData, setUserLastNotification } from "../../services/dataFirebaseService"
+import { getUserData, getAllUsersData, setUserLastNotification, setProfilePicture } from "../../services/dataFirebaseService"
 
 const initialState = {
     user: {},
@@ -7,9 +7,11 @@ const initialState = {
     error: null,
     errorAll: null,
     errorPost: null,
+    errorImage: null,
     loading: "idle",
     loadingAll: "idle",
     loadingPost: "idle",
+    loadingImage: "idle",
 
 };
 
@@ -64,12 +66,24 @@ const userSlice = createSlice({
                 state.loadingPost = "pending";
             })
             .addCase(setUserLastNotification.rejected, (state, action) => {
-                state.loading = "rejected";
+                state.loadingPost = "rejected";
                 state.errorPost = action.payload;
+            })
+            .addCase(setProfilePicture.pending, (state) => {
+                state.loadingImage = "pending";
+            })
+            .addCase(setProfilePicture.rejected, (state, action) => {
+                state.loadingImage = "rejected";
+                state.errorImage = action.payload;
+            })
+            .addCase(setProfilePicture.fulfilled, (state, action) => {
+                state.loadingImage = "fulfilled";
+                state.user.profilePicture = action.payload;
             })
             .addCase(clean.fulfilled, (state) => {
                 Object.assign(state, initialState);
-            });
+            })
+            
     }
 });
 

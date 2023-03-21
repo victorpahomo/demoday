@@ -13,3 +13,4 @@ export { default as ServicesIcon } from "./ServicesIcon";
 export { default as TechnicalSupportIcon } from "./TechnicalSupportIcon";
 export { default as PsychosocialSupportIcon } from "./PsychosocialSupportIcon";
 export { default as AbsenceReportIcon } from "./AbsenceReportIcon";
+export { default as UserIcon } from "./UserIcon";

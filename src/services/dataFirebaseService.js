@@ -4,6 +4,23 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as cleanMethods from "../features/data/cleanMethods";
  
 /* ----------- FUNCIONES GENERALES */
+
+export const setProfilePicture = createAsyncThunk(
+    "user/setProfilePicture",
+    async ({ uid, photoUrl }) => {
+        console.log("setProfilePicture", uid, photoUrl);
+        try {
+            const docRef = doc(db, `users/${uid}`);
+            await updateDoc(docRef, {
+                picture: photoUrl,
+            });
+        } catch (error) {
+            console.error("Error updating document:", error);
+            throw error;
+        }
+    }
+);
+
 export function cleanAllSlices(dispatch) {
     //Cleaning all the Redux Store slices
     dispatch(cleanMethods.cleanContribution())
