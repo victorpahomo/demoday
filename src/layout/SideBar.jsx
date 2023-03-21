@@ -8,9 +8,7 @@ import {
   ServicesIcon,
 } from "../assets";
 import SidebarLink from "./SidebarLink";
-import CodeLMSIcon from "../assets/CodeLMSIcon.svg";
-import CodeLMSIcon2 from "../assets/CodeLMSIcon/logo_border.svg";
-import CodeLMSIcon3 from "../assets/CodeLMSIcon/logoResp.svg";
+import isoWhite from "../assets/CodeLMSIcon/ISOWhite.svg";
 import logoWhite from "../assets/CodeLMSIcon/logoWhite.svg";
 
 const SideBar = ({ props }) => {
@@ -21,9 +19,17 @@ const SideBar = ({ props }) => {
       onMouseEnter={() => setShowText(true)}
       onMouseLeave={() => setShowText(false)}
     >
-      <div className="absolute flex flex-col top-5 gap-7 ">
-        <figure className="z-40  mr-5 rounded-md shadow-xl">
-          <img src={logoWhite} alt="CodeLMS icon" />
+      <div className="absolute flex flex-col top-8 gap-7 ">
+        <figure className="z-40 flex justify-end rounded-md ">
+          {showText ?
+            (
+              <img className="mt-3 mr-3 mb-2" src={logoWhite} alt="CodeLMS icon" />
+            )
+            : (
+              <div className=" w-9 h-9 border-primary-white border-2 p-1 rounded-md flex justify-center items-center mr-2 border-opacity-25">
+                <img className="w-8 h-8 " src={isoWhite} alt="CodeLMS icon" />
+              </div>
+            )}
         </figure>
         <SidebarLink
           page={props}

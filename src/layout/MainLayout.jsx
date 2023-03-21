@@ -17,7 +17,7 @@ const MainLayout = ({ children, props }) => {
         <Header props={props} />
         <section
           id="body"
-          className="mt-16 bg-white w-full h-[calc(100%-4rem)] rounded-b-2xl"
+          className="mt-16 bg-[#f2f2f2] w-full h-[calc(100%-4rem)] rounded-b-2xl"
         >
           <div className="px-7 pb-5">{children}</div>
         </section>

@@ -15,12 +15,14 @@ module.exports = {
           AzulVerde3: "#14687e",
           AzulVerde2: "#1a99b9",
           AzulVerde1: "#20d7d8",
-
-          azulCeleste5: "#176aa2",
+/*  0A2647*/
+          /* azulCeleste5: "#176aa2", */
+          azulCeleste5: "#082340",
           azulCeleste4: "#1a86b3",
           azulCeleste3: "#67abd1",
           azulCeleste2: "#acdaeb",
           azulCeleste1: "#e0efed",
+          white: "#f2f2f2"
         },
       },
     },
