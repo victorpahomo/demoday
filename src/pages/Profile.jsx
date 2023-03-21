@@ -47,7 +47,7 @@ const Profile = () => {
     <MainLayout props="Perfil">
       <div className="flex flex-col relative justify-center items-center">
         <div className="w-full h-44 bg-slate-50 rounded-xl"></div>
-        <div className="flex flex-col justify-center items-center absolute top-28">
+        <div className="flex flex-col justify-center items-center absolute top-28 gap-2">
           <div className=" relative w-32 h-32 rounded-full bg-slate-200 shadow-lg">
             {picture ? (
               <img src={picture} />
@@ -64,8 +64,8 @@ const Profile = () => {
             </label>
           </div>
 
-          <h2 className="text-xl font-semibold text-slate-600">{name}</h2>
-          <p className="text-base font-semibold text-slate-400">{email}</p>
+          <h2 className="text-xl font-semibold text-slate-600">{name?name:"Nombre"}</h2>
+          <p className="text-base font-semibold text-slate-400">{email?email:"email@email.com"}</p>
         </div>
       </div>
       <input type="checkbox" id="my-modal-4" className="modal-toggle" />
