@@ -64,7 +64,7 @@ const NotificationContainer = () => {
  */}
       <div
         id="dropdown_functionality"
-        className="dropdown dropdown-end tooltip tooltip-bottom"
+        className="dropdown dropdown-end tooltip tooltip-bottom "
         data-tip="Notificaciones"
       >
         <label
@@ -86,9 +86,9 @@ const NotificationContainer = () => {
         <div
           id="dropdown_content"
           tabIndex={0}
-          className="mt-3 p-2 drop-shadow-xl  menu menu-compact dropdown-content bg-base-100 rounded-box w-80"
+          className="mt-3 p-2 drop-shadow-xl  menu menu-compact dropdown-content bg-white rounded-box w-80"
         >
-          <h2 id="dropdown_title" className="font-bold text-lef p-2">
+          <h2 id="dropdown_title" className="font-bold text-lef text-primary-Azul5 p-2">
             Notificaciones
           </h2>
           <hr />
