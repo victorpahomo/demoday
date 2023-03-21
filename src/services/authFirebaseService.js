@@ -67,3 +67,31 @@ export const logoutService = async (dispatch) => {
         console.log(error);
     }
 }
+
+/* import {  updateProfile } from "firebase/auth";
+updateProfile(auth.currentUser, {
+  displayName: "Prueba", photoURL: "https://example.com/jane-q-user/profile.jpg"
+}).then(() => {
+    console.log("Profile updated!");
+    console.log(auth.currentUser);
+  // Profile updated!
+  // ...
+}).catch((error) => {
+    console.log(error.message);
+  // An error occurred
+  // ...
+}); */
+
+/* import { updateEmail } from "firebase/auth";
+if (auth.currentUser) {
+updateEmail(auth.currentUser, "prueba@example.com").then(() => {
+  // Email updated!
+  console.log("Email updated!");
+  console.log(auth.currentUser);
+  // ...
+}).catch((error) => {
+    console.log(error.message);
+  // An error occurred
+  // ...
+});
+} */

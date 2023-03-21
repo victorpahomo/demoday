@@ -61,55 +61,6 @@ const Notifications = () => {
                   </div>
                 </div>
               </div>
-
-              // <div className="flex items-center p-1 bg-slate-10 gap-1">
-              //   <div
-              //     className={
-              //       (noticia.role === "student" &&
-              //         "w-3 h-28 rounded-full bg-blue-200") ||
-              //       (noticia.role === "professor" &&
-              //         "w-3 h-28 rounded-full bg-yellow-500") ||
-              //       (noticia.role === "admin" &&
-              //         "w-3 h-28 rounded-full bg-red-800")
-              //     }
-              //   ></div>
-              //   <div className="flex flex-col">
-              //     <div className="flex gap-2">
-              //       <span
-              //         className={
-              //           (noticia.role === "student" &&
-              //             "flex bg-blue-100 text-blue-400 rounded-lg w-auto text-xs items-center justify-center pr-1 pl-1") ||
-              //           (noticia.role === "professor" &&
-              //             "flex bg-yellow-100 text-yellow-500 rounded-lg w-auto text-xs items-center justify-center pr-1 pl-1") ||
-              //           (noticia.role === "admin" &&
-              //             "flex bg-red-100 text-red-800 rounded-lg w-auto text-xs items-center justify-center pr-1 pl-1")
-              //         }
-              //       >
-              //         <p>
-              //           {(noticia.role === "student" && "Estudiante") ||
-              //             (noticia.role === "professor" && "Profesor") ||
-              //             (noticia.role === "admin" && "ADMIN")}
-              //         </p>
-              //       </span>
-              //       <h2
-              //         href="#"
-              //         className={
-              //           (noticia.role === "student" &&
-              //             "text-blue-500 hover:text-blue-700 font-semibold") ||
-              //           (noticia.role === "professor" &&
-              //             "text-yellow-500 hover:text-blue-700 font-semibold") ||
-              //           (noticia.role === "admin" && "text-red-800 font-semibold")
-              //         }
-              //       >
-              //         {noticia.title}
-              //       </h2>
-              //     </div>
-              //     <p className="text-gray-500 text-sm p-2">
-              //       {" "}
-              //       {noticia.description}{" "}
-              //     </p>
-              //   </div>
-              // </div>
             ))}
           </div>
         </div>

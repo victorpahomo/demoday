@@ -7,7 +7,7 @@ import { getUserData } from "../services/dataFirebaseService";
 const Home = () => {
   const dispatch = useDispatch();
   // Loaders
-  const authFetchStatus = useSelector((state) => state.auth.loading);//true loading, false succes
+  const authFetchStatus = useSelector((state) => state.auth.loading);//true loading, false is succes
   const userFetchStatus = useSelector((state) => state.user.loading);//idle, pending, fulfilled, rejected
   // Data
   const rol = useSelector((state) => state.auth.user?.rol)
