@@ -10,6 +10,9 @@ import {
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 import { useState } from "react";
+import CodeBotIcon from "../assets/CodeBotIcon.svg"
+import UserIcon from "../assets/UserIcon.svg"
+import { useSelector } from "react-redux";
 
 const API_KEY = "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"; //No pudimos subir variables de entorno a Firebase
 
@@ -22,6 +25,9 @@ const systemMessage = {
 // "You are a professor of a software academy, you cannot send code for any software language, explains the theoretical concepts"
 // "Explain things like you're talking to a software professional with 2 years of experience."
 function CodeBot() {
+  // Data
+  const userProfilePicture = useSelector((state) => state.user.user?.picture)
+
   // Estado para los mensajes
   const [messages, setMessages] = useState([
     {
@@ -32,7 +38,6 @@ function CodeBot() {
   ]);
   const [isTyping, setIsTyping] = useState(false); // Estado para el indicador de que CodeBot está escribiendo
   // Función que se ejecuta cuando se envía un mensaje
-  console.log(messages);
   const handleSend = async (message) => {
     const newMessage = {
       message,
@@ -120,10 +125,18 @@ function CodeBot() {
                   console.log(message);
                   return (
                     <Message key={i} model={message}>
-                      <Avatar
-                        src="https://static3.abc.es/media/summum/2021/10/01/maxi_iglesias-kXKH--620x349@abc.jpeg"
-                        name="CodeBot"
-                      />
+                      {message.sender === "CodeBot" ?
+                        (<Avatar
+                          src={CodeBotIcon}
+                          name="CodeBot"
+                          className="bg-slate-100"
+                        />) :
+                        (<Avatar
+                          src={userProfilePicture || UserIcon}
+                          name="User"
+                          className="bg-slate-100"
+                        />)
+                      }
                     </Message>
                   );
                 })}
