@@ -22,9 +22,10 @@ const Calendar = () => {
   const [dateSelected, setDateSelected] = useState("");
   const [eventSelected, setEventSelected] = useState("")
   const [events, setEvents] = useState(useSelector((state) => state.user.user?.todo));
+  console.log(events);
   const [eventSources, setEventSources] = useState([])
 
-  /* ----------------- CONTENT ---------------------- */
+  // Fetch group data
   useEffect(() => {
     if (groupFetchStatus === "fulfilled") {
       setEventSources([
