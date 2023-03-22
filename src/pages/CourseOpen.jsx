@@ -70,9 +70,9 @@ const CourseOpen = () => {
                                                 <div key={index} className="flex flex-col gap-1 pl-2">
                                                     <h3 className='text-primary-AzulVerde3 text-lg font-semibold'>{content.title}</h3>
                                                     <p className='text-primary-azulCeleste5'>{content.text}</p>
-                                                    <img src={content.image} className="w-1/2" alt="" />
+                                                    <img src={content.image} className="w-1/2 rounded-md" alt="" />
                                                     {content.code &&
-                                                        <div className='flex w-full gap-'>
+                                                        <div className='flex w-full'>
                                                             <div style={{
                                                                 height: "100%",
                                                                 width: "50%"
