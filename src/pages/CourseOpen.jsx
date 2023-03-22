@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import MainLayout from '../layout/MainLayout'
 import { getCoursesData } from '../services/dataFirebaseService'
+import AceEditor from 'react-ace';
+import 'ace-builds/src-noconflict/mode-html';
+import 'ace-builds/src-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/theme-monokai';
+import 'ace-builds/src-noconflict/ext-language_tools'
+
 
 const CourseOpen = () => {
     const dispatch = useDispatch();
@@ -14,6 +20,8 @@ const CourseOpen = () => {
     const courseData = useSelector((state) => state.course.allCourses?.find((course) => course.id === currentCourse))
     // Get courses data always on page load
     const [currentPage, setCurrentPage] = useState(0);
+    // ACE Editor
+    let [code, setCode] = useState("<!DOCTYPE html>\n<html lang='es'>\n  <head>\n    <meta charset='UTF-8' />\n    <meta name='viewport' content='width=device-width, initial-scale=1.0' />\n    <title>CodeLMS</title>\n  </head>\n  <body>\n    <section id='root'>\n      <!-- Escribe aquí tu primera etiqueta \"Hola mundo\" -->\n    </section>\n  </body>\n</html>\n");
 
     // Get courses data always on page load
     useEffect(() => {
@@ -22,6 +30,10 @@ const CourseOpen = () => {
         }
     }, [courseFetchStatus])
 
+
+    const handleCodeChange = (newValue) => {
+        setCode(newValue);
+    }
     const handleNextPage = () => {
         setCurrentPage(currentPage + 1)
     }
@@ -41,26 +53,58 @@ const CourseOpen = () => {
                         : //Success
                         (
                             <>
-                                <div>
+                                <div className='container mx-auto'>
+                                    <div className='flex justify-between items-center sticky w-full pt-1'>
+                                        <h1 className='text-primary-Azul5 text-2xl font-medium pb-2'>{courseData?.pages[currentPage].title}</h1>
+                                        < div className="btn-group flex  justify-end w-1/6 ">
+                                            {currentPage > 0 && <button className="btn btn-outline bg-slate-200 text-primary-azulCeleste5 border-slate-300" onClick={handlePreviousPage}>Anterior</button>}
+                                            {currentPage + 1 < courseData?.pages.length && <button className="btn btn-outline bg-slate-200 text-primary-azulCeleste5 border-slate-300" onClick={handleNextPage}>Siguiente</button>}
+                                        </div>
+                                    </div>
                                     {courseData?.pages[currentPage] &&
-                                        <div key={courseData?.pages[currentPage].page}>
-                                            <div className='vid'>
-                                                {courseData?.pages[currentPage].video && <iframe className='rounded-lg' width="560" height="315" src={courseData?.pages[currentPage].video} frameborder="0" allow="encrypted-media" allowFullScreen></iframe>}
+                                        <div key={courseData?.pages[currentPage].page} className="flex flex-col gap-1">
+                                            <div className='vid flex justify-center'>
+                                                {courseData?.pages[currentPage].video && <iframe className='rounded-lg w-3/5 h-96' src={courseData?.pages[currentPage].video} frameborder="0" allow="encrypted-media" allowFullScreen></iframe>}
                                             </div>
-                                            <h1 className='text-primary-AzulVerde3 text-lg font-medium'>{courseData?.pages[currentPage].title}</h1>
                                             {courseData?.pages[currentPage].content.map((content, index) => (
-                                                <div key={index}>
-                                                    <h3 className='text-primary-azulCeleste5 text-base font-medium'>{content.title}</h3>
+                                                <div key={index} className="flex flex-col gap-1 pl-2">
+                                                    <h3 className='text-primary-AzulVerde3 text-lg font-semibold'>{content.title}</h3>
                                                     <img src={content.image} alt="" />
-                                                    <p className='text-primary-Azul5'>{content.text}</p>
-
+                                                    <p className='text-primary-azulCeleste5'>{content.text}</p>
+                                                    {content.code &&
+                                                        <div className='flex w-full gap-'>
+                                                            <div style={{
+                                                                height: "100%",
+                                                                width: "50%"
+                                                            }}>
+                                                                <AceEditor
+                                                                    width='100%'
+                                                                    value={code}
+                                                                    onChange={value => {
+                                                                        setCode(value);
+                                                                    }}
+                                                                    mode="html"
+                                                                    theme="monokai"
+                                                                    name="my-editor"
+                                                                    editorProps={{ $blockScrolling: true }}
+                                                                    fontSize={14}
+                                                                    showPrintMargin={true}
+                                                                    showGutter={true}
+                                                                    highlightActiveLine={true}
+                                                                    setOptions={{
+                                                                        enableBasicAutocompletion: true,
+                                                                        enableLiveAutocompletion: true,
+                                                                        enableSnippets: true,
+                                                                        showLineNumbers: true,
+                                                                        tabSize: 2,
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                            <iframe src={'data:text/html;charset=utf-8,' + encodeURI(code)} className='w-1/2 mr-3 border border-primary-azulCeleste5 border-opacity-30' frameborder="0"></iframe>
+                                                        </div>
+                                                    }
                                                 </div>
                                             ))}
-                                            <p>Pruebdda</p>
-                                            < div className="btn-group grid w-1/4 grid-cols-2">
-                                                <button className="btn btn-outline" onClick={handlePreviousPage}>Previous page</button>
-                                                <button className="btn btn-outline" onClick={handleNextPage}>Next</button>
-                                            </div>
                                         </div>
                                     }
                                 </div>
