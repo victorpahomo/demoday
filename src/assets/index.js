@@ -14,3 +14,5 @@ export { default as TechnicalSupportIcon } from "./TechnicalSupportIcon";
 export { default as PsychosocialSupportIcon } from "./PsychosocialSupportIcon";
 export { default as AbsenceReportIcon } from "./AbsenceReportIcon";
 export { default as UserIcon } from "./UserIcon";
+export { default as UserStudentIcon } from "./UserStudentIcon";
+export { default as ProfessorIcon } from "./ProfessorIcon";
