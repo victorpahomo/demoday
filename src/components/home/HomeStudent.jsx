@@ -23,8 +23,9 @@ const HomeStudent = () => {
 
   return (
     <div className="flex flex-col gap-5">
-      {/* Componente para novedades */}
-      <div className="flex justify-center w-full overflow-hidden">
+      {/* Componente para Link */}
+      <div>
+        <h2 className="text-primary-Azul5">Link a la siguiente sesión: <a target="_blank" className="text-primary-AzulVerde2" href="https://zoom.us/j/96076998105?pwd=dVBXd1VJZzN4TEw1NlFxdUhDQldBUT09"> pulsa aquí</a> </h2>
       </div>
       {/* Componente para Calendario */}
       <section id="studentCalendar">
