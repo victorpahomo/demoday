@@ -39,7 +39,7 @@ const Home = () => {
                 <>
                   <h1 className="mb-5 flex gap-1 text-primary-Azul5">
                     ¡Hola,<p className="font-semibold">{name ? name : rol}</p>
-                    bienvenido a Code LMS!
+                    bienvenid@ a Code LMS!
                   </h1>
                   {rol === "professor" && <HomeProfessor />}
                   {rol === "student" && <HomeStudent />}
