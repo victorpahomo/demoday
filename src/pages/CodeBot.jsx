@@ -14,7 +14,7 @@ import CodeBotIcon from "../assets/CodeBotIcon.svg"
 import UserIcon from "../assets/UserIcon.svg"
 import { useSelector } from "react-redux";
 
-const API_KEY = "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"; //No pudimos subir variables de entorno a Firebase
+const API_KEY = "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"; //No pudimos subir variables de entorno a Firebase
 
 const systemMessage = {
   // Este mensaje explica cómo debe comportarse la AI
