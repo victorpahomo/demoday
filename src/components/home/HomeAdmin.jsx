@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { UserIcon, UserStudentIcon, ProfessorIcon, CoursesIcon, GradesIcon } from "../../assets";
+import {
+  UserIcon,
+  UserStudentIcon,
+  ProfessorIcon,
+  CoursesIcon,
+  GradesIcon,
+} from "../../assets";
 import CardServices from "../CardServices";
 
 const HomeAdmin = () => {
@@ -7,7 +13,6 @@ const HomeAdmin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const value = e.target.value.toUpperCase();
-    // setGroupSeleted(e.target[0].value);
     setGroupSeleted(value);
   };
   console.log("groupSeleted: ", groupSeleted);
