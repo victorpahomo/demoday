@@ -28,7 +28,7 @@ const HomeStudent = () => {
       </div>
       {/* Componente para Calendario */}
       <section id="studentCalendar">
-        <div className="flex items-start justify-center w-full h-full gap-8">
+        <div className="flex items-start justify-center w-full h-full gap-7">
           <div className="w-3/4">
 
           <Calendar />
