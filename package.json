@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vite build && firebase deploy"
   },
   "dependencies": {
     "@chatscope/chat-ui-kit-react": "^1.10.1",
