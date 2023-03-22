@@ -11,68 +11,93 @@ import { useDispatch, useSelector } from "react-redux";
 import { SkeletonCalendar } from "../../skeletonLoaders";
 
 const Calendar = () => {
+  const timeZone = 'America/Bogota';
   const dispatch = useDispatch();
+
   // Loaders
   const groupFetchStatus = useSelector((state) => state.group.loading);
+
   // Data
   const arrayRecurringEvent = useSelector((state) => state.group.group?.recurring_todo);
+
   // Calendar
   const [editModal, setEditModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [dateSelected, setDateSelected] = useState("");
-  const [eventSelected, setEventSelected] = useState("")
-  const [events, setEvents] = useState(useSelector((state) => state.user.user?.todo));
-  console.log(events);
-  const [eventSources, setEventSources] = useState([])
+  const [eventSelected, setEventSelected] = useState("");
+  // El siguiente estado servirá para fusionar los eventos dinamicos con los de la base de datos
+  const [eventSources, setEventSources] = useState([]);
 
-  // Fetch group data
-  useEffect(() => {
-    if (groupFetchStatus === "fulfilled") {
-      setEventSources([
-        {
-          events: arrayRecurringEvent.map((event) => ({
-            ...event,
-            rrule: {
-              ...event?.rrule,
-              dtstart: new Date(Date.parse(event?.rrule?.dtstart)),
-              until: new Date(Date.parse(event?.rrule?.until)),
-            },
-            extendedProps: {
-              ...event?.extendedProps,
-              startTime: new Date(event?.rrule?.dtstart),
-              endTime: new Date(event?.rrule?.until),
-            },
-          })),
-        },
-      ])
+  // Eventos dinamicos
+  const [events, setEvents] = useState([
+    {
+      title: "DemoDay",
+      date: new Date(2023, 2, 22),
+      start: "2023-03-22T14:00:00",
     }
-  }, [groupFetchStatus]);
+  ]);
 
   const handleClose = () => {
     setShowModal(false);
     setEditModal(false);
-  }
-  const handleShow = () => setShowModal(true);
-  const handleEdit = () => setEditModal(true);
-
-
-
-  const handleSave = () => {
-    setEvents([...events, { title, dateSelected }]);
-    setDateSelected("");
-    handleClose();
   };
+
+  const handleShow = () => setShowModal(true);
+
+  const handleEdit = () => setEditModal(true);
 
   const handleDateClick = (daySelected) => {
     handleShow();
     setDateSelected(daySelected.date);
-
   };
+
+  const handleSave = (title, hour, description) => {
+    hour = hour -5;
+    const dateSelectedFormat = new Date(dateSelected);
+    console.log("FECHA", dateSelectedFormat);
+
+    // crear un nuevo objeto Date con la hora actualizada
+    const dateAndHour = new Date(dateSelectedFormat.setHours(hour));
+    console.log("FECHA", dateAndHour);
+
+    // obtener la fecha y hora en formato ISOString
+    const newDate = dateAndHour.toISOString();
+    console.log("FECHA FORMATO ISO", newDate);
+
+    /*  
+    console.log("FECHA FORMATO",newDate); */
+    const newEvent = {
+      title,
+      date: dateSelected,
+      start: newDate,
+    };
+    setEvents([...events, newEvent]);
+    setDateSelected("");
+    handleClose();
+  };
+
   const handleEventClick = (eventInfo) => {
     handleEdit();
     setEventSelected(eventInfo.event);
-
   };
+
+  useEffect(() => {
+    if (groupFetchStatus === "fulfilled") {
+      const existingEvents = arrayRecurringEvent.map((event) => ({
+        ...event,
+        startTime: new Date(Date.parse(event.rrule.dtstart)),
+        endTime: new Date(Date.parse(event.rrule.until)),
+      }));
+      const allEvents = [...existingEvents, ...events];
+      setEventSources([
+        {
+          events: allEvents,
+          color: "green",
+          textColor: "white",
+        },
+      ]);
+    }
+  }, [groupFetchStatus, arrayRecurringEvent, events]);
   /* ------------------------------------------------ */
 
   return (
@@ -88,6 +113,7 @@ const Calendar = () => {
           (
             <>
               <FullCalendar
+                timeZone={timeZone}
                 plugins={[dayGridPlugin, interactionPlugin, timegrid, rrulePlugin]}
                 locale={esLocale}
                 height={"auto"}
@@ -95,8 +121,8 @@ const Calendar = () => {
                 selectable={true}
                 editable={true}
                 selectMirror={true}
-                events={events}
-                eventSources={eventSources}
+/*                 events={events}
+ */                eventSources={eventSources}
                 dateClick={handleDateClick}
                 eventClick={handleEventClick}
                 headerToolbar={{
