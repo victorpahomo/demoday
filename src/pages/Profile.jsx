@@ -24,33 +24,14 @@ const Profile = () => {
     }
   };
 
-  // async function handlePhotoChange(event) {
-  //   console.log("file", event.target.files[0]);
-  //   setPhoto(event.target.files[0]);
-  //   console.log("Photo:", photo);
-  //   // console.log(photo.name);
-  //   console.log(
-  //     await uploadFileToStorage(photo, userUid + event.target.files[0].name)
-  //   );
-  //   // successPhoto(await uploadFileToStorage(photo, userUid + photo.name));
-  //   console.log("Photo:", photo);
-  //   // setProfilePicture()
-  // }
-
-  // useEffect(() => {
-  //   if (successPhoto) {
-  //     setProfilePicture(successPhoto, userUid);
-  //   }
-  // }, [successPhoto]);
-
   return (
     <MainLayout props="Perfil">
       <div className="flex flex-col relative justify-center items-center">
-        <div className="w-full h-44 bg-slate-50 rounded-xl"></div>
+        <div className="w-full h-44 bg-primary-azulCeleste5 opacity-10 shadow-md rounded-xl"></div>
         <div className="flex flex-col justify-center items-center absolute top-28 gap-2">
           <div className=" relative w-32 h-32 rounded-full bg-slate-200 shadow-lg">
             {picture ? (
-              <img src={picture} />
+              <img className="w-full h-full rounded-full" src={picture} />
             ) : (
               <div className="flex w-full h-full justify-center items-center">
                 <UserIcon className="fill-gray-400 w-20 h-20" />
