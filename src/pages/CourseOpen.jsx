@@ -69,8 +69,8 @@ const CourseOpen = () => {
                                             {courseData?.pages[currentPage].content.map((content, index) => (
                                                 <div key={index} className="flex flex-col gap-1 pl-2">
                                                     <h3 className='text-primary-AzulVerde3 text-lg font-semibold'>{content.title}</h3>
-                                                    <img src={content.image} alt="" />
                                                     <p className='text-primary-azulCeleste5'>{content.text}</p>
+                                                    <img src={content.image} className="w-1/2" alt="" />
                                                     {content.code &&
                                                         <div className='flex w-full gap-'>
                                                             <div style={{
