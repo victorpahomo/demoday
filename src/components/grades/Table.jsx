@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = ({data}) => {
+const Table = ({ data }) => {
 
 
   // Calcular promedio de un objeto de notas

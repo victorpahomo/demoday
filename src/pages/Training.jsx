@@ -56,10 +56,6 @@ const Training = () => {
                     {stepOfUser == 1 ? "Fundamentos Web" : stepOfUser == 2 ? "Profundización Frontend" : "Empleabilidad"}
                   </span>
                 </h1>
-                <h1 className="text-xl font-bold text-primary-AzulVerde3">
-                  Asistencia:
-                  <span className="text-xl text-primary-AzulVerde2"> 20%.</span>
-                </h1>
               </div>
               <p className="text-primary-azulCeleste5 mb-2">
                 Link a la próxima clase:
