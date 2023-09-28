@@ -1,3 +1,4 @@
+// SVG Manejado como componente a propósito por la lógica elegida
 function UserStudentIcon({ className }) {
   return (
     <svg

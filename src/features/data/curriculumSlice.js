@@ -14,26 +14,7 @@ const initialState = {
 const curriculumSlice = createSlice({
     name: "curriculum",
     initialState,
-    reducers: {
-        /*         curriculumStart: (state) => {
-                    state.loading = true;
-                    state.error = null;
-                },
-                getCurriculum: (state, action) => {
-                    state.loading = false;
-                    state.allUsers = action.payload;
-                    state.error = null;
-                },
-                getAllCurriculums: (state, action) => {
-                    state.loading = false;
-                    state.allUsers = action.payload;
-                    state.error = null;
-                },
-                curriculumFailure: (state, action) => {
-                    state.loading = false;
-                    state.error = action.payload;
-                }, */
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getAllCurriculumsData.pending, (state) => {
@@ -63,14 +44,6 @@ const curriculumSlice = createSlice({
             });
     }
 });
-
-/* export const {
-    curriculumStart,
-    curriculumFailure,
-    getCurriculum,
-    getAllCurriculums
-
-} = curriculumSlice.actions; */
 
 export default curriculumSlice.reducer;
 

@@ -10,21 +10,7 @@ const initialState = {
 const contributionSlice = createSlice({
   name: "contribution",
   initialState,
-  reducers: {
-    /*         contributionStart: (state) => {
-            state.loading = true;
-            state.error = null;
-        },
-        getAllContributions: (state, action) => {
-            state.loading = false;
-            state.allUsers = action.payload;
-            state.error = null;
-        },
-        contributionFailure: (state, action) => {
-            state.loading = false;
-            state.error = action.payload;
-        }, */
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getContributionsData.pending, (state) => {
@@ -43,13 +29,6 @@ const contributionSlice = createSlice({
       });
   },
 });
-
-/* export const {
-    contributionStart,
-    contributionFailure,
-    getAllContributions
-
-} = contributionSlice.actions; */
 
 export default contributionSlice.reducer;
 

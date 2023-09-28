@@ -1,3 +1,4 @@
+// SVG Manejado como componente a propósito por la lógica elegida
 function BellIcon(props) {
   return (
     <svg fill="none" className={props.className} viewBox="0 0 28 28">

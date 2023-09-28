@@ -10,21 +10,7 @@ const initialState = {
 const courseSlice = createSlice({
     name: "course",
     initialState,
-    reducers: {
-        /*         courseStart: (state) => {
-                    state.loading = true;
-                    state.error = null;
-                },
-                getAllCourses: (state, action) => {
-                    state.loading = false;
-                    state.allUsers = action.payload;
-                    state.error = null;
-                },
-                courseFailure: (state, action) => {
-                    state.loading = false;
-                    state.error = action.payload;
-                }, */
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getCoursesData.pending, (state) => {
@@ -43,13 +29,6 @@ const courseSlice = createSlice({
             });
     }
 });
-
-/* export const {
-    courseStart,
-    courseFailure,
-    getAllCourses
-
-} = courseSlice.actions; */
 
 export default courseSlice.reducer;
 

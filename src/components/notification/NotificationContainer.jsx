@@ -50,9 +50,6 @@ const NotificationContainer = () => {
         userUid !== undefined
       ) {
         const newLastNotification = lastNotification.date;
-        /*        dispatch(
-                 setUserLastNotification({ uid: userUid, date: newLastNotification })
-               ); */
         setShowToast(true);
       }
     }
@@ -104,10 +101,7 @@ const NotificationContainer = () => {
                 :
                 (
                   <>
-                    {/*   {showToast && (
-                      console.log(showToast),
-                      <NotificationToast lastNotification={lastNotification} />
-                    )} */}
+
                     {arrayNotifications?.map((notification) => (
                       <NotificationCard
                         key={notification.id}

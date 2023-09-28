@@ -10,21 +10,7 @@ const initialState = {
 const newsSlice = createSlice({
     name: "news",
     initialState,
-    reducers: {
-        /*         newsStart: (state) => {
-                    state.loading = true;
-                    state.error = null;
-                },
-                getAllNews: (state, action) => {
-                    state.loading = false;
-                    state.allUsers = action.payload;
-                    state.error = null;
-                },
-                newsFailure: (state, action) => {
-                    state.loading = false;
-                    state.error = action.payload;
-                }, */
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getAllNewsData.pending, (state) => {
@@ -43,12 +29,6 @@ const newsSlice = createSlice({
             });
     }
 });
-
-/* export const {
-    newsStart,
-    newsFailure,
-    getAllNews,
-} = newsSlice.actions; */
 
 export default newsSlice.reducer;
 

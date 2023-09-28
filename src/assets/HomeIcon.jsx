@@ -1,3 +1,4 @@
+// SVG Manejado como componente a propósito por la lógica elegida
 function HomeIcon(props) {
   return (
     <svg

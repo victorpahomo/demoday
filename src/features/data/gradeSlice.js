@@ -13,26 +13,7 @@ const initialState = {
 const gradeSlice = createSlice({
     name: "grade",
     initialState,
-    reducers: {
-        /*         gradeStart: (state) => {
-                    state.loading = true;
-                    state.error = null;
-                },
-                getUserGrades: (state, action) => {
-                    state.loading = false;
-                    state.allUsers = action.payload;
-                    state.error = null;
-                },
-                getGroupGrades: (state, action) => {
-                    state.loading = false;
-                    state.allUsers = action.payload;
-                    state.error = null;
-                },
-                gradeFailure: (state, action) => {
-                    state.loading = false;
-                    state.error = action.payload;
-                }, */
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getGroupGradesData.pending, (state) => {
@@ -62,14 +43,6 @@ const gradeSlice = createSlice({
             });
     }
 });
-
-/* export const {
-    gradeStart,
-    gradeFailure,
-    getUserGrades,
-    getGroupGrades,
-
-} = gradeSlice.actions; */
 
 export default gradeSlice.reducer;
 

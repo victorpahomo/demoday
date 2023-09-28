@@ -47,19 +47,6 @@ export const getContributionsData = createAsyncThunk(
     }
 );
 
-// SIN TERMINAR
-/* export const setContributionsData = async (data, dispatch) => {
-    try {
-        dispatch(contributionStart());
-        const docRef = doc(db, `contributions/${data.id}`);
-        await setDoc(docRef, data);
-        dispatch(setContributions(data));
-    } catch (error) {
-        dispatch(contributionFailure(error.ToString()));
-        console.error("Error getting document:", error);
-    }
-}; */
-
 /* --------------- Peticiones a Course */
 export const getCoursesData = createAsyncThunk(
     "course/getAllCourses",

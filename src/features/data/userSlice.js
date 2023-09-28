@@ -18,26 +18,7 @@ const initialState = {
 const userSlice = createSlice({
     name: "user",
     initialState,
-    reducers: {
-        /*         userStart: (state) => {
-                    state.loading = true;
-                    state.error = null;
-                },
-                getUser: (state, action) => {
-                    state.loading = false;
-                    state.user = action.payload;
-                    state.error = null;
-                },
-                getAllUsers: (state, action) => {
-                    state.loading = false;
-                    state.allUsers = action.payload;
-                    state.error = null;
-                },
-                userFailure: (state, action) => {
-                    state.loading = false;
-                    state.error = action.payload;
-                }, */
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getAllUsersData.pending, (state) => {

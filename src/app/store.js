@@ -1,5 +1,8 @@
+// Importa las funciones necesarias de Redux Toolkit
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "../features/auth/authSlice";
+// Importa el reducer de autenticación
+import authReducer from "../features/auth/authSlice"; 
+// Importa los reducers relacionados con los datos
 import {
   dataReducer,
   userReducer,
@@ -10,7 +13,7 @@ import {
   groupReducer,
   newsReducer
 } from "../features/data/";
-
+// Configura la store de Redux
 export const store = configureStore({
   reducer: {
     auth: authReducer,
