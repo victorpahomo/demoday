@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getContributionsData } from "../../services/dataFirebaseService";
-
+// Estado inicial del slice de contribuciones
 const initialState = {
   allContributions: [],
   error: null,
   loading: "idle",
 };
-
+// Definición del slice de contribuciones
 const contributionSlice = createSlice({
   name: "contribution",
   initialState,

@@ -7,12 +7,16 @@ import { Link } from "react-router-dom";
 import UserIcon from "../assets/UserIcon.jsx";
 
 const ButtonProfile = () => {
+  // Obtener datos del usuario desde el estado de Redux
   const email = useSelector((state) => state.user.user.email);
   const name = useSelector((state) => state.user.user.name);
   const picture = useSelector((state) => state.user.user.picture);
   const dispatch = useDispatch();
+  // Manejar el clic en el botón de cierre de sesión
   const handleClick = () => {
+    // Llamar a la función de cierre de sesión desde el servicio de Firebase
     logoutService(dispatch);
+    // Limpiar los datos en el estado de Redux
     cleanAllSlices(dispatch);
   };
 
@@ -36,9 +40,10 @@ const ButtonProfile = () => {
         tabIndex={0}
         className="mt-3 p-2 menu menu-compact dropdown-content bg-white rounded-box w-52 shadow-lg shadow-slate-500 text-slate-600"
       >
+        {/* Mostrar el nombre y correo electrónico del usuario */}
         <p className="text-center font-semibold text-lg">{name}</p>
         <p className="text-center">{email}</p>
-
+        {/* Enlaces para el perfil y ajustes */}
         <li>
           <Link
             to="/profile"
@@ -56,6 +61,7 @@ const ButtonProfile = () => {
             Ajustes
           </Link>
         </li>
+        {/* Botón para cerrar sesión */}
         <li>
           <button
             onClick={handleClick}

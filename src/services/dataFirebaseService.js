@@ -1,10 +1,11 @@
+// Importaciones necesarias para interactuar con Firebase Firestore y Redux Toolkit
 import { collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../api/firebase";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as cleanMethods from "../features/data/cleanMethods";
- 
-/* ----------- FUNCIONES GENERALES */
 
+/* ----------- FUNCIONES GENERALES */
+// Función para establecer la foto de perfil del usuario
 export const setProfilePicture = createAsyncThunk(
     "user/setProfilePicture",
     async ({ uid, photoUrl }) => {
@@ -17,10 +18,10 @@ export const setProfilePicture = createAsyncThunk(
         } catch (error) {
             console.error("Error updating document:", error);
             throw error;
-        }
-    }
+        }
+    }
 );
-
+// Función para limpiar todos los slices del Redux Store
 export function cleanAllSlices(dispatch) {
     //Cleaning all the Redux Store slices
     dispatch(cleanMethods.cleanContribution())
@@ -33,6 +34,7 @@ export function cleanAllSlices(dispatch) {
 }
 
 /* --------------- Peticiones a Contributions */
+// Función para obtener datos de todas las contribuciones
 export const getContributionsData = createAsyncThunk(
     "contribution/getAllContributions",
     async () => {

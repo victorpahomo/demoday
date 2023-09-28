@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getCoursesData } from "../../services/dataFirebaseService"
-
+// Estado inicial del slice de curso
 const initialState = {
     allCourses: [],
     error: null,

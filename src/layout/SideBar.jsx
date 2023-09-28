@@ -12,6 +12,7 @@ import isoWhite from "../assets/CodeLMSIcon/ISOWhite.svg";
 import logoWhite from "../assets/CodeLMSIcon/logoWhite.svg";
 
 const SideBar = ({ props }) => {
+  // Estado para controlar si se muestra el texto en los íconos
   const [showText, setShowText] = useState(false);
   return (
     <div
@@ -23,14 +24,17 @@ const SideBar = ({ props }) => {
         <figure className="z-40 flex justify-end rounded-md ">
           {showText ?
             (
+              // Mostrar el logotipo de texto cuando showText es true
               <img className="mt-3 mr-3 mb-2" src={logoWhite} alt="CodeLMS icon" />
             )
             : (
+              // Mostrar el logotipo de ISO cuando showText es false
               <div className=" w-9 h-9 border-primary-white border-2 p-1 rounded-md flex justify-center items-center mr-2 border-opacity-25">
                 <img className="w-8 h-8 " src={isoWhite} alt="CodeLMS icon" />
               </div>
             )}
         </figure>
+        {/* Componentes SidebarLink para las diferentes secciones */}
         <SidebarLink
           page={props}
           showText={showText}

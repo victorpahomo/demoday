@@ -3,7 +3,7 @@ import iconClose from '../../assets/icons/close.svg';
 
 
 export default function AppModal ({ children, activator, isOpen }) {
-  const modalId = useId()
+  const modalId = useId() // Genera un ID único para el modal
   return (
     <>
     <label htmlFor={modalId}>
@@ -15,7 +15,7 @@ export default function AppModal ({ children, activator, isOpen }) {
         <label htmlFor={modalId} className="z-50 absolute right-2 top-2 rounded-full w-10 h-10 grid place-items-center bg-navy-blue text-white cursor-pointer">
           <img src={iconClose} alt="" className="w-5" />
           </label>
-        { children }
+        { children }  {/* Contenido del modal */}
       </div>
     </div>
     </>

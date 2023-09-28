@@ -4,10 +4,11 @@ import Header from "./components/Header";
 import SideBar from "./SideBar";
 
 const MainLayout = ({ children, props }) => {
+  // Obtiene el rol del usuario actual desde el estado de Redux
   const rol = useSelector((state) => state.auth.user?.rol);
   return (
     <>
-      {/* Professor */}
+      {/* Diseño para usuarios con rol "profesor" */}
       {rol === "professor" && (
         <div className="flex">
           <SideBar props={props} />
@@ -29,7 +30,7 @@ const MainLayout = ({ children, props }) => {
           </div>
         </div>
       )}
-      {/* Admin */}
+      {/* Diseño para usuarios con rol "admin" */}
       {rol === "admin" && (
         <div className="flex">
           <div
@@ -50,7 +51,7 @@ const MainLayout = ({ children, props }) => {
           </div>
         </div>
       )}
-      {/* student */}
+      {/* Diseño para usuarios con rol "student" */}
       {rol === "student" && (
         <div className="flex">
           <SideBar props={props} />

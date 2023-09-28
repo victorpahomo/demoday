@@ -1,3 +1,4 @@
+// Animación skeleton
 import React from "react";
 import ISODefault from "../../assets/CodeLMSIcon/ISODefault.svg";
 const SkeletonHome = () => {

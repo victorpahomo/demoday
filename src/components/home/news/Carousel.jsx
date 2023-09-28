@@ -19,10 +19,6 @@ const Carousel = () => {
   }, [dispatch])
 
   const carouselSettings = {
-    /*
-    vertical: true,
-    verticalSwiping: true,
-    swipToSlide: true, */
     dots: true,
     infinite: true,
     speed: 1000,

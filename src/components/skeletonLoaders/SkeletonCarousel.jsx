@@ -1,3 +1,4 @@
+// Animación skeleton
 import React from 'react'
 
 const SkeletonCarousel = () => {

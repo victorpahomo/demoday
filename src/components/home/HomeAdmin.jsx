@@ -10,6 +10,7 @@ import CardServices from "../CardServices";
 
 const HomeAdmin = () => {
   const [groupSeleted, setGroupSeleted] = useState(null);
+  // Función para manejar la selección de grupo
   const handleSubmit = (e) => {
     e.preventDefault();
     const value = e.target.value.toUpperCase();
@@ -19,6 +20,7 @@ const HomeAdmin = () => {
   return (
     <>
       <div className="flex flex-wrap text-primary-Azul5 gap-2 justify-evenly ">
+        {/* Selector de grupo */}
         <select
           defaultValue="Elije el grupo que deseas administrar"
           onChange={handleSubmit}
@@ -27,6 +29,7 @@ const HomeAdmin = () => {
           <option disabled value="Elije el grupo que deseas administrar">
             Elije el grupo que deseas administrar
           </option>
+          {/* Opciones para seleccionar un grupo */}
           <option value="frontend_1">FrontEnd 1</option>
           <option value="frontend_2">FrontEnd 2</option>
           <option value="frontend_3">FrontEnd 3</option>
@@ -37,6 +40,7 @@ const HomeAdmin = () => {
         <div className="flex gap-2 text-primary-azulCeleste5">
           <p>Grupo actual:</p>
           <span className="font-bold text-primary-azulCeleste4">
+            {/* Muestra el grupo seleccionado o un mensaje si no se ha seleccionado */}
             {groupSeleted ? (
               groupSeleted
             ) : (
@@ -77,7 +81,7 @@ const HomeAdmin = () => {
             link="https://forms.office.com/pages/responsepage.aspx?id=PmxyCsIpwUidPuiOxlHEILezxldzAHpCkZgRtVasDIZURjRUMDg4VUY2WkJIN1NUVEo0UVdYSDA5WCQlQCN0PWcu"
           />
         </div>
-        {/* Put this part before </body> tag */}
+        {/* Modal de selección de nombre (uso de un modal) */}
         <input type="checkbox" id="my-modal-6" className="modal-toggle" />
         <div className="modal modal-bottom sm:modal-middle">
           <div className="modal-box bg-white">

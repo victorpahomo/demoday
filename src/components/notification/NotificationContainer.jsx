@@ -4,12 +4,10 @@ import { BellIcon, ViewAllIcon } from "../../assets";
 import { NotificationCard } from "./";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData, setUserLastNotification } from "../../services/dataFirebaseService";
-import NotificationToast from "./NotificationToast";
-import { Toaster } from "react-hot-toast";
+
 
 const NotificationContainer = () => {
-  // This component needs Group and User data
-  const dispatch = useDispatch();
+  // Este componente necesita los datos del grupo y del usuario  const dispatch = useDispatch();
   // Loaders
   const groupFetchStatus = useSelector((state) => state.group.loading);//idle, pending, fulfilled, rejected
   const userFetchStatus = useSelector((state) => state.user.loading);//idle, pending, fulfilled, rejected
@@ -25,10 +23,11 @@ const NotificationContainer = () => {
     () => notificationsSelector,
     [notificationsSelector]
   );
+  // Estados locales
   const [showToast, setShowToast] = useState(false);
   const [lastNotification, setLastNotification] = useState(null);
 
-  // Get user data only on page reload
+  // Obtener datos del usuario solo en la recarga de la página
   useEffect(() => {
     if (userFetchStatus === "idle") {
       dispatch(getUserData(userUid));
@@ -57,8 +56,7 @@ const NotificationContainer = () => {
 
   return (
     <>
-      {/* <Toaster />
- */}
+      {/* Contenedor de notificaciones */}
       <div
         id="dropdown_functionality"
         className="dropdown dropdown-end tooltip tooltip-bottom "

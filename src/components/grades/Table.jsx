@@ -31,10 +31,12 @@ const Table = ({ data }) => {
     <>
 
       <div className="grid grid-cols-2 text-black gap-5">
+        {/* Tabla de Notas de Fundamentos */}
         <div className="_primeraTabla shadow-md">
           <h2 className="h-8  text-center font-bold text-lg bg-gray-300 text-primary-azulCeleste5 rounded-t-md">
             Notas de Fundamentos
           </h2>
+          {/* Cabecera de la tabla */}
           <table className="w-full table-auto">
             <thead>
               <tr>
@@ -42,6 +44,7 @@ const Table = ({ data }) => {
                 <th className="px-4 py-2">Nota</th>
               </tr>
             </thead>
+            {/* Cuerpo de la tabla - Muestra las notas y el promedio */}
             <tbody>
               {data.fundamentos.grades.map(
                 (grade) => (

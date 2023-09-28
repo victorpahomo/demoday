@@ -36,13 +36,11 @@ const FormSendEmail = (props) => {
               background: "#363636",
               color: "#fff",
             },
-            // position: "bottom-right",
           });
         },
         (error) => {
           toast.error("Oops, algo salió mal. ¡Inténtalo de nuevo!", {
             duration: 8000,
-            // position: "bottom-right",
           });
         }
       );

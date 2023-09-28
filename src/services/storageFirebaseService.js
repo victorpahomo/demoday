@@ -1,6 +1,6 @@
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../api/firebase";
-
+// Función para cargar un archivo a Firebase Storage
 export const uploadFileToStorage = async (file, id) => {
   try {
     const storageRef = ref(storage, id);

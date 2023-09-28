@@ -13,17 +13,13 @@ import { useState } from "react";
 import CodeBotIcon from "../assets/CodeBotIcon.svg"
 import UserIcon from "../assets/UserIcon.svg"
 import { useSelector } from "react-redux";
-
-const API_KEY = "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"; //No pudimos subir variables de entorno a Firebase
-
+const API_KEY = process.env.REACT_APP_API_KEY;
 const systemMessage = {
   // Este mensaje explica cómo debe comportarse la AI
   role: "system",
   content:
     "Explain things like you're talking to a software professional with 2 months of experience, your name is CODEBOT",
 };
-// "You are a professor of a software academy, you cannot send code for any software language, explains the theoretical concepts"
-// "Explain things like you're talking to a software professional with 2 years of experience."
 function CodeBot() {
   // Data
   const userProfilePicture = useSelector((state) => state.user.user?.picture)
@@ -73,8 +69,6 @@ function CodeBot() {
         systemMessage, // Define como debe comportarse la AI
         ...apiMessages, // Mensajes anteriores
       ],
-      // "temperature": 0.2,
-      /* "max_tokens": 100, */
     };
 
     await fetch(
