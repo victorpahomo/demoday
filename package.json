@@ -14,7 +14,7 @@
     "@emailjs/browser": "^3.10.0",
     "@fullcalendar/core": "^6.1.4",
     "@fullcalendar/daygrid": "^6.1.4",
-    "@fullcalendar/interaction": "^6.1.4",
+    "@fullcalendar/interaction": "^6.1.5",
     "@fullcalendar/react": "^6.1.4",
     "@fullcalendar/rrule": "^6.1.4",
     "@fullcalendar/timegrid": "^6.1.4",
